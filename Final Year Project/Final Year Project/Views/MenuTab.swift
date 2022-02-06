@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MenuTab: View {
+    @Binding var lessons: [Lesson]
     var body: some View {
         TabView {
             HomeView()
@@ -20,7 +21,7 @@ struct MenuTab: View {
                     Image(systemName: "leaf.fill")
                     Text("Track")
                 }
-            LearnView()
+            LearnView(lessons: $lessons)
                 .tabItem {
                     Image(systemName: "book")
                     Text("Learn")
@@ -36,6 +37,6 @@ struct MenuTab: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuTab()
+        MenuTab(lessons: .constant(Lesson.sampleData))
     }
 }

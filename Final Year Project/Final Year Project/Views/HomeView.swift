@@ -12,20 +12,16 @@ struct HomeView: View {
         
         var body: some View {
             ZStack {
+                Circle()
+                    .stroke(lineWidth: 20.0)
+                    .opacity(0.6)
+                    .foregroundColor(Color.red)
+                        
                 VStack {
-                    ZStack {
-                        Circle()
-                            .stroke(lineWidth: 20.0)
-                            .opacity(0.6)
-                            .foregroundColor(Color.red)
-
-                        VStack {
-                            Text(String(format: "%.1f CO\u{2082}e", carbonEmissionsValue))
-                                .font(.largeTitle)
-                                .bold()
-                            Text("Tonnes per annum")
-                        }
-                    }
+                    Text(String(format: "%.1f CO\u{2082}e", carbonEmissionsValue))
+                        .font(.largeTitle)
+                        .bold()
+                    Text("Tonnes per annum")
                 }
             }
             .padding(60)

@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Final_Year_ProjectApp: App {
+    @State private var lessons = Lesson.sampleData
     var body: some Scene {
         WindowGroup {
-            MenuTab()
+            MenuTab(lessons: $lessons)
         }
     }
 }
