@@ -9,7 +9,10 @@ import SwiftUI
 
 struct TrackView: View {
     var body: some View {
-        Text("Track View")
+        NavigationView {
+            Text("Track View")
+                .navigationTitle("Track Emissions")
+        }
     }
 }
 

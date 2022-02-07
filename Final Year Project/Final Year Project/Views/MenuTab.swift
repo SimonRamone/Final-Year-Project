@@ -10,9 +10,11 @@ import SwiftUI
 struct MenuTab: View {
     @Binding var lessons: [Lesson]
     @Binding var badges: [Badge]
+    @Binding var profile: Profile
+
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(profile: $profile)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
@@ -38,6 +40,7 @@ struct MenuTab: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuTab(lessons: .constant(Lesson.sampleData), badges: .constant(Badge.sampleData))
+        MenuTab(lessons: .constant(Lesson.sampleData), badges: .constant(Badge.sampleData),
+                profile: .constant(Profile.sampleData))
     }
 }
