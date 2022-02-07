@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuTab: View {
     @Binding var lessons: [Lesson]
+    @Binding var badges: [Badge]
     var body: some View {
         TabView {
             HomeView()
@@ -26,7 +27,7 @@ struct MenuTab: View {
                     Image(systemName: "book")
                     Text("Learn")
                 }
-            AwardsView()
+            AwardsView(badges: $badges)
                 .tabItem {
                     Image(systemName: "crown.fill")
                     Text("Awards")
@@ -37,6 +38,6 @@ struct MenuTab: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuTab(lessons: .constant(Lesson.sampleData))
+        MenuTab(lessons: .constant(Lesson.sampleData), badges: .constant(Badge.sampleData))
     }
 }

@@ -16,6 +16,7 @@
 		E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3D27A95A8400D4E336 /* LearnView.swift */; };
 		E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4127A95AC000D4E336 /* AwardsView.swift */; };
 		E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4727A976DD00D4E336 /* Lesson.swift */; };
+		E3827B5127B1271500D4E336 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B5027B1271500D4E336 /* Badge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		E3827B3D27A95A8400D4E336 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		E3827B4127A95AC000D4E336 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		E3827B4727A976DD00D4E336 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		E3827B5027B1271500D4E336 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E3827B4727A976DD00D4E336 /* Lesson.swift */,
+				E3827B5027B1271500D4E336 /* Badge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */,
+				E3827B5127B1271500D4E336 /* Badge.swift in Sources */,
 				E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */,
 				E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */,
 				E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */,
