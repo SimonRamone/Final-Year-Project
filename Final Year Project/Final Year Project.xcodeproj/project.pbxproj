@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBB27B13AAA0092F255 /* BadgeView.swift */; };
 		E338CE5427A82BC4002137EC /* Final_Year_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */; };
 		E338CE5627A82BC4002137EC /* MenuTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5527A82BC4002137EC /* MenuTab.swift */; };
 		E338CE5827A82BC4002137EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E338CE5727A82BC4002137EC /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E3009DBB27B13AAA0092F255 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E338CE5027A82BC4002137EC /* Final Year Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Year Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_Year_ProjectApp.swift; sourceTree = "<group>"; };
 		E338CE5527A82BC4002137EC /* MenuTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTab.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				E3827B3B27A95A7800D4E336 /* TrackView.swift */,
 				E3827B3D27A95A8400D4E336 /* LearnView.swift */,
 				E3827B4127A95AC000D4E336 /* AwardsView.swift */,
+				E3009DBB27B13AAA0092F255 /* BadgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */,
 				E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */,
 				E338CE5627A82BC4002137EC /* MenuTab.swift in Sources */,
+				E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */,
 				E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */,
 				E338CE5427A82BC4002137EC /* Final_Year_ProjectApp.swift in Sources */,
 			);

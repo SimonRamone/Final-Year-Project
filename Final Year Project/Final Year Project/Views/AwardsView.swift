@@ -9,6 +9,9 @@ import SwiftUI
 
 struct AwardsView: View {
     @Binding var badges: [Badge]
+    
+    @State private var data = Badge.Data()
+    @State private var isPresentingBadgeView = false
     var body: some View {
         ScrollView{
             HStack {
@@ -20,10 +23,18 @@ struct AwardsView: View {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]){
                 ForEach(badges) { badge in
                     if badge.earned {
-                        Image(badge.image)
-                            .resizable()
-                            .scaledToFill()
-                            .padding()
+                        Button(action: {
+                            isPresentingBadgeView.toggle()
+                            data = badge.data
+                        }) {
+                            Image(badge.image)
+                                .resizable()
+                                .scaledToFill()
+                                .padding()
+                        }
+                        .sheet(isPresented: $isPresentingBadgeView) {
+                            BadgeView(data: $data)
+                        }
                     }
                     else {
                         Image(badge.image)
