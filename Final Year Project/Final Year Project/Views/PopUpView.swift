@@ -15,9 +15,9 @@ struct PopUpView: View {
     var buttonText: String
     
     var body: some View {
-        ZStack{
+       // ZStack{
             if isPresented {
-                Color.gray.opacity(0.5).edgesIgnoringSafeArea(.all).blur(radius: 10)
+                Color.white.opacity(0.1).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .center, spacing: 0) {
                     if !title.isEmpty {
                         Text(title)
@@ -42,11 +42,11 @@ struct PopUpView: View {
                             .font(.headline)
                     }).padding()
                 }
-                .frame(maxWidth: 300)
+                .frame(maxWidth: 300, alignment: .init(horizontal: .center, vertical: .center))
                 .background(.white)
                 .cornerRadius(45)
             }
-        }
+       // }
     }
 }
 

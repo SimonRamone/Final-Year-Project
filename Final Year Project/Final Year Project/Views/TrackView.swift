@@ -12,7 +12,7 @@ struct TrackView: View {
         NavigationView {
             Text("Track View")
                 .navigationTitle("Track Emissions")
-        }
+       }
     }
 }
 

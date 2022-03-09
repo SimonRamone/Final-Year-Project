@@ -10,10 +10,21 @@
 		E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBB27B13AAA0092F255 /* BadgeView.swift */; };
 		E3009DBE27B15CEF0092F255 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBD27B15CEF0092F255 /* ProfileView.swift */; };
 		E3009DC027B15F0F0092F255 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBF27B15F0F0092F255 /* Profile.swift */; };
+		E323B7C827C3A3310033484F /* CarbonFootprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323B7C727C3A3310033484F /* CarbonFootprint.swift */; };
+		E32EA97E27CC227400B209E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EA97D27CC227400B209E5 /* Constants.swift */; };
+		E32EA98227CC3C9F00B209E5 /* HomeFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EA98127CC3C9F00B209E5 /* HomeFootprintView.swift */; };
+		E32EA98427CCE48F00B209E5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */; };
 		E338CE5427A82BC4002137EC /* Final_Year_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */; };
-		E338CE5627A82BC4002137EC /* MenuTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5527A82BC4002137EC /* MenuTab.swift */; };
+		E338CE5627A82BC4002137EC /* MenuTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5527A82BC4002137EC /* MenuTabView.swift */; };
 		E338CE5827A82BC4002137EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E338CE5727A82BC4002137EC /* Assets.xcassets */; };
 		E338CE5B27A82BC4002137EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E338CE5A27A82BC4002137EC /* Preview Assets.xcassets */; };
+		E351EAF227BEBDA300440CCB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E351EAF127BEBDA300440CCB /* GameKit.framework */; };
+		E374835227D3E6D400BC871C /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835127D3E6D400BC871C /* CheckboxStyle.swift */; };
+		E374835427D5366000BC871C /* TransportFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835327D5366000BC871C /* TransportFootprintView.swift */; };
+		E374835627D65C3E00BC871C /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835527D65C3E00BC871C /* Flight.swift */; };
+		E374835827D76E9000BC871C /* AirportPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835727D76E9000BC871C /* AirportPicker.swift */; };
+		E374835A27D7727C00BC871C /* FlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835927D7727C00BC871C /* FlightView.swift */; };
+		E374835C27D78F9900BC871C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835B27D78F9900BC871C /* SearchBar.swift */; };
 		E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3927A958FF00D4E336 /* HomeView.swift */; };
 		E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3B27A95A7800D4E336 /* TrackView.swift */; };
 		E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3D27A95A8400D4E336 /* LearnView.swift */; };
@@ -21,7 +32,6 @@
 		E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4727A976DD00D4E336 /* Lesson.swift */; };
 		E3827B5127B1271500D4E336 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B5027B1271500D4E336 /* Badge.swift */; };
 		E3971F7427BD358700DA5AE0 /* DietFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */; };
-		E3971F7627BD47A700DA5AE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7527BD47A700DA5AE0 /* Constants.swift */; };
 		E3971F7827BE83D100DA5AE0 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7727BE83D100DA5AE0 /* PopUpView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,11 +40,22 @@
 		E3009DBD27B15CEF0092F255 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E3009DBF27B15F0F0092F255 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E3009DCB27BBC6B50092F255 /* Final-Year-Project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Final-Year-Project-Info.plist"; sourceTree = SOURCE_ROOT; };
+		E323B7C727C3A3310033484F /* CarbonFootprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprint.swift; sourceTree = "<group>"; };
+		E32EA97D27CC227400B209E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E32EA98127CC3C9F00B209E5 /* HomeFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFootprintView.swift; sourceTree = "<group>"; };
+		E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
 		E338CE5027A82BC4002137EC /* Final Year Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Year Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_Year_ProjectApp.swift; sourceTree = "<group>"; };
-		E338CE5527A82BC4002137EC /* MenuTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTab.swift; sourceTree = "<group>"; };
+		E338CE5527A82BC4002137EC /* MenuTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabView.swift; sourceTree = "<group>"; };
 		E338CE5727A82BC4002137EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E338CE5A27A82BC4002137EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E351EAF127BEBDA300440CCB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		E374835127D3E6D400BC871C /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
+		E374835327D5366000BC871C /* TransportFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportFootprintView.swift; sourceTree = "<group>"; };
+		E374835527D65C3E00BC871C /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		E374835727D76E9000BC871C /* AirportPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPicker.swift; sourceTree = "<group>"; };
+		E374835927D7727C00BC871C /* FlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightView.swift; sourceTree = "<group>"; };
+		E374835B27D78F9900BC871C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E3827B3927A958FF00D4E336 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E3827B3B27A95A7800D4E336 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		E3827B3D27A95A8400D4E336 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
@@ -42,7 +63,6 @@
 		E3827B4727A976DD00D4E336 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		E3827B5027B1271500D4E336 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietFootprintView.swift; sourceTree = "<group>"; };
-		E3971F7527BD47A700DA5AE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E3971F7727BE83D100DA5AE0 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E351EAF227BEBDA300440CCB /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +83,7 @@
 			children = (
 				E338CE5227A82BC4002137EC /* Final Year Project */,
 				E338CE5127A82BC4002137EC /* Products */,
+				E351EAF027BEBDA300440CCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,7 +104,6 @@
 				E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */,
 				E338CE5727A82BC4002137EC /* Assets.xcassets */,
 				E338CE5927A82BC4002137EC /* Preview Content */,
-				E3971F7527BD47A700DA5AE0 /* Constants.swift */,
 			);
 			path = "Final Year Project";
 			sourceTree = "<group>";
@@ -95,10 +116,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E351EAF027BEBDA300440CCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E351EAF127BEBDA300440CCB /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E3827B4327A95B0700D4E336 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E338CE5527A82BC4002137EC /* MenuTab.swift */,
+				E338CE5527A82BC4002137EC /* MenuTabView.swift */,
 				E3827B3927A958FF00D4E336 /* HomeView.swift */,
 				E3827B3B27A95A7800D4E336 /* TrackView.swift */,
 				E3827B3D27A95A8400D4E336 /* LearnView.swift */,
@@ -106,7 +135,13 @@
 				E3009DBB27B13AAA0092F255 /* BadgeView.swift */,
 				E3009DBD27B15CEF0092F255 /* ProfileView.swift */,
 				E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */,
+				E32EA98127CC3C9F00B209E5 /* HomeFootprintView.swift */,
 				E3971F7727BE83D100DA5AE0 /* PopUpView.swift */,
+				E374835127D3E6D400BC871C /* CheckboxStyle.swift */,
+				E374835327D5366000BC871C /* TransportFootprintView.swift */,
+				E374835727D76E9000BC871C /* AirportPicker.swift */,
+				E374835927D7727C00BC871C /* FlightView.swift */,
+				E374835B27D78F9900BC871C /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -117,6 +152,10 @@
 				E3827B4727A976DD00D4E336 /* Lesson.swift */,
 				E3827B5027B1271500D4E336 /* Badge.swift */,
 				E3009DBF27B15F0F0092F255 /* Profile.swift */,
+				E323B7C727C3A3310033484F /* CarbonFootprint.swift */,
+				E32EA97D27CC227400B209E5 /* Constants.swift */,
+				E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */,
+				E374835527D65C3E00BC871C /* Flight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,15 +234,24 @@
 				E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */,
 				E3827B5127B1271500D4E336 /* Badge.swift in Sources */,
 				E3009DBE27B15CEF0092F255 /* ProfileView.swift in Sources */,
+				E374835227D3E6D400BC871C /* CheckboxStyle.swift in Sources */,
+				E374835627D65C3E00BC871C /* Flight.swift in Sources */,
 				E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */,
+				E32EA97E27CC227400B209E5 /* Constants.swift in Sources */,
 				E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */,
+				E323B7C827C3A3310033484F /* CarbonFootprint.swift in Sources */,
 				E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */,
 				E3971F7827BE83D100DA5AE0 /* PopUpView.swift in Sources */,
-				E3971F7627BD47A700DA5AE0 /* Constants.swift in Sources */,
-				E338CE5627A82BC4002137EC /* MenuTab.swift in Sources */,
+				E32EA98427CCE48F00B209E5 /* CarbonFootprintCalculator.swift in Sources */,
+				E338CE5627A82BC4002137EC /* MenuTabView.swift in Sources */,
+				E32EA98227CC3C9F00B209E5 /* HomeFootprintView.swift in Sources */,
 				E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */,
+				E374835C27D78F9900BC871C /* SearchBar.swift in Sources */,
 				E3009DC027B15F0F0092F255 /* Profile.swift in Sources */,
 				E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */,
+				E374835827D76E9000BC871C /* AirportPicker.swift in Sources */,
+				E374835427D5366000BC871C /* TransportFootprintView.swift in Sources */,
+				E374835A27D7727C00BC871C /* FlightView.swift in Sources */,
 				E338CE5427A82BC4002137EC /* Final_Year_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,9 +390,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -375,9 +424,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (

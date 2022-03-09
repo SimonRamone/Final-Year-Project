@@ -12,12 +12,11 @@ struct AwardsView: View {
     
     @State private var data = Badge.Data()
     @State private var isPresentingBadgeView = false
-    @State private var isPresentingInfoPopUp = false
-    
-    @State private var badgeAchievement = ""
+    @Binding var isPresentingInfoPopUp: Bool
+    @Binding var popUpMessage: String
+
     var body: some View {
-        ZStack {
-            NavigationView {
+        NavigationView {
                 ScrollView{
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]){
                         ForEach(badges) { badge in
@@ -44,8 +43,8 @@ struct AwardsView: View {
                             }
                             else {
                                 Button(action: {
+                                    popUpMessage = badge.achieveBy
                                     isPresentingInfoPopUp.toggle()
-                                    badgeAchievement = badge.achieveBy
                                 }) {
                                     Image(badge.image)
                                         .resizable()
@@ -58,14 +57,12 @@ struct AwardsView: View {
                     }
                 }
                 .navigationTitle("Awards")
-            }
-            PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: badgeAchievement, buttonText: "Got it!")
         }
     }
 }
 
 struct AwardsView_Previews: PreviewProvider {
     static var previews: some View {
-        AwardsView(badges: .constant(Badge.sampleData))
+        AwardsView(badges: .constant(Badge.sampleData), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
     }
 }
