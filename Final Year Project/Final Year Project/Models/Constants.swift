@@ -36,14 +36,26 @@ struct Constants {
     //Flight kgCO2/passsenger/km 2019
     static let FLIGHT_FACTOR = 0.09
     
-    let beefFootprint = 11.44 //kgCO₂eq per 115 grams raw beef
-    let porkFootprint = 1.42 //kgCO₂eq per 115 grams raw pork
-    let poultryFootprint = 1.14 //kgCO₂eq per 115 grams raw poultry
-    let riceFootprint = 0.2225 //kgCO₂eq per 50 grams uncooked rice
-    let fishFootprint = 3.08 //kgCO₂eq per 226 grams raw fish
-    let coffeeFootprint = 0.57 //kgCO₂eq per 20 grams ground coffee
-    let cheeseFootprint = 0.72 //kgCO₂eq per 30 grams cheese
-    let milkFootprint = 0.63 //kgCO₂eq per 200 ml milk
+    //Food waste kgCO2e/kg
+    static let FOOD_WASTE_FACTOR = 1.9
+    //Average food waste per week kg
+    static let AVERAGE_WEEKLY_FOOD_WASTE = 3.486
+    
+    //High meat-eaters (≥ 100 g/day)
+    //Medium meat-eaters (50–99 g/day)
+    //Low meat-eaters (< 50 g/day)
+    enum DietEmissions: Double {
+        case Vegan = 1058.5, Vegetarian = 1390.65, Pescatarian = 1427.15, HighMeat = 2624.35, MediumMeat = 2054.95, LowMeat = 1704.55
+    }
+    
+    static let BEEF_FOOTPRINT = 11.44 //kgCO₂eq per 115 grams raw beef
+    static let PORK_FOOTPRINT = 1.42 //kgCO₂eq per 115 grams raw pork
+    static let POULTRY_FOOTPRINT = 1.14 //kgCO₂eq per 115 grams raw poultry
+    static let RICE_FOOTPRINT = 0.2225 //kgCO₂eq per 50 grams uncooked rice
+    static let FISH_FOOTPRINT = 3.08 //kgCO₂eq per 226 grams raw fish
+    static let COFFEE_FOOTPRINT = 0.57 //kgCO₂eq per 20 grams ground coffee
+    static let CHEESE_FOOTPRINT = 0.72 //kgCO₂eq per 30 grams cheese
+    static let MILK_FOOTPRINT = 0.63 //kgCO₂eq per 200 ml milk
     
 }
 

@@ -12,8 +12,10 @@ class CarbonFootprintCalculator: ObservableObject {
     @Published var carbonFootprint = 0.0
     @Published var homeCarbonFootprint = 0.0
     @Published var transportCarbonFootprint = 0.0
+    @Published var dietCarbonFootprint = 0.0
     @Published var percentHome = 0.0
     @Published var percentTransport = 0.0
+    @Published var percentDiet = 0.0
     
     private(set) var carbonFootprintData: CarbonFootprint.Data
     private var heatingFactor: Double = 0.0
@@ -22,6 +24,7 @@ class CarbonFootprintCalculator: ObservableObject {
     private var heatingEmissions: Double = 0.0
     private var flightEmissions: Double = 0.0
     private var carEmissions: Double = 0.0
+    private var foodWasteEmissions: Double = 0.0
     
     internal init(carbonFootprintData: CarbonFootprint.Data = CarbonFootprint.Data()) {
         self.carbonFootprintData = carbonFootprintData
@@ -35,9 +38,20 @@ class CarbonFootprintCalculator: ObservableObject {
     func calculateCarbonFootprint() {
         calculateHomeCarbonFootprint()
         calculateTransportCarbonFootprint()
-        carbonFootprint = homeCarbonFootprint + transportCarbonFootprint
+        calculateDietCarbonFootprint()
+        carbonFootprint = homeCarbonFootprint + transportCarbonFootprint + dietCarbonFootprint
         percentHome = carbonFootprint > 0 ? homeCarbonFootprint/carbonFootprint : 0.0
         percentTransport = carbonFootprint > 0 ? transportCarbonFootprint/carbonFootprint : 0.0
+        percentDiet = carbonFootprint > 0 ? dietCarbonFootprint/carbonFootprint : 0.0
+    }
+    
+    func calculateDietCarbonFootprint() {
+        calculateFoodWasteEmissions()
+        dietCarbonFootprint = carbonFootprintData.dietEmissions.rawValue + foodWasteEmissions
+    }
+    
+    func calculateFoodWasteEmissions() {
+        foodWasteEmissions = carbonFootprintData.foodWaste * Constants.FOOD_WASTE_FACTOR * 52
     }
     
     func calculateTransportCarbonFootprint() {

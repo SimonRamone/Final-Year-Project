@@ -9,7 +9,6 @@ import Foundation
 
 struct CarbonFootprint {
     var totalCarbonFootprint: Double
-    var beefServings: Double
     var householdSize: Int
     var electricitySupplier: String
     var electricityFactor: Double
@@ -20,10 +19,11 @@ struct CarbonFootprint {
     var dieselBurned: Int
     var petrolBurned: Int
     var flights: [Flight]
+    var dietEmissions: Constants.DietEmissions
+    var foodWaste: Double
     
-    internal init(totalCarbonFootprint: Double, beefServings: Double, householdSize: Int, electricitySupplier: String, electricityFactor: Double, electricityUsed: Int, isElectricityUnitKWH: Bool, isUsingAverageElectricity: Bool, heatingFuelType: String, dieselBurned: Int, petrolBurned: Int, flights: [Flight]) {
+    internal init(totalCarbonFootprint: Double, householdSize: Int, electricitySupplier: String, electricityFactor: Double, electricityUsed: Int, isElectricityUnitKWH: Bool, isUsingAverageElectricity: Bool, heatingFuelType: String, dieselBurned: Int, petrolBurned: Int, flights: [Flight], dietEmissions: Constants.DietEmissions, foodWaste: Double) {
         self.totalCarbonFootprint = totalCarbonFootprint
-        self.beefServings = beefServings
         self.householdSize = householdSize
         self.electricitySupplier = electricitySupplier
         self.electricityFactor = electricityFactor
@@ -34,13 +34,14 @@ struct CarbonFootprint {
         self.dieselBurned = dieselBurned
         self.petrolBurned = petrolBurned
         self.flights = flights
+        self.dietEmissions = dietEmissions
+        self.foodWaste = foodWaste
     }
 }
 
 extension CarbonFootprint {
     struct Data {
         var totalCarbonFootprint: Double = 0
-        var beefServings: Double = 0
         var householdSize: Int = 1
         var electricitySupplier: String = "SSE Airtricity"
         var electricityFactor: Double = 0.0
@@ -51,16 +52,17 @@ extension CarbonFootprint {
         var dieselBurned: Int = 0
         var petrolBurned: Int = 0
         var flights: [Flight] = []
+        var dietEmissions: Constants.DietEmissions = .MediumMeat
+        var foodWaste: Double = 0.0
     }
     
     var data: Data {
-        Data(totalCarbonFootprint: totalCarbonFootprint, beefServings: beefServings, householdSize: householdSize, electricitySupplier: electricitySupplier, electricityFactor: electricityFactor, electricityUsed: electricityUsed,
-             isElectricityUnitKWH: isElectricityUnitKWH, isUsingAverageElectricity: isUsingAverageElectricity, heatingFuelType: heatingFuelType, dieselBurned: dieselBurned, petrolBurned: petrolBurned, flights: flights)
+        Data(totalCarbonFootprint: totalCarbonFootprint, householdSize: householdSize, electricitySupplier: electricitySupplier, electricityFactor: electricityFactor, electricityUsed: electricityUsed,
+             isElectricityUnitKWH: isElectricityUnitKWH, isUsingAverageElectricity: isUsingAverageElectricity, heatingFuelType: heatingFuelType, dieselBurned: dieselBurned, petrolBurned: petrolBurned, flights: flights, dietEmissions: dietEmissions, foodWaste: foodWaste)
     }
     
     mutating func update(from data: Data) {
         totalCarbonFootprint = data.totalCarbonFootprint
-        beefServings = data.beefServings
         householdSize = data.householdSize
         electricitySupplier = data.electricitySupplier
         electricityFactor = data.electricityFactor
@@ -71,11 +73,12 @@ extension CarbonFootprint {
         dieselBurned = data.dieselBurned
         petrolBurned = data.petrolBurned
         flights = data.flights
+        dietEmissions = data.dietEmissions
+        foodWaste = data.foodWaste
     }
     
     init(data: Data) {
         totalCarbonFootprint = data.totalCarbonFootprint
-        beefServings = data.beefServings
         householdSize = data.householdSize
         electricitySupplier = data.electricitySupplier
         electricityFactor = data.electricityFactor
@@ -86,9 +89,11 @@ extension CarbonFootprint {
         dieselBurned = data.dieselBurned
         petrolBurned = data.petrolBurned
         flights = data.flights
+        dietEmissions = data.dietEmissions
+        foodWaste = data.foodWaste
     }
 }
 
 extension CarbonFootprint {
-    static let defaultCarbonFootprint: CarbonFootprint = CarbonFootprint(totalCarbonFootprint: 0, beefServings: 0, householdSize: 1, electricitySupplier: "SSE Airtricity", electricityFactor: 0.0, electricityUsed: 0, isElectricityUnitKWH: false, isUsingAverageElectricity: false, heatingFuelType: "Kerosene", dieselBurned: 0, petrolBurned: 0, flights: [])
+    static let defaultCarbonFootprint: CarbonFootprint = CarbonFootprint(totalCarbonFootprint: 0, householdSize: 1, electricitySupplier: "SSE Airtricity", electricityFactor: 0.0, electricityUsed: 0, isElectricityUnitKWH: false, isUsingAverageElectricity: false, heatingFuelType: "Kerosene", dieselBurned: 0, petrolBurned: 0, flights: [], dietEmissions: Constants.DietEmissions.MediumMeat, foodWaste: 0)
 }

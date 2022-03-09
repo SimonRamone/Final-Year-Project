@@ -8,134 +8,122 @@
 import SwiftUI
 
 struct DietFootprintView: View {
-    @State private var isPresentingInfoPopUp: Bool = false
-    let beefFootprint = 11.44 //kgCO₂eq per 115 grams raw beef
-    let porkFootprint = 1.42 //kgCO₂eq per 115 grams raw pork
-    let poultryFootprint = 1.14 //kgCO₂eq per 115 grams raw poultry
-    let riceFootprint = 0.2225 //kgCO₂eq per 50 grams uncooked rice
-    let fishFootprint = 3.08 //kgCO₂eq per 226 grams raw fish
-    let coffeeFootprint = 0.57 //kgCO₂eq per 20 grams ground coffee
-    let cheeseFootprint = 0.72 //kgCO₂eq per 30 grams cheese
-    let milkFootprint = 0.63 //kgCO₂eq per 200 ml milk
-    var numberOfQuestions = 5
-    @State var popUpMessage = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var numberOfQuestions = 3
     @State var questionNr = 0
     
     @Binding var data: CarbonFootprint.Data
+    @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
+    @Binding var isPresentingInfoPopUp: Bool
+    @Binding var popUpMessage: String
     var body: some View {
         ZStack {
             VStack{
-                HStack{
-                    Spacer()
-                    Button(action: {
-                        isPresentingInfoPopUp.toggle()
-                    }, label: {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
-                    }).padding(.trailing, 20)
-                }
                 Spacer()
                 switch (questionNr)  {
                 case 0:
                     VStack{
-                        Text("How many servings of **beef** did you consume in the past week?" ).padding(.horizontal)
+                        Text("Select the **diet** that is closest to yours." )
                             .font(.largeTitle)
-                        Text("\(Int(data.beefServings)) servings")
-                            .padding(.top)
-                        Slider(value: $data.beefServings, in: 0...10, step: 1) {
-                            Text("Length")
-                        }.padding(.horizontal, 20)
+                        Picker("Diet", selection: $data.dietEmissions) {
+                            Text("Meat Eater")
+                                .tag(Constants.DietEmissions.MediumMeat)
+                            Text("Vegetarian")
+                                .tag(Constants.DietEmissions.Vegetarian)
+                            Text("Vegan")
+                                .tag(Constants.DietEmissions.Vegan)
+                            Text("Pescatarian")
+                                .tag(Constants.DietEmissions.Pescatarian)
+                        }
+                        .pickerStyle(.wheel)
                     }
+                    .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw beef."
+                        popUpMessage = "A pescatarian is someone who does not eat meat with the exception of fish."
+                    }
+                    .onDisappear(){
+                        if data.dietEmissions == Constants.DietEmissions.Vegan || data.dietEmissions == Constants.DietEmissions.Vegetarian || data.dietEmissions == Constants.DietEmissions.Pescatarian {
+                            questionNr = 2
+                        }
                     }
                 case 1:
                     VStack{
-                        Text("How many servings of **pork** did you consume in the past week?" )
+                        Text("How often do you eat **meat** in a week?" )
                             .font(.largeTitle)
-                        Text("\(Int(data.beefServings)) servings")
-                            .padding(.top)
-                        Slider(value: $data.beefServings, in: 0...10, step: 1) {
-                            Text("Length")
-                        }.padding(.horizontal, 20)
+                        Picker("Diet", selection: $data.dietEmissions) {
+                            Text("Daily")
+                                .tag(Constants.DietEmissions.HighMeat)
+                            Text("Every Other Day")
+                                .tag(Constants.DietEmissions.MediumMeat)
+                            Text("Sometimes")
+                                .tag(Constants.DietEmissions.LowMeat)
+                        }
+                        .pickerStyle(.wheel)
                     }
+                    .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw pork."
+                        popUpMessage = "One serving of beef is responsible for \(Constants.BEEF_FOOTPRINT)kgCO2e."
                     }
                 case 2:
                     VStack{
-                        Text("How many servings of **poultry** did you consume in the past week?" )
+                        Text("How much food did you **throw out** in the past week?" )
                             .font(.largeTitle)
-                        Text("\(Int(data.beefServings)) servings")
+                        Text("\(data.foodWaste, specifier: "%.1f") kg")
                             .padding(.top)
-                        Slider(value: $data.beefServings, in: 0...10, step: 1) {
-                            Text("Length")
-                        }.padding(.horizontal, 20)
+                        Slider(value: $data.foodWaste, in: 0...6, step: 0.1) {
+                            Text("Kg Wasted")
+                        }
                     }
+                    .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw poultry."
-                    }
-                case 3:
-                    VStack{
-                        Text("How many cups of **coffee** did you consume in the past week?" )
-                            .font(.largeTitle)
-                        Text("\(Int(data.beefServings)) cups")
-                            .padding(.top)
-                        Slider(value: $data.beefServings, in: 0...20, step: 1) {
-                            Text("Length")
-                        }.padding(.horizontal, 20)
-                    }
-                    .onAppear(){
-                        popUpMessage = "One cup is a double espresso or 20 grams of ground coffee."
-                    }
-                case 4:
-                    VStack{
-                        Text("How many slices of **cheese** did you consume in the past week?" )
-                            .font(.largeTitle)
-                        Text("\(Int(data.beefServings)) slices")
-                            .padding(.top)
-                        Slider(value: $data.beefServings, in: 0...20, step: 2) {
-                            Text("Length")
-                        }.padding(.horizontal, 20)
-                    }
-                    .onAppear(){
-                        popUpMessage = "Two slices of cheese is 30 grams."
+                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE)kg every week."
                     }
                 default:
-                    Text("Default")
+                    onAppear(){questionNr = 0}
                 }
                 Spacer()
                 HStack{
-
+                    Button(action: {
+                        questionNr -= 1
+                    }) {
+                        Text("Previous")
+                    }.disabled(questionNr <= 0)
+                    Spacer()
+                    if questionNr == numberOfQuestions-1 {
                         Button(action: {
-                            questionNr -= 1
+                            self.presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text("Previous")
-                        }.disabled(questionNr <= 0)
-                        Spacer()
+                            Text("Done")
+                        }
+                    } else {
                         Button(action: {
                             questionNr += 1
                         }) {
                             Text("Next")
                         }.disabled(questionNr >= numberOfQuestions-1)
+                    }
                 }
                 .padding(.bottom, 30)
                 .padding(.horizontal, 30)
-//                Button(action: {
-//                }) {
-//                    Text("Submit")
-//                        .padding()
-//                }
-//                .foregroundColor(.white)
-//                .background(.blue)
-//                .cornerRadius(22)
             }
-            PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        isPresentingInfoPopUp.toggle()
+                    }, label: {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
+                    })
+            )
+        }
+        .navigationTitle("Diet Footprint")
+        .onDisappear(){
+            carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
         }
     }
 }
 
 struct DietFootprintView_Previews: PreviewProvider {
     static var previews: some View {
-        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data))
+        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
     }
 }
