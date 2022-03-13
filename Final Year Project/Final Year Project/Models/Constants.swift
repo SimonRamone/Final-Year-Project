@@ -11,6 +11,9 @@ struct Constants {
     //Average carbon footprint
     static let AVERAGE_FOOTPRINT = 13200.0;
     
+    //Carbon footprint goal -45%
+    static let GOAL_FOOTPRINT = 7300.0;
+    
     //Average household annual electricity usage
     static let AVERAGE_ANNUAL_KWH = 4200;
     
@@ -52,10 +55,16 @@ struct Constants {
     static let PORK_FOOTPRINT = 1.42 //kgCO₂eq per 115 grams raw pork
     static let POULTRY_FOOTPRINT = 1.14 //kgCO₂eq per 115 grams raw poultry
     static let RICE_FOOTPRINT = 0.2225 //kgCO₂eq per 50 grams uncooked rice
-    static let FISH_FOOTPRINT = 3.08 //kgCO₂eq per 226 grams raw fish
+    static let FISH_FOOTPRINT = 1.54 //kgCO₂eq per 115 grams raw fish
     static let COFFEE_FOOTPRINT = 0.57 //kgCO₂eq per 20 grams ground coffee
     static let CHEESE_FOOTPRINT = 0.72 //kgCO₂eq per 30 grams cheese
     static let MILK_FOOTPRINT = 0.63 //kgCO₂eq per 200 ml milk
+    
+    static let CLOTHING_FOOTPRINT = 0.35 //kgCO₂eq per €1
+    static let ELECTRONICS_FOOTPRINT = 2.16 //kgCO₂eq per €1
+    static let PAPER_FOOTPRINT = 0.23 //kgCO₂eq per €1
+    static let STREAMING_FOOTPRINT = 1.44 //kgCO₂eq per €1
+    static let MOBILE_DATA_FOOTPRINT = 1.18 //kgCO₂eq per 1GB at 5kWh per 1GB and 0.236kgCO2e per kWh
     
 }
 

@@ -155,9 +155,11 @@ struct HomeFootprintView: View {
                     })
             )
         }
-        .navigationTitle("Home Footprint")
+        .navigationTitle("Home Energy Footprint")
         .onDisappear(){
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            carbonFootprintCalculator.calculateHomeCarbonFootprint()
+            carbonFootprintCalculator.calculateCarbonFootprint()
         }
     }
 }

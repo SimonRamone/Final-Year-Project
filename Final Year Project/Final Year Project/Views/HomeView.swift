@@ -24,7 +24,7 @@ struct HomeView: View {
                 ZStack {
                     Circle()
                         .stroke(lineWidth: 20.0)
-                        .foregroundColor(carbonFootprintCalculator.carbonFootprint>Constants.AVERAGE_FOOTPRINT+3000 ? Color.red : carbonFootprintCalculator.carbonFootprint<Constants.AVERAGE_FOOTPRINT-3000 ? Color.green : Color.yellow)
+                        .foregroundColor(carbonFootprintCalculator.carbonFootprint>Constants.AVERAGE_FOOTPRINT ? Color.red : carbonFootprintCalculator.carbonFootprint<=Constants.GOAL_FOOTPRINT ? Color.green : Color.yellow)
                     VStack {
                         Text(String(format: "%.1f CO\u{2082}e", carbonFootprintCalculator.carbonFootprint/1000))
                             .font(.largeTitle)
@@ -38,7 +38,7 @@ struct HomeView: View {
                                 Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
                             })
                         }
-                        if carbonFootprintCalculator.carbonFootprint>Constants.AVERAGE_FOOTPRINT+3000 {
+                        if carbonFootprintCalculator.carbonFootprint>Constants.AVERAGE_FOOTPRINT {
                             Label {
                                 Text("Action Required")
                                     .foregroundColor(.white)
@@ -57,7 +57,7 @@ struct HomeView: View {
                             .foregroundColor(.white)
                             .background(.black)
                             .cornerRadius(25)
-                        } else if carbonFootprintCalculator.carbonFootprint<Constants.AVERAGE_FOOTPRINT-3000 {
+                        } else if carbonFootprintCalculator.carbonFootprint<=Constants.GOAL_FOOTPRINT {
                             Label {
                                 Text("OK")
                                     .foregroundColor(.white)
@@ -113,14 +113,14 @@ struct HomeView: View {
                                         Circle()
                                             .stroke(lineWidth: 10.0)
                                             .opacity(0.5)
-                                            .foregroundColor(carbonFootprintCalculator.percentHome>0.6 ? Color.red : carbonFootprintCalculator.percentHome>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentHome))
                                         Circle()
                                             .trim(from: 0.0, to: CGFloat(min(carbonFootprintCalculator.percentHome, 1.0)))
                                             .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
-                                            .foregroundColor(carbonFootprintCalculator.percentHome>0.6 ? Color.red : carbonFootprintCalculator.percentHome>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentHome))
                                             .rotationEffect(Angle(degrees: 270.0))
                                         Image(systemName: "house.fill")
-                                            .foregroundColor(carbonFootprintCalculator.percentHome>0.6 ? Color.red : carbonFootprintCalculator.percentHome>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentHome))
                                             .font(.title)
                                             .padding()
                                     }
@@ -144,14 +144,14 @@ struct HomeView: View {
                                         Circle()
                                             .stroke(lineWidth: 10.0)
                                             .opacity(0.5)
-                                            .foregroundColor(carbonFootprintCalculator.percentTransport>0.6 ? Color.red : carbonFootprintCalculator.percentTransport>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentTransport))
                                         Circle()
                                             .trim(from: 0.0, to: CGFloat(min(carbonFootprintCalculator.percentTransport, 1.0)))
                                             .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
-                                            .foregroundColor(carbonFootprintCalculator.percentTransport>0.6 ? Color.red : carbonFootprintCalculator.percentTransport>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentTransport))
                                             .rotationEffect(Angle(degrees: 270.0))
                                         Image(systemName: "car.fill")
-                                            .foregroundColor(carbonFootprintCalculator.percentTransport>0.6 ? Color.red : carbonFootprintCalculator.percentTransport>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentTransport))
                                             .font(.title)
                                             .padding()
                                     }
@@ -175,14 +175,14 @@ struct HomeView: View {
                                         Circle()
                                             .stroke(lineWidth: 10.0)
                                             .opacity(0.5)
-                                            .foregroundColor(carbonFootprintCalculator.percentDiet>0.6 ? Color.red : carbonFootprintCalculator.percentDiet>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentDiet))
                                         Circle()
                                             .trim(from: 0.0, to: CGFloat(min(carbonFootprintCalculator.percentDiet, 1.0)))
                                             .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
-                                            .foregroundColor(carbonFootprintCalculator.percentDiet>0.6 ? Color.red : carbonFootprintCalculator.percentDiet>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentDiet))
                                             .rotationEffect(Angle(degrees: 270.0))
                                         Image(systemName: "fork.knife")
-                                            .foregroundColor(carbonFootprintCalculator.percentDiet>0.6 ? Color.red : carbonFootprintCalculator.percentDiet>0.4 ? Color.yellow : Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentDiet))
                                             .font(.title)
                                             .padding()
                                     }
@@ -200,26 +200,25 @@ struct HomeView: View {
                                 .cornerRadius(5)
                             }
                             .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 0))
-                            Button(action: {
-                            }) {
+                            NavigationLink(destination: GoodsFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage).navigationBarTitleDisplayMode(.inline)){
                                 VStack{
                                     ZStack {
                                         Circle()
                                             .stroke(lineWidth: 10.0)
                                             .opacity(0.5)
-                                            .foregroundColor(Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentGoods))
                                         Circle()
-                                            .trim(from: 0.0, to: CGFloat(min(0.05, 1.0)))
+                                            .trim(from: 0.0, to: CGFloat(min(carbonFootprintCalculator.percentGoods, 1.0)))
                                             .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
-                                            .foregroundColor(Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentGoods))
                                             .rotationEffect(Angle(degrees: 270.0))
                                         Image(systemName: "cart.fill")
-                                            .foregroundColor(Color.green)
+                                            .foregroundColor(colorIndicator(percentage: carbonFootprintCalculator.percentGoods))
                                             .font(.title)
                                             .padding()
                                     }
                                     .padding(.init(top: 10, leading: 10, bottom: 0, trailing: 10))
-                                    Text("5%")
+                                    Text(String(format: "%.0f", carbonFootprintCalculator.percentGoods*100)+"%")
                                         .font(.title2)
                                         .bold()
                                     Text("Shopping")
@@ -282,6 +281,10 @@ func loadUserImage() {
             print("Error loading image")
         }
     })
+}
+
+func colorIndicator(percentage: Double) -> Color {
+    return percentage>0.40 ? Color.red : percentage>0.25 ? Color.yellow : Color.green
 }
 
 struct HomeView_Previews: PreviewProvider {

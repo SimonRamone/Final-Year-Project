@@ -163,6 +163,8 @@ struct TransportFootprintView: View {
         }
         .onDisappear(){
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            carbonFootprintCalculator.calculateTransportCarbonFootprint()
+            carbonFootprintCalculator.calculateCarbonFootprint()
         }
     }
 }

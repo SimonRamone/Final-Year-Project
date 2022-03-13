@@ -26,13 +26,17 @@ struct DietFootprintView: View {
                         Text("Select the **diet** that is closest to yours." )
                             .font(.largeTitle)
                         Picker("Diet", selection: $data.dietEmissions) {
-                            Text("Meat Eater")
+                            Text("Meat Daily 🥩")
+                                .tag(Constants.DietEmissions.HighMeat)
+                            Text("Meat Every Other Day")
                                 .tag(Constants.DietEmissions.MediumMeat)
+                            Text("Meat Sometimes")
+                                .tag(Constants.DietEmissions.LowMeat)
+                            Text("Vegan 🥦")
+                                .tag(Constants.DietEmissions.Vegan)
                             Text("Vegetarian")
                                 .tag(Constants.DietEmissions.Vegetarian)
-                            Text("Vegan")
-                                .tag(Constants.DietEmissions.Vegan)
-                            Text("Pescatarian")
+                            Text("Pescatarian 🐟")
                                 .tag(Constants.DietEmissions.Pescatarian)
                         }
                         .pickerStyle(.wheel)
@@ -41,28 +45,22 @@ struct DietFootprintView: View {
                     .onAppear(){
                         popUpMessage = "A pescatarian is someone who does not eat meat with the exception of fish."
                     }
-                    .onDisappear(){
-                        if data.dietEmissions == Constants.DietEmissions.Vegan || data.dietEmissions == Constants.DietEmissions.Vegetarian || data.dietEmissions == Constants.DietEmissions.Pescatarian {
-                            questionNr = 2
-                        }
-                    }
                 case 1:
                     VStack{
-                        Text("How often do you eat **meat** in a week?" )
-                            .font(.largeTitle)
-                        Picker("Diet", selection: $data.dietEmissions) {
-                            Text("Daily")
-                                .tag(Constants.DietEmissions.HighMeat)
-                            Text("Every Other Day")
-                                .tag(Constants.DietEmissions.MediumMeat)
-                            Text("Sometimes")
-                                .tag(Constants.DietEmissions.LowMeat)
-                        }
-                        .pickerStyle(.wheel)
+                            Text("How many **high emission** foods do you eat in a week?")
+                                .font(.largeTitle)
+                            Stepper("🥩 Beef Servings: \(data.highEmissionFoods.beefServings.formatted())", value: $data.highEmissionFoods.beefServings, in: 0...100)
+                            Stepper("🥓 Pork Servings: \(data.highEmissionFoods.porkServings.formatted())", value: $data.highEmissionFoods.porkServings, in: 0...100)
+                            Stepper("🍗 Poultry Servings: \(data.highEmissionFoods.poultryServings.formatted())", value: $data.highEmissionFoods.poultryServings, in: 0...100)
+                            Stepper("🍚 Rice Bowls: \(data.highEmissionFoods.riceServings.formatted())", value: $data.highEmissionFoods.riceServings, in: 0...100)
+                            Stepper("🐟 Fish Servings: \(data.highEmissionFoods.fishServings.formatted())", value: $data.highEmissionFoods.fishServings, in: 0...100)
+                            Stepper("☕️ Coffee Cups: \(data.highEmissionFoods.coffeeServings.formatted())", value: $data.highEmissionFoods.coffeeServings, in: 0...100)
+                            Stepper("🧀 Cheese Slices: \(data.highEmissionFoods.cheeseServings.formatted())", value: $data.highEmissionFoods.cheeseServings, in: 0...100)
+                            Stepper("🥛 Milk Glasses: \(data.highEmissionFoods.milkServings.formatted())", value: $data.highEmissionFoods.milkServings, in: 0...100)
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving of beef is responsible for \(Constants.BEEF_FOOTPRINT)kgCO2e."
+                        popUpMessage = "A pescatarian is someone who does not eat meat with the exception of fish."
                     }
                 case 2:
                     VStack{
@@ -76,7 +74,7 @@ struct DietFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE)kg every week."
+                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
                     }
                 default:
                     onAppear(){questionNr = 0}
@@ -118,6 +116,8 @@ struct DietFootprintView: View {
         .navigationTitle("Diet Footprint")
         .onDisappear(){
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            carbonFootprintCalculator.calculateDietCarbonFootprint()
+            carbonFootprintCalculator.calculateCarbonFootprint()
         }
     }
 }

@@ -13,9 +13,11 @@ class CarbonFootprintCalculator: ObservableObject {
     @Published var homeCarbonFootprint = 0.0
     @Published var transportCarbonFootprint = 0.0
     @Published var dietCarbonFootprint = 0.0
+    @Published var goodsCarbonFootprint = 0.0
     @Published var percentHome = 0.0
     @Published var percentTransport = 0.0
     @Published var percentDiet = 0.0
+    @Published var percentGoods = 0.0
     
     private(set) var carbonFootprintData: CarbonFootprint.Data
     private var heatingFactor: Double = 0.0
@@ -25,6 +27,7 @@ class CarbonFootprintCalculator: ObservableObject {
     private var flightEmissions: Double = 0.0
     private var carEmissions: Double = 0.0
     private var foodWasteEmissions: Double = 0.0
+    private var dietEmissions: Double = 0.0
     
     internal init(carbonFootprintData: CarbonFootprint.Data = CarbonFootprint.Data()) {
         self.carbonFootprintData = carbonFootprintData
@@ -36,22 +39,31 @@ class CarbonFootprintCalculator: ObservableObject {
     }
     
     func calculateCarbonFootprint() {
-        calculateHomeCarbonFootprint()
-        calculateTransportCarbonFootprint()
-        calculateDietCarbonFootprint()
-        carbonFootprint = homeCarbonFootprint + transportCarbonFootprint + dietCarbonFootprint
+        carbonFootprint = homeCarbonFootprint + transportCarbonFootprint + dietCarbonFootprint + goodsCarbonFootprint
         percentHome = carbonFootprint > 0 ? homeCarbonFootprint/carbonFootprint : 0.0
         percentTransport = carbonFootprint > 0 ? transportCarbonFootprint/carbonFootprint : 0.0
         percentDiet = carbonFootprint > 0 ? dietCarbonFootprint/carbonFootprint : 0.0
+        percentGoods = carbonFootprint > 0 ? goodsCarbonFootprint/carbonFootprint : 0.0
+    }
+    
+    func calculateGoodsCarbonFootprint() {
+        goodsCarbonFootprint = carbonFootprintData.goodsEmissions.mobileDataUsage * Constants.MOBILE_DATA_FOOTPRINT * 12 + carbonFootprintData.goodsEmissions.expensesClothing * Constants.CLOTHING_FOOTPRINT * 12 + carbonFootprintData.goodsEmissions.expensesElectronics * Constants.ELECTRONICS_FOOTPRINT + carbonFootprintData.goodsEmissions.expensesStreaming * Constants.STREAMING_FOOTPRINT * 12
     }
     
     func calculateDietCarbonFootprint() {
         calculateFoodWasteEmissions()
-        dietCarbonFootprint = carbonFootprintData.dietEmissions.rawValue + foodWasteEmissions
+        calculateHighEmissionFoodsFootprint()
+        dietCarbonFootprint = dietEmissions < carbonFootprintData.dietEmissions.rawValue ? carbonFootprintData.dietEmissions.rawValue : dietEmissions
+        dietCarbonFootprint += foodWasteEmissions;
     }
     
     func calculateFoodWasteEmissions() {
         foodWasteEmissions = carbonFootprintData.foodWaste * Constants.FOOD_WASTE_FACTOR * 52
+    }
+    
+    func calculateHighEmissionFoodsFootprint() {
+        dietEmissions = carbonFootprintData.highEmissionFoods.beefServings * Constants.BEEF_FOOTPRINT + carbonFootprintData.highEmissionFoods.porkServings * Constants.PORK_FOOTPRINT + carbonFootprintData.highEmissionFoods.poultryServings * Constants.POULTRY_FOOTPRINT + carbonFootprintData.highEmissionFoods.riceServings * Constants.RICE_FOOTPRINT + carbonFootprintData.highEmissionFoods.fishServings * Constants.FISH_FOOTPRINT + carbonFootprintData.highEmissionFoods.coffeeServings * Constants.COFFEE_FOOTPRINT + carbonFootprintData.highEmissionFoods.cheeseServings * Constants.CHEESE_FOOTPRINT + carbonFootprintData.highEmissionFoods.milkServings * Constants.MILK_FOOTPRINT;
+        dietEmissions = dietEmissions * 52;
     }
     
     func calculateTransportCarbonFootprint() {

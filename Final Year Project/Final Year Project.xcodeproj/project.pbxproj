@@ -25,6 +25,8 @@
 		E374835827D76E9000BC871C /* AirportPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835727D76E9000BC871C /* AirportPicker.swift */; };
 		E374835A27D7727C00BC871C /* FlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835927D7727C00BC871C /* FlightView.swift */; };
 		E374835C27D78F9900BC871C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835B27D78F9900BC871C /* SearchBar.swift */; };
+		E374836227D905B400BC871C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E374836127D905B400BC871C /* Launch Screen.storyboard */; };
+		E3754C1727DE7BAA007B82AB /* GoodsFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */; };
 		E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3927A958FF00D4E336 /* HomeView.swift */; };
 		E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3B27A95A7800D4E336 /* TrackView.swift */; };
 		E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3D27A95A8400D4E336 /* LearnView.swift */; };
@@ -56,6 +58,8 @@
 		E374835727D76E9000BC871C /* AirportPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPicker.swift; sourceTree = "<group>"; };
 		E374835927D7727C00BC871C /* FlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightView.swift; sourceTree = "<group>"; };
 		E374835B27D78F9900BC871C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E374836127D905B400BC871C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsFootprintView.swift; sourceTree = "<group>"; };
 		E3827B3927A958FF00D4E336 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E3827B3B27A95A7800D4E336 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		E3827B3D27A95A8400D4E336 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 		E338CE4727A82BC4002137EC = {
 			isa = PBXGroup;
 			children = (
+				E374836127D905B400BC871C /* Launch Screen.storyboard */,
 				E338CE5227A82BC4002137EC /* Final Year Project */,
 				E338CE5127A82BC4002137EC /* Products */,
 				E351EAF027BEBDA300440CCB /* Frameworks */,
@@ -142,6 +147,7 @@
 				E374835727D76E9000BC871C /* AirportPicker.swift */,
 				E374835927D7727C00BC871C /* FlightView.swift */,
 				E374835B27D78F9900BC871C /* SearchBar.swift */,
+				E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E338CE5B27A82BC4002137EC /* Preview Assets.xcassets in Resources */,
+				E374836227D905B400BC871C /* Launch Screen.storyboard in Resources */,
 				E338CE5827A82BC4002137EC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +252,7 @@
 				E32EA98427CCE48F00B209E5 /* CarbonFootprintCalculator.swift in Sources */,
 				E338CE5627A82BC4002137EC /* MenuTabView.swift in Sources */,
 				E32EA98227CC3C9F00B209E5 /* HomeFootprintView.swift in Sources */,
+				E3754C1727DE7BAA007B82AB /* GoodsFootprintView.swift in Sources */,
 				E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */,
 				E374835C27D78F9900BC871C /* SearchBar.swift in Sources */,
 				E3009DC027B15F0F0092F255 /* Profile.swift in Sources */,
@@ -380,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Final Year Project/Preview Content\"";
@@ -387,9 +396,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Final-Year-Project-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = CarbonMate;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -414,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Final Year Project/Preview Content\"";
@@ -421,9 +432,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Final-Year-Project-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = CarbonMate;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

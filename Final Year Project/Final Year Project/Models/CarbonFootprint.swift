@@ -21,8 +21,10 @@ struct CarbonFootprint {
     var flights: [Flight]
     var dietEmissions: Constants.DietEmissions
     var foodWaste: Double
+    var highEmissionFoods: HighEmissionFoods
+    var goodsEmissions: GoodsEmissions
     
-    internal init(totalCarbonFootprint: Double, householdSize: Int, electricitySupplier: String, electricityFactor: Double, electricityUsed: Int, isElectricityUnitKWH: Bool, isUsingAverageElectricity: Bool, heatingFuelType: String, dieselBurned: Int, petrolBurned: Int, flights: [Flight], dietEmissions: Constants.DietEmissions, foodWaste: Double) {
+    internal init(totalCarbonFootprint: Double, householdSize: Int, electricitySupplier: String, electricityFactor: Double, electricityUsed: Int, isElectricityUnitKWH: Bool, isUsingAverageElectricity: Bool, heatingFuelType: String, dieselBurned: Int, petrolBurned: Int, flights: [Flight], dietEmissions: Constants.DietEmissions, foodWaste: Double, highEmissionFoods: HighEmissionFoods, goodsEmissions: GoodsEmissions) {
         self.totalCarbonFootprint = totalCarbonFootprint
         self.householdSize = householdSize
         self.electricitySupplier = electricitySupplier
@@ -36,6 +38,8 @@ struct CarbonFootprint {
         self.flights = flights
         self.dietEmissions = dietEmissions
         self.foodWaste = foodWaste
+        self.highEmissionFoods = highEmissionFoods
+        self.goodsEmissions = goodsEmissions
     }
 }
 
@@ -54,11 +58,13 @@ extension CarbonFootprint {
         var flights: [Flight] = []
         var dietEmissions: Constants.DietEmissions = .MediumMeat
         var foodWaste: Double = 0.0
+        var highEmissionFoods: HighEmissionFoods = HighEmissionFoods(beefServings: 0, porkServings: 0, poultryServings: 0, riceServings: 0, fishServings: 0, coffeeServings: 0, cheeseServings: 0, milkServings: 0)
+        var goodsEmissions: GoodsEmissions = GoodsEmissions(expensesClothing: 0, expensesElectronics: 0, expensesPaper: 0, expensesStreaming: 0, mobileDataUsage: 0)
     }
     
     var data: Data {
         Data(totalCarbonFootprint: totalCarbonFootprint, householdSize: householdSize, electricitySupplier: electricitySupplier, electricityFactor: electricityFactor, electricityUsed: electricityUsed,
-             isElectricityUnitKWH: isElectricityUnitKWH, isUsingAverageElectricity: isUsingAverageElectricity, heatingFuelType: heatingFuelType, dieselBurned: dieselBurned, petrolBurned: petrolBurned, flights: flights, dietEmissions: dietEmissions, foodWaste: foodWaste)
+             isElectricityUnitKWH: isElectricityUnitKWH, isUsingAverageElectricity: isUsingAverageElectricity, heatingFuelType: heatingFuelType, dieselBurned: dieselBurned, petrolBurned: petrolBurned, flights: flights, dietEmissions: dietEmissions, foodWaste: foodWaste, highEmissionFoods: highEmissionFoods, goodsEmissions: goodsEmissions)
     }
     
     mutating func update(from data: Data) {
@@ -75,6 +81,8 @@ extension CarbonFootprint {
         flights = data.flights
         dietEmissions = data.dietEmissions
         foodWaste = data.foodWaste
+        highEmissionFoods = data.highEmissionFoods
+        goodsEmissions = data.goodsEmissions
     }
     
     init(data: Data) {
@@ -91,9 +99,32 @@ extension CarbonFootprint {
         flights = data.flights
         dietEmissions = data.dietEmissions
         foodWaste = data.foodWaste
+        highEmissionFoods = data.highEmissionFoods
+        goodsEmissions = data.goodsEmissions
     }
 }
 
 extension CarbonFootprint {
-    static let defaultCarbonFootprint: CarbonFootprint = CarbonFootprint(totalCarbonFootprint: 0, householdSize: 1, electricitySupplier: "SSE Airtricity", electricityFactor: 0.0, electricityUsed: 0, isElectricityUnitKWH: false, isUsingAverageElectricity: false, heatingFuelType: "Kerosene", dieselBurned: 0, petrolBurned: 0, flights: [], dietEmissions: Constants.DietEmissions.MediumMeat, foodWaste: 0)
+    struct HighEmissionFoods {
+        var beefServings = 0.0;
+        var porkServings = 0.0;
+        var poultryServings = 0.0;
+        var riceServings = 0.0;
+        var fishServings = 0.0;
+        var coffeeServings = 0.0;
+        var cheeseServings = 0.0;
+        var milkServings = 0.0;
+    }
+    
+    struct GoodsEmissions {
+        var expensesClothing = 0.0;
+        var expensesElectronics = 0.0;
+        var expensesPaper = 0.0;
+        var expensesStreaming = 0.0;
+        var mobileDataUsage = 0.0;
+    }
+}
+
+extension CarbonFootprint {
+    static let defaultCarbonFootprint: CarbonFootprint = CarbonFootprint(totalCarbonFootprint: 0, householdSize: 1, electricitySupplier: "SSE Airtricity", electricityFactor: 0.0, electricityUsed: 0, isElectricityUnitKWH: false, isUsingAverageElectricity: false, heatingFuelType: "Kerosene", dieselBurned: 0, petrolBurned: 0, flights: [], dietEmissions: Constants.DietEmissions.MediumMeat, foodWaste: 0, highEmissionFoods: HighEmissionFoods(beefServings: 0, porkServings: 0, poultryServings: 0, riceServings: 0, fishServings: 0, coffeeServings: 0, cheeseServings: 0, milkServings: 0), goodsEmissions: GoodsEmissions(expensesClothing: 0, expensesElectronics: 0, expensesPaper: 0, expensesStreaming: 0, mobileDataUsage: 0))
 }
