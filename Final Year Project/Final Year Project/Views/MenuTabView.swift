@@ -17,6 +17,9 @@ struct MenuTabView: View {
     @State private var isPresentingInfoPopUp: Bool = false
     @State private var popUpMessage: String = ""
     
+    @State private var isPresentingLesson: Bool = false
+    @State private var lessonView: Lesson = Lesson()
+    
     let localPlayer = GKLocalPlayer.local
         func authenticateUser() {
             localPlayer.authenticateHandler = { vc, error in
@@ -43,7 +46,7 @@ struct MenuTabView: View {
                                     Image(systemName: "leaf.fill")
                                     Text("Track")
                                 }
-                            LearnView(lessons: $lessons)
+                            LearnView(lessons: $lessons, isPresentingLesson: $isPresentingLesson, lessonView: $lessonView)
                                 .tabItem {
                                     Image(systemName: "book")
                                     Text("Learn")
@@ -54,11 +57,13 @@ struct MenuTabView: View {
                                     Text("Awards")
                                 }
                     }
-               .disabled(isPresentingInfoPopUp)
+               .disabled(isPresentingInfoPopUp || isPresentingLesson)
                // .blur(radius: isPresentingInfoPopUp ? 10 : .nan)
                 //if isPresentingInfoPopUp { VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial)).ignoresSafeArea(.all)}
                 PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
                     .shadow(color: .gray, radius: 10, x: 0, y: 0)
+                
+                LessonView(isPresentingLesson: $isPresentingLesson, lesson: $lessonView)
             }
                 .onAppear(){
                     authenticateUser()
@@ -104,7 +109,7 @@ struct MenuTabView: View {
     
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
-            MenuTabView(lessons: .constant(Lesson.sampleData), badges: .constant(Badge.sampleData),
+            MenuTabView(lessons: .constant(Lesson.lessons), badges: .constant(Badge.sampleData),
                     profile: .constant(Profile.sampleData), carbonFootprint: .constant(CarbonFootprint.defaultCarbonFootprint))
         }
     }

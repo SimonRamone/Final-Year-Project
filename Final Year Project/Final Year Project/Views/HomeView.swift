@@ -261,6 +261,9 @@ struct HomeView: View {
             // }
             //PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: "A carbon dioxide equivalent is all greenhouse gases rolled into one.", buttonText: "Got it!")
         }
+        .onChange(of: carbonFootprintCalculator.carbonFootprint) { carbonFootprint in
+            GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
+                }
         .onAppear(){
             GKAccessPoint.shared.isActive = false
             

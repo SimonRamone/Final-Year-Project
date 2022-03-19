@@ -1,0 +1,68 @@
+[
+    {
+        "coverImage": "cows",
+        "title": "Lesson 1",
+        "subtitle": "Methane Emissions",
+        "slides": [
+            {
+                "image": "lesson 1-1",
+                "caption": "Livestock and manure emissions are the largest source of human-related methane emissions. Methane is more than 25 times as potent as carbon dioxide."
+                
+            },
+            {
+                "image": "lesson 1-2",
+                "caption": "Rice paddy fields are a major source of atmospheric methane. Estimated to contribute in the range of 50 to 100 million tonnes annually."
+                
+            },
+            {
+                "image": "lesson 1-3",
+                "caption": "Venting and other releases of methane have increased steadily throughout the rapid growth in production and consumption of fossil fuels."
+                
+            },
+            {
+                "image": "lesson 1-4",
+                "caption": "Landfills contribute to methane emissions as microorganisms within a landfill decompose organic waste like food and paper waste."
+                
+            }
+        ]
+    },
+    {
+        "coverImage": "airplane",
+        "title": "Lesson 2",
+        "subtitle": "Travel Emissions",
+        "slides": [
+            {
+                "image": "lesson 1-3",
+                "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor sapien eget nisl elementum, eu feugiat ipsum aliquam. Morbi pretium."
+                
+            },
+            {
+                "image": "lesson 1-2",
+                "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus."
+                
+            },
+            {
+                "image": "lesson 1-1",
+                "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis ullamcorper quam, nec condimentum dolor."
+                
+            }
+        ]
+    },
+    {
+        "coverImage": "insulation",
+        "title": "Lesson 3",
+        "subtitle": "Home Heating",
+        "slides": [
+            {
+                "image": "lesson 1-4",
+                "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor sapien eget nisl elementum, eu feugiat ipsum aliquam. Morbi pretium."
+                
+            },
+            {
+                "image": "lesson 1-3",
+                "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus."
+                
+            }
+        ]
+    }
+]

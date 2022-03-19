@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LearnView: View {
     @Binding var lessons: [Lesson]
+    @Binding var isPresentingLesson: Bool
+    @Binding var lessonView: Lesson
     var body: some View {
         NavigationView{
             ScrollView {
@@ -38,6 +40,19 @@ struct LearnView: View {
                     .padding(.leading)
                     .padding(.trailing)
                     .padding(.bottom)
+                    .onTapGesture {
+                        isPresentingLesson = true
+                        lessonView = lesson
+                    }
+                }
+            }
+            .onAppear(){
+                if lessons.isEmpty {
+                    do {
+                        lessons = try JSONDecoder().decode([Lesson].self, from: NSDataAsset(name: "lessons-data", bundle: Bundle.main)!.data)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             }
             .navigationTitle("Learn")
@@ -45,10 +60,10 @@ struct LearnView: View {
     }
 }
 
-struct LearnView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            LearnView(lessons: .constant(Lesson.sampleData))
-        }
-    }
-}
+//struct LearnView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            LearnView(lessons: .constant(Lesson.sampleData))
+//        }
+//    }
+//}

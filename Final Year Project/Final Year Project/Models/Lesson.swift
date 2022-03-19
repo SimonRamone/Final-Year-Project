@@ -1,25 +1,44 @@
 import Foundation
 import SwiftUI
 
-struct Lesson: Identifiable {
-    let id: UUID
-    var title: String
-    var subtitle: String
-    var coverImage: String
+struct Lesson: Identifiable, Codable {
+    let id = UUID()
+    let title: String
+    let subtitle: String
+    let coverImage: String
+    let slides: [Slide]
     
-    init(id: UUID = UUID(), title: String, subtitle: String, coverImage:String) {
-        self.id = id
+    init(title: String, subtitle: String, coverImage: String, slides: [Slide]) {
         self.title = title
         self.subtitle = subtitle
         self.coverImage = coverImage
+        self.slides = slides
+    }
+    
+    init() {
+        self.title = ""
+        self.subtitle = ""
+        self.coverImage = ""
+        self.slides = []
+    }
+    
+    private enum CodingKeys : String, CodingKey { case title, subtitle, coverImage, slides}
+}
+
+extension Lesson {
+    struct Slide: Codable {
+        let image: String
+        let caption: String
     }
 }
 
 extension Lesson {
-    static let sampleData: [Lesson] =
-    [
-        Lesson(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows"),
-        Lesson(title: "Lesson 2", subtitle: "Air Travel", coverImage: "airplane"),
-        Lesson(title: "Lesson 3", subtitle: "Insulating Your Home", coverImage: "insulation"),
-    ]
+    static let sampleData: Lesson = Lesson(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", slides: [Slide(image: "lesson 1-1", caption: "THis is the first slide"), Slide(image: "lesson 1-2", caption: "THis is the second slide")])
+    static let lessons: [Lesson] = []
+//    [
+//        Lesson(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", slides: [Slide(image: "lessons 1-1", caption: "THis is the first slide"), Slide(image: "secondImage", caption: "THis is the second slide")]),
+//        Lesson(title: "Lesson 2", subtitle: "Air Travel", coverImage: "airplane", slides: [Slide(image: "3rdimage", caption: "THis is the 3rd slide"), Slide(image: "4thimage", caption: "THis is the 4th slide")])
+//    ]
+//        Lesson(title: "Lesson 3", subtitle: "Insulating Your Home", coverImage: "insulation"),
+//    ]
 }
