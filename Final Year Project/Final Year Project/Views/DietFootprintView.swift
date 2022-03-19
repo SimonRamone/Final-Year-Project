@@ -50,14 +50,20 @@ struct DietFootprintView: View {
                     VStack{
                             Text("How many **high emission** foods do you eat in a week?")
                                 .font(.largeTitle)
+                        if data.dietEmissions != Constants.DietEmissions.Vegan && data.dietEmissions != Constants.DietEmissions.Vegetarian && data.dietEmissions != Constants.DietEmissions.Pescatarian {
                             Stepper("🥩 Beef Servings: \(data.highEmissionFoods.beefServings.formatted())", value: $data.highEmissionFoods.beefServings, in: 0...100)
                             Stepper("🥓 Pork Servings: \(data.highEmissionFoods.porkServings.formatted())", value: $data.highEmissionFoods.porkServings, in: 0...100)
                             Stepper("🍗 Poultry Servings: \(data.highEmissionFoods.poultryServings.formatted())", value: $data.highEmissionFoods.poultryServings, in: 0...100)
-                            Stepper("🍚 Rice Bowls: \(data.highEmissionFoods.riceServings.formatted())", value: $data.highEmissionFoods.riceServings, in: 0...100)
+                        }
+                        if data.dietEmissions != Constants.DietEmissions.Vegan && data.dietEmissions != Constants.DietEmissions.Vegetarian {
                             Stepper("🐟 Fish Servings: \(data.highEmissionFoods.fishServings.formatted())", value: $data.highEmissionFoods.fishServings, in: 0...100)
-                            Stepper("☕️ Coffee Cups: \(data.highEmissionFoods.coffeeServings.formatted())", value: $data.highEmissionFoods.coffeeServings, in: 0...100)
+                        }
+                        if data.dietEmissions != Constants.DietEmissions.Vegan {
                             Stepper("🧀 Cheese Slices: \(data.highEmissionFoods.cheeseServings.formatted())", value: $data.highEmissionFoods.cheeseServings, in: 0...100)
                             Stepper("🥛 Milk Glasses: \(data.highEmissionFoods.milkServings.formatted())", value: $data.highEmissionFoods.milkServings, in: 0...100)
+                        }
+                            Stepper("🍚 Rice Bowls: \(data.highEmissionFoods.riceServings.formatted())", value: $data.highEmissionFoods.riceServings, in: 0...100)
+                            Stepper("☕️ Coffee Cups: \(data.highEmissionFoods.coffeeServings.formatted())", value: $data.highEmissionFoods.coffeeServings, in: 0...100)
                     }
                     .padding(.horizontal)
                     .onAppear(){
@@ -115,6 +121,9 @@ struct DietFootprintView: View {
             )
         }
         .navigationTitle("Diet Footprint")
+        .onChange(of: data.dietEmissions){ _ in
+            data.highEmissionFoods = CarbonFootprint.HighEmissionFoods(beefServings: 0, porkServings: 0, poultryServings: 0, riceServings: 0, fishServings: 0, coffeeServings: 0, cheeseServings: 0, milkServings: 0)
+        }
         .onDisappear(){
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.calculateDietCarbonFootprint()
