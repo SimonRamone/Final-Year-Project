@@ -16,6 +16,7 @@ class LessonTimer: ObservableObject {
     private var slideDuration: TimeInterval
     private var publisher: Timer.TimerPublisher
     private var cancellable: Cancellable?
+    private var wasPaused: Bool
     
     
     init() {
@@ -24,6 +25,7 @@ class LessonTimer: ObservableObject {
         self.isFinished = false
         self.progress = 0.0
         self.publisher = Timer.publish(every: 0.01, on: .main, in: .default)
+        self.wasPaused = false
     }
     
     func start(numberOfSlides: Int, slideDuration: TimeInterval) {
@@ -38,7 +40,23 @@ class LessonTimer: ObservableObject {
                 } else {
                     self.progress = newProgress
                 }
+                if self.wasPaused {
+                    self.reset()
+                }
             })
+    }
+    
+    func pause(duration: Double) {
+        wasPaused = true
+        cancellable?.cancel()
+        publisher = Timer.publish(every: duration, on: .main, in: .default)
+        start(numberOfSlides: numberOfSlides, slideDuration: slideDuration)
+    }
+    
+    func reset() {
+        self.wasPaused = false
+        self.publisher = Timer.publish(every: 0.01, on: .main, in: .default)
+        start(numberOfSlides: numberOfSlides, slideDuration: slideDuration)
     }
     
     func cancel() {

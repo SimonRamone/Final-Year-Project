@@ -10,40 +10,70 @@ import SwiftUI
 struct LearnView: View {
     @Binding var lessons: [Lesson]
     @Binding var isPresentingLesson: Bool
+    @Binding var isPresentingQuiz: Bool
     @Binding var lessonView: Lesson
     var body: some View {
         NavigationView{
             ScrollView {
                 ForEach($lessons) { $lesson in
-                    ZStack{
-                        Image(lesson.coverImage)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
-                        
-                        VStack{
-                            HStack{
-                                VStack(alignment: .leading){
-                                    Text(lesson.subtitle)
-                                        .font(.headline)
-                                    Text(lesson.title)
-                                        .font(.largeTitle)
+                    VStack {
+                        ZStack{
+                            Image(lesson.coverImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
+                            
+                            VStack{
+                                HStack{
+                                    VStack(alignment: .leading){
+                                        Text(lesson.subtitle)
+                                            .font(.headline)
+                                        Text(lesson.title)
+                                            .font(.largeTitle)
+                                    }
+                                    .padding()
+                                    .foregroundColor(Color.white)
+                                    Spacer()
                                 }
-                                .padding()
-                                .foregroundColor(Color.white)
                                 Spacer()
                             }
-                            Spacer()
+                        }
+                        .cornerRadius(20)
+                        .onTapGesture {
+                            isPresentingLesson = true
+                            lessonView = lesson
+                    }
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .fill(Color.teal.opacity(0.3))
+                                .frame(width: UIScreen.main.bounds.width - 30 , height: 70)
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("First Quiz")
+                                        .font(.headline)
+                                    Text("Not Complete")
+                                        .font(.subheadline)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    isPresentingQuiz = true
+                                }, label: {
+                                    ZStack {
+                                        Image(systemName: "circle.fill")
+                                            .font(.largeTitle)
+                                            .foregroundColor(.white)
+                                        Image(systemName: "play.circle.fill")
+                                            .font(.system(size: 40.0))
+                                            .foregroundColor(.teal)
+                                    }
+                                })
+                            }
+                            .padding()
                         }
                     }
-                    .cornerRadius(20)
                     .padding(.leading)
                     .padding(.trailing)
                     .padding(.bottom)
-                    .onTapGesture {
-                        isPresentingLesson = true
-                        lessonView = lesson
-                    }
                 }
             }
             .onAppear(){
@@ -62,8 +92,6 @@ struct LearnView: View {
 
 //struct LearnView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        NavigationView {
-//            LearnView(lessons: .constant(Lesson.sampleData))
-//        }
+//            LearnView(lessons: .constant(Lesson.lessons), isPresentingLesson: .constant(false), lessonView: .constant(Lesson.sampleData))
 //    }
 //}

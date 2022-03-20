@@ -34,6 +34,8 @@
 		E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4127A95AC000D4E336 /* AwardsView.swift */; };
 		E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4727A976DD00D4E336 /* Lesson.swift */; };
 		E3827B5127B1271500D4E336 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B5027B1271500D4E336 /* Badge.swift */; };
+		E39668B227E7A471007CB555 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39668B127E7A471007CB555 /* QuizView.swift */; };
+		E39668B427E7A594007CB555 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39668B327E7A594007CB555 /* Quiz.swift */; };
 		E3971F7427BD358700DA5AE0 /* DietFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */; };
 		E3971F7827BE83D100DA5AE0 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7727BE83D100DA5AE0 /* PopUpView.swift */; };
 		E3D79C8527E541F200962424 /* LessonTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D79C8427E541F200962424 /* LessonTimer.swift */; };
@@ -69,6 +71,8 @@
 		E3827B4127A95AC000D4E336 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		E3827B4727A976DD00D4E336 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		E3827B5027B1271500D4E336 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		E39668B127E7A471007CB555 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		E39668B327E7A594007CB555 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietFootprintView.swift; sourceTree = "<group>"; };
 		E3971F7727BE83D100DA5AE0 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		E3D79C8427E541F200962424 /* LessonTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimer.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				E374835B27D78F9900BC871C /* SearchBar.swift */,
 				E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */,
 				E3754C1827DEA04D007B82AB /* LessonView.swift */,
+				E39668B127E7A471007CB555 /* QuizView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */,
 				E374835527D65C3E00BC871C /* Flight.swift */,
 				E3D79C8427E541F200962424 /* LessonTimer.swift */,
+				E39668B327E7A594007CB555 /* Quiz.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +251,8 @@
 			files = (
 				E3971F7427BD358700DA5AE0 /* DietFootprintView.swift in Sources */,
 				E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */,
+				E39668B427E7A594007CB555 /* Quiz.swift in Sources */,
+				E39668B227E7A471007CB555 /* QuizView.swift in Sources */,
 				E3827B5127B1271500D4E336 /* Badge.swift in Sources */,
 				E3009DBE27B15CEF0092F255 /* ProfileView.swift in Sources */,
 				E374835227D3E6D400BC871C /* CheckboxStyle.swift in Sources */,

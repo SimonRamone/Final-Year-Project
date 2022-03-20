@@ -20,6 +20,8 @@ struct MenuTabView: View {
     @State private var isPresentingLesson: Bool = false
     @State private var lessonView: Lesson = Lesson()
     
+    @State private var isPresentingQuiz: Bool = false
+    
     let localPlayer = GKLocalPlayer.local
         func authenticateUser() {
             localPlayer.authenticateHandler = { vc, error in
@@ -46,7 +48,7 @@ struct MenuTabView: View {
                                     Image(systemName: "leaf.fill")
                                     Text("Track")
                                 }
-                            LearnView(lessons: $lessons, isPresentingLesson: $isPresentingLesson, lessonView: $lessonView)
+                        LearnView(lessons: $lessons, isPresentingLesson: $isPresentingLesson, isPresentingQuiz: $isPresentingQuiz, lessonView: $lessonView)
                                 .tabItem {
                                     Image(systemName: "book")
                                     Text("Learn")
@@ -64,6 +66,8 @@ struct MenuTabView: View {
                     .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 
                 LessonView(isPresentingLesson: $isPresentingLesson, lesson: $lessonView)
+                
+                QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: .constant(Quiz.sampleQuiz))
             }
                 .onAppear(){
                     authenticateUser()

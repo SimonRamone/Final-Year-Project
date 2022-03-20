@@ -54,7 +54,6 @@ struct LessonView: View {
                                     .foregroundColor(.gray.opacity(0.7))
                             }
                         })
-                            .clipShape(Circle())
                     }
                     Spacer()
                     Text(lesson.slides[Int(lessonTimer.progress)].caption)
