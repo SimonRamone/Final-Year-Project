@@ -26,12 +26,6 @@ struct Final_Year_ProjectApp: App {
     
     func parseLessons() {
         do {
-//                        let jsonData = try JSONEncoder().encode(lessons)
-//                        let jsonString = String(data: jsonData, encoding: .utf8)!
-            print("HERE:")
-            //print(jsonString) // [{"sentence":"Hello world","lang":"en"},{"sentence":"Hallo Welt","lang":"de"}]
-            
-            // and decode it back
             lessons = try JSONDecoder().decode([Lesson].self, from: NSDataAsset(name: "lessons-data", bundle: Bundle.main)!.data)
             print(lessons)
         } catch { print(error) }

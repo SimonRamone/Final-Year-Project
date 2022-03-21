@@ -97,11 +97,12 @@ struct LessonView: View {
                     .frame(alignment: .center)
             )
             .onAppear {
-                lessonTimer.start(numberOfSlides: lesson.slides.count, slideDuration: 6.0)
+                lessonTimer.set(numberOfSlides: lesson.slides.count, slideDuration: 6.0)
+                lessonTimer.start()
             }
             .onDisappear {
                 isPresentingLesson = false
-                lessonTimer.cancel()
+                lessonTimer.reset()
             }
         }
     }

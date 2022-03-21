@@ -72,13 +72,14 @@ struct QuizView: View {
                     ForEach (quiz.questions[Int(lessonTimer.progress)].answers) { answer in
                         Button(action: {
                             isClicked = true
-                            lessonTimer.pause(duration: 1.0)
+                            lessonTimer.stop()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 isClicked = false
                                 if Int(lessonTimer.progress) + 1 >= quiz.questions.count {
                                     isPresentingQuiz = false
                                 } else {
                                     lessonTimer.skip(by: 1)
+                                    lessonTimer.start()
                                 }
                             }
                         }, label: {
@@ -100,12 +101,13 @@ struct QuizView: View {
             }
             .background(Color.white)
             .onAppear {
-                lessonTimer.start(numberOfSlides: quiz.questions.count, slideDuration: 6.0)
+                lessonTimer.set(numberOfSlides: quiz.questions.count, slideDuration: 6.0)
+                lessonTimer.start()
             }
             .onDisappear {
                 isPresentingQuiz = false
                 quiz.isComplete = true
-                lessonTimer.cancel()
+                lessonTimer.reset()
             }
         }
     }

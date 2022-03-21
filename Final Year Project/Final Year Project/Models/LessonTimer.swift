@@ -10,27 +10,19 @@ import Combine
 
 class LessonTimer: ObservableObject {
     
-    @Published var progress: Double
-    @Published var isFinished: Bool
-    private var numberOfSlides: Int
-    private var slideDuration: TimeInterval
-    private var publisher: Timer.TimerPublisher
+    @Published var progress: Double = 0.0
+    @Published var isFinished: Bool = false
+    private(set) var numberOfSlides: Int = 0
+    private(set) var slideDuration: TimeInterval = 0.0
+    private var publisher: Timer.TimerPublisher = Timer.publish(every: 0.01, on: .main, in: .default)
     private var cancellable: Cancellable?
-    private var wasPaused: Bool
     
-    
-    init() {
-        self.numberOfSlides = 0
-        self.slideDuration = 0.0
-        self.isFinished = false
-        self.progress = 0.0
-        self.publisher = Timer.publish(every: 0.01, on: .main, in: .default)
-        self.wasPaused = false
-    }
-    
-    func start(numberOfSlides: Int, slideDuration: TimeInterval) {
+    func set(numberOfSlides: Int, slideDuration: TimeInterval) {
         self.numberOfSlides = numberOfSlides
         self.slideDuration = slideDuration
+    }
+    
+    func start() {
         self.cancellable = self.publisher
             .autoconnect()
             .sink(receiveValue: {  _ in
@@ -40,26 +32,14 @@ class LessonTimer: ObservableObject {
                 } else {
                     self.progress = newProgress
                 }
-                if self.wasPaused {
-                    self.reset()
-                }
             })
     }
     
-    func pause(duration: Double) {
-        wasPaused = true
+    func stop() {
         cancellable?.cancel()
-        publisher = Timer.publish(every: duration, on: .main, in: .default)
-        start(numberOfSlides: numberOfSlides, slideDuration: slideDuration)
     }
     
     func reset() {
-        self.wasPaused = false
-        self.publisher = Timer.publish(every: 0.01, on: .main, in: .default)
-        start(numberOfSlides: numberOfSlides, slideDuration: slideDuration)
-    }
-    
-    func cancel() {
         isFinished = false
         progress = 0.0
         cancellable?.cancel()
