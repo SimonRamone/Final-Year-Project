@@ -90,8 +90,8 @@ struct LearnView: View {
     }
 }
 
-//struct LearnView_Previews: PreviewProvider {
-//    static var previews: some View {
-//            LearnView(lessons: .constant(Lesson.lessons), isPresentingLesson: .constant(false), lessonView: .constant(Lesson.sampleData))
-//    }
-//}
+struct LearnView_Previews: PreviewProvider {
+    static var previews: some View {
+        LearnView(lessons: .constant([Lesson.sampleData]), isPresentingLesson: .constant(false), isPresentingQuiz: .constant(false), lessonView: .constant(Lesson.sampleData))
+    }
+}
