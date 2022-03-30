@@ -11,14 +11,14 @@ struct LearnView: View {
     @Binding var lessons: [Lesson]
     @Binding var isPresentingLesson: Bool
     @Binding var isPresentingQuiz: Bool
-    @Binding var lessonView: Lesson
+    @Binding var story: Story
     var body: some View {
         NavigationView{
             ScrollView {
                 ForEach($lessons) { $lesson in
                     VStack {
                         ZStack{
-                            Image(lesson.coverImage)
+                            Image(lesson.story.coverImage)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
@@ -26,9 +26,9 @@ struct LearnView: View {
                             VStack{
                                 HStack{
                                     VStack(alignment: .leading){
-                                        Text(lesson.subtitle)
+                                        Text(lesson.story.subtitle)
                                             .font(.headline)
-                                        Text(lesson.title)
+                                        Text(lesson.story.title)
                                             .font(.largeTitle)
                                     }
                                     .padding()
@@ -41,7 +41,7 @@ struct LearnView: View {
                         .cornerRadius(20)
                         .onTapGesture {
                             isPresentingLesson = true
-                            lessonView = lesson
+                            story = lesson.story
                     }
                         ZStack{
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -49,9 +49,9 @@ struct LearnView: View {
                                 .frame(width: UIScreen.main.bounds.width - 30 , height: 70)
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("First Quiz")
+                                    Text(lesson.quiz.title)
                                         .font(.headline)
-                                    Text("Not Complete")
+                                    Text(!lesson.quiz.isComplete ? "Not Complete" : "\(lesson.quiz.score)")
                                         .font(.subheadline)
                                 }
                                 Spacer()
@@ -77,21 +77,21 @@ struct LearnView: View {
                 }
             }
             .onAppear(){
-                if lessons.isEmpty {
+                //if lessons.isEmpty {
                     do {
                         lessons = try JSONDecoder().decode([Lesson].self, from: NSDataAsset(name: "lessons-data", bundle: Bundle.main)!.data)
                     } catch {
                         print(error.localizedDescription)
                     }
-                }
+                //}
             }
             .navigationTitle("Learn")
         }
     }
 }
 
-struct LearnView_Previews: PreviewProvider {
-    static var previews: some View {
-        LearnView(lessons: .constant([Lesson.sampleData]), isPresentingLesson: .constant(false), isPresentingQuiz: .constant(false), lessonView: .constant(Lesson.sampleData))
-    }
-}
+//struct LearnView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LearnView(lessons: .constant([Lesson.sampleData]), isPresentingLesson: .constant(false), isPresentingQuiz: .constant(false), lessonView: .constant(Lesson.sampleData))
+//    }
+//}

@@ -1,44 +1,31 @@
+//
+//  Lesson.swift
+//  Final Year Project
+//
+//  Created by Simonas Ramonas on 28/03/2022.
+//
+
 import Foundation
 import SwiftUI
 
 struct Lesson: Identifiable, Codable {
     let id = UUID()
-    let title: String
-    let subtitle: String
-    let coverImage: String
-    let slides: [Slide]
+    let story: Story
+    let quiz: Quiz
     
-    init(title: String, subtitle: String, coverImage: String, slides: [Slide]) {
-        self.title = title
-        self.subtitle = subtitle
-        self.coverImage = coverImage
-        self.slides = slides
+    init(story: Story, quiz: Quiz) {
+        self.story = story
+        self.quiz = quiz
     }
     
     init() {
-        self.title = ""
-        self.subtitle = ""
-        self.coverImage = ""
-        self.slides = []
+        self.story = Story()
+        self.quiz = Quiz()
     }
     
-    private enum CodingKeys : String, CodingKey { case title, subtitle, coverImage, slides}
+    private enum CodingKeys : String, CodingKey { case story, quiz}
 }
 
 extension Lesson {
-    struct Slide: Codable {
-        let image: String
-        let caption: String
-    }
-}
-
-extension Lesson {
-    static let sampleData: Lesson = Lesson(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", slides: [Slide(image: "lesson 1-1", caption: "THis is the first slide"), Slide(image: "lesson 1-2", caption: "THis is the second slide")])
     static let lessons: [Lesson] = []
-//    [
-//        Lesson(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", slides: [Slide(image: "lessons 1-1", caption: "THis is the first slide"), Slide(image: "secondImage", caption: "THis is the second slide")]),
-//        Lesson(title: "Lesson 2", subtitle: "Air Travel", coverImage: "airplane", slides: [Slide(image: "3rdimage", caption: "THis is the 3rd slide"), Slide(image: "4thimage", caption: "THis is the 4th slide")])
-//    ]
-//        Lesson(title: "Lesson 3", subtitle: "Insulating Your Home", coverImage: "insulation"),
-//    ]
 }

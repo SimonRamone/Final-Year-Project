@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct LessonView: View {
+struct StoryView: View {
     @StateObject var lessonTimer: LessonTimer = LessonTimer()
     
     @State var i = 0
-    @State var lessonImage: String?
-    @State var lessonText: String?
-    @Binding var isPresentingLesson: Bool
-    @Binding var lesson: Lesson
+    @State var image: String?
+    @State var text: String?
+    @Binding var isPresentingStory: Bool
+    @Binding var story: Story
     var body: some View {
-        if isPresentingLesson && !lessonTimer.isFinished {
+        if isPresentingStory && !lessonTimer.isFinished {
             ZStack{
                 VStack{
                     HStack{
-                        ForEach(0..<lesson.slides.count) { i in
+                        ForEach(0..<story.slides.count) { i in
                             ProgressView(value: min( max( (CGFloat(lessonTimer.progress) - CGFloat(i)), 0.0) , 1.0) )
                                 .progressViewStyle(LinearProgressViewStyle(tint: Color.white))
                         }
@@ -34,16 +34,16 @@ struct LessonView: View {
                         }
                         .font(.largeTitle)
                         VStack(alignment: .leading) {
-                            Text(lesson.title)
+                            Text(story.title)
                                 .font(.title2)
                                 .foregroundColor(.white)
-                            Text(lesson.subtitle)
+                            Text(story.subtitle)
                                 .font(.caption)
                                 .foregroundColor(.white)
                         }
                         Spacer()
                         Button(action: {
-                            isPresentingLesson = false
+                            isPresentingStory = false
                         }, label: {
                             ZStack {
                                 Image(systemName: "circle.fill")
@@ -56,7 +56,7 @@ struct LessonView: View {
                         })
                     }
                     Spacer()
-                    Text(lesson.slides[Int(lessonTimer.progress)].caption)
+                    Text(story.slides[Int(lessonTimer.progress)].caption)
                         .font(.title)
                         .bold()
                         .foregroundColor(.white)
@@ -76,8 +76,8 @@ struct LessonView: View {
                         .padding(.trailing)
                     Spacer()
                     Button(action: {
-                        if Int(lessonTimer.progress) + 1 >= lesson.slides.count {
-                            isPresentingLesson = false
+                        if Int(lessonTimer.progress) + 1 >= story.slides.count {
+                            isPresentingStory = false
                         } else {
                             lessonTimer.skip(by: 1)
                         }
@@ -90,18 +90,18 @@ struct LessonView: View {
                 .padding(.top, 60)
             }
             .background(
-                Image(lesson.slides[Int(lessonTimer.progress)].image)
+                Image(story.slides[Int(lessonTimer.progress)].image)
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                     .frame(alignment: .center)
             )
             .onAppear {
-                lessonTimer.set(numberOfSlides: lesson.slides.count, slideDuration: 6.0)
+                lessonTimer.set(numberOfSlides: story.slides.count, slideDuration: 6.0)
                 lessonTimer.start()
             }
             .onDisappear {
-                isPresentingLesson = false
+                isPresentingStory = false
                 lessonTimer.reset()
             }
         }
@@ -114,9 +114,9 @@ extension UIScreen {
     static let screenSize = UIScreen.main.bounds.size
 }
 
-struct LessonView_Previews: PreviewProvider {
-    static var previews: some View {
-        LessonView(isPresentingLesson: .constant(true), lesson: .constant(Lesson.sampleData))
-    }
-}
+//struct LessonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LessonView(isPresentingLesson: .constant(true), lesson: .constant(Lesson.sampleData))
+//    }
+//}
 

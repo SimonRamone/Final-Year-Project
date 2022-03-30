@@ -31,17 +31,19 @@
 		E374835C27D78F9900BC871C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835B27D78F9900BC871C /* SearchBar.swift */; };
 		E374836227D905B400BC871C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E374836127D905B400BC871C /* Launch Screen.storyboard */; };
 		E3754C1727DE7BAA007B82AB /* GoodsFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */; };
-		E3754C1927DEA04E007B82AB /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3754C1827DEA04D007B82AB /* LessonView.swift */; };
+		E3754C1927DEA04E007B82AB /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3754C1827DEA04D007B82AB /* StoryView.swift */; };
 		E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3927A958FF00D4E336 /* HomeView.swift */; };
 		E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3B27A95A7800D4E336 /* TrackView.swift */; };
 		E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3D27A95A8400D4E336 /* LearnView.swift */; };
 		E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4127A95AC000D4E336 /* AwardsView.swift */; };
-		E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4727A976DD00D4E336 /* Lesson.swift */; };
+		E3827B4827A976DD00D4E336 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B4727A976DD00D4E336 /* Story.swift */; };
 		E3827B5127B1271500D4E336 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B5027B1271500D4E336 /* Badge.swift */; };
 		E39668B227E7A471007CB555 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39668B127E7A471007CB555 /* QuizView.swift */; };
 		E39668B427E7A594007CB555 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39668B327E7A594007CB555 /* Quiz.swift */; };
 		E3971F7427BD358700DA5AE0 /* DietFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */; };
 		E3971F7827BE83D100DA5AE0 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7727BE83D100DA5AE0 /* PopUpView.swift */; };
+		E3A2F29D27F1EBEC0017D8DF /* QuizScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */; };
+		E3A2F29F27F1EE3E0017D8DF /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */; };
 		E3D79C8527E541F200962424 /* LessonTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D79C8427E541F200962424 /* LessonTimer.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,17 +74,19 @@
 		E374835B27D78F9900BC871C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E374836127D905B400BC871C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsFootprintView.swift; sourceTree = "<group>"; };
-		E3754C1827DEA04D007B82AB /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
+		E3754C1827DEA04D007B82AB /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		E3827B3927A958FF00D4E336 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E3827B3B27A95A7800D4E336 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		E3827B3D27A95A8400D4E336 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		E3827B4127A95AC000D4E336 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
-		E3827B4727A976DD00D4E336 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		E3827B4727A976DD00D4E336 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		E3827B5027B1271500D4E336 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		E39668B127E7A471007CB555 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		E39668B327E7A594007CB555 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietFootprintView.swift; sourceTree = "<group>"; };
 		E3971F7727BE83D100DA5AE0 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScorer.swift; sourceTree = "<group>"; };
+		E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		E3D79C8427E541F200962424 /* LessonTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,7 +168,7 @@
 				E374835927D7727C00BC871C /* FlightView.swift */,
 				E374835B27D78F9900BC871C /* SearchBar.swift */,
 				E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */,
-				E3754C1827DEA04D007B82AB /* LessonView.swift */,
+				E3754C1827DEA04D007B82AB /* StoryView.swift */,
 				E39668B127E7A471007CB555 /* QuizView.swift */,
 				E32FEBD127F0FA510042BD17 /* BarChartView.swift */,
 				E32FEBD527F129C90042BD17 /* emissionCardView.swift */,
@@ -176,7 +180,7 @@
 		E3827B4627A976C500D4E336 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E3827B4727A976DD00D4E336 /* Lesson.swift */,
+				E3827B4727A976DD00D4E336 /* Story.swift */,
 				E3827B5027B1271500D4E336 /* Badge.swift */,
 				E3009DBF27B15F0F0092F255 /* Profile.swift */,
 				E323B7C727C3A3310033484F /* CarbonFootprint.swift */,
@@ -186,6 +190,8 @@
 				E3D79C8427E541F200962424 /* LessonTimer.swift */,
 				E39668B327E7A594007CB555 /* Quiz.swift */,
 				E32FEBD327F0FAD50042BD17 /* DataPoint.swift */,
+				E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */,
+				E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,7 +278,9 @@
 				E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */,
 				E32FEBD827F134720042BD17 /* TrackEmissionView.swift in Sources */,
 				E32EA97E27CC227400B209E5 /* Constants.swift in Sources */,
-				E3827B4827A976DD00D4E336 /* Lesson.swift in Sources */,
+				E3827B4827A976DD00D4E336 /* Story.swift in Sources */,
+				E3A2F29D27F1EBEC0017D8DF /* QuizScorer.swift in Sources */,
+				E3A2F29F27F1EE3E0017D8DF /* Lesson.swift in Sources */,
 				E323B7C827C3A3310033484F /* CarbonFootprint.swift in Sources */,
 				E32FEBD427F0FAD50042BD17 /* DataPoint.swift in Sources */,
 				E3827B4227A95AC000D4E336 /* AwardsView.swift in Sources */,
@@ -283,7 +291,7 @@
 				E3D79C8527E541F200962424 /* LessonTimer.swift in Sources */,
 				E3754C1727DE7BAA007B82AB /* GoodsFootprintView.swift in Sources */,
 				E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */,
-				E3754C1927DEA04E007B82AB /* LessonView.swift in Sources */,
+				E3754C1927DEA04E007B82AB /* StoryView.swift in Sources */,
 				E32FEBD227F0FA510042BD17 /* BarChartView.swift in Sources */,
 				E374835C27D78F9900BC871C /* SearchBar.swift in Sources */,
 				E32FEBD627F129C90042BD17 /* emissionCardView.swift in Sources */,

@@ -16,6 +16,7 @@ struct Quiz: Identifiable, Codable {
     let subtitle: String
     let questions: [Question]
     var isComplete: Bool = false
+    var score: Int = 0
     
     init(title: String, subtitle: String, questions: [Question]) {
         self.title = title
@@ -29,7 +30,7 @@ struct Quiz: Identifiable, Codable {
         self.questions = []
     }
     
-    //private enum CodingKeys : String, CodingKey { case title, subtitle, coverImage, slides}
+    private enum CodingKeys : String, CodingKey { case title, subtitle, questions}
 }
 
 extension Quiz {

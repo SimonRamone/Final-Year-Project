@@ -17,8 +17,8 @@ struct MenuTabView: View {
     @State private var isPresentingInfoPopUp: Bool = false
     @State private var popUpMessage: String = ""
     
-    @State private var isPresentingLesson: Bool = false
-    @State private var lessonView: Lesson = Lesson()
+    @State private var isPresentingStory: Bool = false
+    @State private var story: Story = Story()
     
     @State private var isPresentingQuiz: Bool = false
     
@@ -48,7 +48,7 @@ struct MenuTabView: View {
                                     Image(systemName: "leaf.fill")
                                     Text("Track")
                                 }
-                        LearnView(lessons: $lessons, isPresentingLesson: $isPresentingLesson, isPresentingQuiz: $isPresentingQuiz, lessonView: $lessonView)
+                        LearnView(lessons: $lessons, isPresentingLesson: $isPresentingStory, isPresentingQuiz: $isPresentingQuiz, story: $story)
                                 .tabItem {
                                     Image(systemName: "book")
                                     Text("Learn")
@@ -59,13 +59,13 @@ struct MenuTabView: View {
                                     Text("Awards")
                                 }
                     }
-               .disabled(isPresentingInfoPopUp || isPresentingLesson)
+               .disabled(isPresentingInfoPopUp || isPresentingStory)
                // .blur(radius: isPresentingInfoPopUp ? 10 : .nan)
                 //if isPresentingInfoPopUp { VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial)).ignoresSafeArea(.all)}
                 PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
                     .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 
-                LessonView(isPresentingLesson: $isPresentingLesson, lesson: $lessonView)
+                StoryView(isPresentingStory: $isPresentingStory, story: $story)
                 
                 QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: .constant(Quiz.sampleQuiz))
             }
