@@ -9,19 +9,29 @@ import SwiftUI
 
 struct GoodsFootprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var numberOfQuestions = 4
+    var numberOfQuestions = 5
     @State var questionNr = 0
     
     @Binding var data: CarbonFootprint.Data
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
+    @Binding var currentSurvey: String
+    @Binding var isPresentingSheet: Bool
     var body: some View {
         ZStack {
             VStack{
                 Spacer()
                 switch (questionNr)  {
                 case 0:
+                    VStack{
+                        Image(systemName: "cart.fill")
+                            .font(.system(size: 100))
+                        Text("Goods & Services Footprint Survey")
+                            .font(.headline)
+                        Text("4 Questions")
+                    }
+                case 1:
                     VStack{
                         Text("How much do you spend on **new electronics** per year?")
                             .font(.largeTitle)
@@ -41,7 +51,7 @@ struct GoodsFootprintView: View {
                     .onAppear(){
                         popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
                     }
-                case 1:
+                case 2:
                     VStack{
                         Text("How much do you spend on **new clothing** per month?")
                             .font(.largeTitle)
@@ -61,7 +71,7 @@ struct GoodsFootprintView: View {
                     .onAppear(){
                         popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
                     }
-                case 2:
+                case 3:
                     VStack{
                         Text("How much do you spend on **video streaming** services per month?")
                             .font(.largeTitle)
@@ -81,7 +91,7 @@ struct GoodsFootprintView: View {
                     .onAppear(){
                         popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
                     }
-                case 3:
+                case 4:
                     VStack{
                         Text("How much **mobile data** do you use per month?")
                             .font(.largeTitle)
@@ -114,7 +124,9 @@ struct GoodsFootprintView: View {
                     Spacer()
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
+                            isPresentingSheet = false
                             self.presentationMode.wrappedValue.dismiss()
+                            currentSurvey = "Home"
                         }) {
                             Text("Done")
                         }
@@ -122,7 +134,12 @@ struct GoodsFootprintView: View {
                         Button(action: {
                             questionNr += 1
                         }) {
-                            Text("Next")
+                            if questionNr == 0 {
+                                Text("Start")
+                            }
+                            else {
+                                Text("Next")
+                            }
                         }.disabled(questionNr >= numberOfQuestions-1)
                     }
                 }
@@ -149,6 +166,6 @@ struct GoodsFootprintView: View {
 
 struct GoodsFootprintView_Previews: PreviewProvider {
     static var previews: some View {
-        GoodsFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
+        GoodsFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Goods"), isPresentingSheet: .constant(false))
     }
 }

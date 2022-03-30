@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import GameKit
 
 class CarbonFootprintCalculator: ObservableObject {
     @Published var carbonFootprint = 0.0
@@ -44,6 +45,7 @@ class CarbonFootprintCalculator: ObservableObject {
         percentTransport = carbonFootprint > 0 ? transportCarbonFootprint/carbonFootprint : 0.0
         percentDiet = carbonFootprint > 0 ? dietCarbonFootprint/carbonFootprint : 0.0
         percentGoods = carbonFootprint > 0 ? goodsCarbonFootprint/carbonFootprint : 0.0
+        GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
     }
     
     func calculateGoodsCarbonFootprint() {

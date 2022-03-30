@@ -9,19 +9,28 @@ import SwiftUI
 
 struct HomeFootprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var numberOfQuestions = 4
+    var numberOfQuestions = 5
     @State var questionNr = 0
     
     @Binding var data: CarbonFootprint.Data
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
+    @Binding var currentSurvey: String
     var body: some View {
         ZStack {
             VStack{
                 Spacer()
                 switch (questionNr)  {
                 case 0:
+                    VStack{
+                        Image(systemName: "house.fill")
+                            .font(.system(size: 100))
+                        Text("Home Energy Footprint Survey")
+                            .font(.headline)
+                        Text("4 Questions")
+                    }
+                case 1:
                     VStack{
                         Text("How many **people** live in your household?" )
                             .font(.largeTitle)
@@ -31,7 +40,7 @@ struct HomeFootprintView: View {
                     .onAppear(){
                         popUpMessage = "One serving is 115 grams of raw beef."
                     }
-                case 1:
+                case 2:
                     VStack{
                         Text("Select your **energy** supplier." )
                             .font(.largeTitle)
@@ -47,7 +56,7 @@ struct HomeFootprintView: View {
                     .onAppear(){
                         popUpMessage = "One serving is 115 grams of raw beef."
                     }
-                case 2:
+                case 3:
                     VStack{
                         Text("How much **electricity** did your household use in the past month?" )
                             .font(.largeTitle)
@@ -92,7 +101,7 @@ struct HomeFootprintView: View {
                     .onAppear(){
                         popUpMessage = "One serving is 115 grams of raw beef."
                     }
-                case 3:
+                case 4:
                     VStack{
                         Text("What fuel is used to **heat** your home?" )
                             .font(.largeTitle)
@@ -132,6 +141,7 @@ struct HomeFootprintView: View {
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                            currentSurvey = "Transport"
                         }) {
                             Text("Done")
                         }
@@ -139,7 +149,12 @@ struct HomeFootprintView: View {
                         Button(action: {
                             questionNr += 1
                         }) {
-                            Text("Next")
+                            if questionNr == 0 {
+                                Text("Start")
+                            }
+                            else {
+                                Text("Next")
+                            }
                         }.disabled(questionNr >= numberOfQuestions-1)
                     }
                 }
@@ -166,6 +181,6 @@ struct HomeFootprintView: View {
 
 struct HomeFootprintView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
+        HomeFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Home"))
     }
 }

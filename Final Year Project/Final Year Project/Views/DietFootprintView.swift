@@ -10,19 +10,28 @@ import GameKit
 
 struct DietFootprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var numberOfQuestions = 3
+    var numberOfQuestions = 4
     @State var questionNr = 0
     
     @Binding var data: CarbonFootprint.Data
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
+    @Binding var currentSurvey: String
     var body: some View {
         ZStack {
             VStack{
                 Spacer()
                 switch (questionNr)  {
                 case 0:
+                    VStack{
+                        Image(systemName: "fork.knife")
+                            .font(.system(size: 100))
+                        Text("Diet Footprint Survey")
+                            .font(.headline)
+                        Text("3 Questions")
+                    }
+                case 1:
                     VStack{
                         Text("Select the **diet** that is closest to yours." )
                             .font(.largeTitle)
@@ -46,7 +55,7 @@ struct DietFootprintView: View {
                     .onAppear(){
                         popUpMessage = "A pescatarian is someone who does not eat meat with the exception of fish."
                     }
-                case 1:
+                case 2:
                     VStack{
                             Text("How many **high emission** foods do you eat in a week?")
                                 .font(.largeTitle)
@@ -69,7 +78,7 @@ struct DietFootprintView: View {
                     .onAppear(){
                         popUpMessage = "A pescatarian is someone who does not eat meat with the exception of fish."
                     }
-                case 2:
+                case 3:
                     VStack{
                         Text("How much food did you **throw out** in the past week?" )
                             .font(.largeTitle)
@@ -97,6 +106,7 @@ struct DietFootprintView: View {
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                            currentSurvey = "Goods"
                         }) {
                             Text("Done")
                         }
@@ -104,7 +114,12 @@ struct DietFootprintView: View {
                         Button(action: {
                             questionNr += 1
                         }) {
-                            Text("Next")
+                            if questionNr == 0 {
+                                Text("Start")
+                            }
+                            else {
+                                Text("Next")
+                            }
                         }.disabled(questionNr >= numberOfQuestions-1)
                     }
                 }
@@ -142,6 +157,6 @@ struct DietFootprintView: View {
 
 struct DietFootprintView_Previews: PreviewProvider {
     static var previews: some View {
-        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
+        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Diet"))
     }
 }

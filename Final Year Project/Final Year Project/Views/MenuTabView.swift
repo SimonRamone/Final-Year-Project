@@ -22,6 +22,8 @@ struct MenuTabView: View {
     
     @State private var isPresentingQuiz: Bool = false
     
+    @State private var isPresentingLoadingView: Bool = false
+    
     let localPlayer = GKLocalPlayer.local
         func authenticateUser() {
             localPlayer.authenticateHandler = { vc, error in
@@ -38,7 +40,7 @@ struct MenuTabView: View {
             ZStack{
              
                     TabView {
-                        HomeView(isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, profile: $profile, carbonFootprint: $carbonFootprint)
+                        HomeView(isPresentingInfoPopUp: $isPresentingInfoPopUp, isPresentingLoadingView: $isPresentingLoadingView, popUpMessage: $popUpMessage, profile: $profile, carbonFootprint: $carbonFootprint)
                                 .tabItem {
                                     Image(systemName: "house.fill")
                                     Text("Home")
@@ -68,6 +70,18 @@ struct MenuTabView: View {
                 StoryView(isPresentingStory: $isPresentingStory, story: $story)
                 
                 QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: .constant(Quiz.sampleQuiz))
+                
+                if isPresentingLoadingView {
+                    ZStack{
+                        Rectangle()
+                            .fill(.white)
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
+                    .background(Color.white)
+                    .navigationBarHidden(true)
+                    .edgesIgnoringSafeArea(.all)
+                }
             }
                 .onAppear(){
                     authenticateUser()

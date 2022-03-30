@@ -10,8 +10,10 @@ import GameKit
 
 struct HomeView: View {
     @State var carbonEmissionsValue: Float = 13.2
-    @State var isPresentingProfileView = false
+    @State var isPresentingSheet = false
+    @State var currentSurvey = "Home"
     @Binding var isPresentingInfoPopUp: Bool
+    @Binding var isPresentingLoadingView: Bool
     @Binding var popUpMessage: String
     @Binding var profile: Profile
     @State var data = CarbonFootprint.Data()
@@ -98,7 +100,7 @@ struct HomeView: View {
                         }
                     }.padding(.top)
                 }
-                .padding(.init(top: 30, leading: 60, bottom: 10, trailing: 60))
+                .padding(.init(top: 10, leading: 60, bottom: 10, trailing: 60))
                 VStack (alignment: .leading) {
                     Text("Breakdown")
                         .font(.title)
@@ -107,7 +109,7 @@ struct HomeView: View {
                         .foregroundColor(.white)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 0) {
-                            NavigationLink(destination: HomeFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage).navigationBarTitleDisplayMode(.inline)){
+                            NavigationLink(destination: HomeFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey).navigationBarTitleDisplayMode(.inline)){
                                 VStack{
                                     ZStack {
                                         Circle()
@@ -138,7 +140,7 @@ struct HomeView: View {
                                 .cornerRadius(5)
                             }
                             .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 0))
-                            NavigationLink(destination: TransportFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage).navigationBarTitleDisplayMode(.inline)){
+                            NavigationLink(destination: TransportFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey).navigationBarTitleDisplayMode(.inline)){
                                 VStack{
                                     ZStack {
                                         Circle()
@@ -169,7 +171,7 @@ struct HomeView: View {
                                 .cornerRadius(5)
                             }
                             .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 0))
-                            NavigationLink(destination: DietFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage).navigationBarTitleDisplayMode(.inline)){
+                            NavigationLink(destination: DietFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey).navigationBarTitleDisplayMode(.inline)){
                                 VStack{
                                     ZStack {
                                         Circle()
@@ -200,7 +202,7 @@ struct HomeView: View {
                                 .cornerRadius(5)
                             }
                             .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 0))
-                            NavigationLink(destination: GoodsFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage).navigationBarTitleDisplayMode(.inline)){
+                            NavigationLink(destination: GoodsFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet).navigationBarTitleDisplayMode(.inline)){
                                 VStack{
                                     ZStack {
                                         Circle()
@@ -236,37 +238,65 @@ struct HomeView: View {
                 }
                 .background(Color.teal.opacity(0.5))
             }
-            .navigationTitle("Home")
-            .navigationBarHidden(true)
-            .edgesIgnoringSafeArea([.top])
-            //                .navigationBarItems(
-            //                    leading:
-            //                        Text("Welcome, \(profile.name)!")
-            //                        .font(.body)
-            //                        .foregroundColor(Color(.systemGray)),
-            //                    trailing:
-            //                        Button(action: {
-            //                            isPresentingProfileView.toggle()
-            //                        }) {
-            //                            Image(uiImage: playerImage.image ?? defaultimg)
-            //                                .resizable()
-            //                                .frame(width: 40, height: 40)
-            //                                .clipShape(Circle())
-            //                        }
-            //                        .sheet(isPresented: $isPresentingProfileView) {
-            //                            ProfileView(profile: $profile)
-            //                        }
-            //                )
-            
-            // }
+            .padding(.top, -60)
+            .navigationBarHidden(false)
+            //.edgesIgnoringSafeArea([.top])
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        currentSurvey = "Home"
+                        isPresentingSheet = true
+                    }, label: {
+                        HStack{
+                            Image(systemName: "leaf.arrow.triangle.circlepath")
+                            Text("Calculate")
+                        }
+                        .font(.headline)
+                        .foregroundColor(.green)
+                    }).padding(.bottom),
+                trailing:
+                    HStack{
+                        NavigationLink(destination: LeaderboardView(leaderBoardID: "lowestCarbonEmitters"), label: {Image(systemName: "chart.bar.fill").foregroundColor(.gray.opacity(0.7))})
+                        Button(action: {
+                            popUpMessage = ""
+                            isPresentingInfoPopUp.toggle()
+                        }, label: {
+                            Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
+                        })}
+                    .padding(.bottom)
+            )
+            //
+            //             }
             //PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: "A carbon dioxide equivalent is all greenhouse gases rolled into one.", buttonText: "Got it!")
         }
         .onChange(of: carbonFootprintCalculator.carbonFootprint) { carbonFootprint in
             GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
-                }
+        }
         .onAppear(){
             GKAccessPoint.shared.isActive = false
             
+        }
+        .sheet(isPresented: $isPresentingSheet) {
+            NavigationView {
+                Group{
+                    switch (currentSurvey)  {
+                    case "Home":
+                        HomeFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey)
+                    case "Transport":
+                    TransportFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey)
+                    case "Diet":
+                    DietFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey)
+                    case "Goods":
+                        GoodsFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
+                    default:
+                        HomeFootprintView(data: $data, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey)
+                    }}
+                .navigationBarTitleDisplayMode(.inline).navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(leading:
+                                        Button("Dismiss") {
+                    isPresentingSheet = false
+                })
+            }
         }
     }
 }
@@ -292,6 +322,6 @@ func colorIndicator(percentage: Double) -> Color {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), profile: .constant(Profile.sampleData), carbonFootprint: .constant(CarbonFootprint.defaultCarbonFootprint))
+        HomeView(isPresentingInfoPopUp: .constant(false), isPresentingLoadingView: .constant(false), popUpMessage: .constant(""), profile: .constant(Profile.sampleData), carbonFootprint: .constant(CarbonFootprint.defaultCarbonFootprint))
     }
 }

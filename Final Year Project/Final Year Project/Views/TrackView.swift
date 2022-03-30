@@ -39,22 +39,8 @@ struct TrackView: View {
                         .foregroundColor(.white)
                         .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
                     
-                    VStack{
-                        HStack{
-                            VStack(alignment: .leading){
-                                Text("This Week")
-                                    .font(.headline)
-                                Text("11 kg")
-                                    .font(.largeTitle)
-                            }
-                            .padding()
-                            .foregroundColor(Color.black)
-                            Spacer()
-                        }
-                        BarChartView(data: .constant(DataPoint.sampleData))
-                            .padding(.horizontal)
-                            .padding(.bottom)
-                    }
+                        BarChartView(data: .constant(DataPoint.sampleData), caption: "This Week", unit: "kg")
+                        .padding()
                 }
                 .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
                 .cornerRadius(20)
@@ -72,12 +58,12 @@ struct TrackView: View {
                 }
                 .padding(.top)
                 .padding(.horizontal)
-                    emissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
-                    emissionCardView(name: .constant("Cycle to Work"), value: .constant(5.3), entryType: .constant("Travel"))
-                    emissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
-                    emissionCardView(name: .constant("Reduce Heating"), value: .constant(13.3), entryType: .constant("Home"))
-                    emissionCardView(name: .constant("Miscellaneous"), value: .constant(1.2), entryType: .constant("Misc"))
-                    emissionCardView(name: .constant("Recycle Electronics"), value: .constant(10), entryType: .constant("Goods"))
+                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
+                    EmissionCardView(name: .constant("Cycle to Work"), value: .constant(5.3), entryType: .constant("Travel"))
+                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
+                    EmissionCardView(name: .constant("Reduce Heating"), value: .constant(13.3), entryType: .constant("Home"))
+                    EmissionCardView(name: .constant("Miscellaneous"), value: .constant(1.2), entryType: .constant("Misc"))
+                    EmissionCardView(name: .constant("Recycle Electronics"), value: .constant(10), entryType: .constant("Goods"))
                 
             }
             .background(Color.gray.opacity(0.1))

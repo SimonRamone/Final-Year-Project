@@ -16,13 +16,15 @@
 		E32EA98427CCE48F00B209E5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */; };
 		E32FEBD227F0FA510042BD17 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FEBD127F0FA510042BD17 /* BarChartView.swift */; };
 		E32FEBD427F0FAD50042BD17 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FEBD327F0FAD50042BD17 /* DataPoint.swift */; };
-		E32FEBD627F129C90042BD17 /* emissionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FEBD527F129C90042BD17 /* emissionCardView.swift */; };
+		E32FEBD627F129C90042BD17 /* EmissionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FEBD527F129C90042BD17 /* EmissionCardView.swift */; };
 		E32FEBD827F134720042BD17 /* TrackEmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FEBD727F134720042BD17 /* TrackEmissionView.swift */; };
 		E338CE5427A82BC4002137EC /* Final_Year_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */; };
 		E338CE5627A82BC4002137EC /* MenuTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338CE5527A82BC4002137EC /* MenuTabView.swift */; };
 		E338CE5827A82BC4002137EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E338CE5727A82BC4002137EC /* Assets.xcassets */; };
 		E338CE5B27A82BC4002137EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E338CE5A27A82BC4002137EC /* Preview Assets.xcassets */; };
 		E351EAF227BEBDA300440CCB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E351EAF127BEBDA300440CCB /* GameKit.framework */; };
+		E3717CC027F4BFC700555E61 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3717CBF27F4BFC700555E61 /* LeaderboardView.swift */; };
+		E3717CC227F4C11B00555E61 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3717CC127F4C11B00555E61 /* Leaderboard.swift */; };
 		E374835227D3E6D400BC871C /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835127D3E6D400BC871C /* CheckboxStyle.swift */; };
 		E374835427D5366000BC871C /* TransportFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835327D5366000BC871C /* TransportFootprintView.swift */; };
 		E374835627D65C3E00BC871C /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374835527D65C3E00BC871C /* Flight.swift */; };
@@ -58,7 +60,7 @@
 		E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
 		E32FEBD127F0FA510042BD17 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		E32FEBD327F0FAD50042BD17 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
-		E32FEBD527F129C90042BD17 /* emissionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emissionCardView.swift; sourceTree = "<group>"; };
+		E32FEBD527F129C90042BD17 /* EmissionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionCardView.swift; sourceTree = "<group>"; };
 		E32FEBD727F134720042BD17 /* TrackEmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackEmissionView.swift; sourceTree = "<group>"; };
 		E338CE5027A82BC4002137EC /* Final Year Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Year Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E338CE5327A82BC4002137EC /* Final_Year_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_Year_ProjectApp.swift; sourceTree = "<group>"; };
@@ -66,6 +68,8 @@
 		E338CE5727A82BC4002137EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E338CE5A27A82BC4002137EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E351EAF127BEBDA300440CCB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		E3717CBF27F4BFC700555E61 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		E3717CC127F4C11B00555E61 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		E374835127D3E6D400BC871C /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 		E374835327D5366000BC871C /* TransportFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportFootprintView.swift; sourceTree = "<group>"; };
 		E374835527D65C3E00BC871C /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
@@ -171,8 +175,9 @@
 				E3754C1827DEA04D007B82AB /* StoryView.swift */,
 				E39668B127E7A471007CB555 /* QuizView.swift */,
 				E32FEBD127F0FA510042BD17 /* BarChartView.swift */,
-				E32FEBD527F129C90042BD17 /* emissionCardView.swift */,
+				E32FEBD527F129C90042BD17 /* EmissionCardView.swift */,
 				E32FEBD727F134720042BD17 /* TrackEmissionView.swift */,
+				E3717CBF27F4BFC700555E61 /* LeaderboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				E32FEBD327F0FAD50042BD17 /* DataPoint.swift */,
 				E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */,
 				E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */,
+				E3717CC127F4C11B00555E61 /* Leaderboard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,9 +283,11 @@
 				E374835627D65C3E00BC871C /* Flight.swift in Sources */,
 				E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */,
 				E32FEBD827F134720042BD17 /* TrackEmissionView.swift in Sources */,
+				E3717CC027F4BFC700555E61 /* LeaderboardView.swift in Sources */,
 				E32EA97E27CC227400B209E5 /* Constants.swift in Sources */,
 				E3827B4827A976DD00D4E336 /* Story.swift in Sources */,
 				E3A2F29D27F1EBEC0017D8DF /* QuizScorer.swift in Sources */,
+				E3717CC227F4C11B00555E61 /* Leaderboard.swift in Sources */,
 				E3A2F29F27F1EE3E0017D8DF /* Lesson.swift in Sources */,
 				E323B7C827C3A3310033484F /* CarbonFootprint.swift in Sources */,
 				E32FEBD427F0FAD50042BD17 /* DataPoint.swift in Sources */,
@@ -294,7 +302,7 @@
 				E3754C1927DEA04E007B82AB /* StoryView.swift in Sources */,
 				E32FEBD227F0FA510042BD17 /* BarChartView.swift in Sources */,
 				E374835C27D78F9900BC871C /* SearchBar.swift in Sources */,
-				E32FEBD627F129C90042BD17 /* emissionCardView.swift in Sources */,
+				E32FEBD627F129C90042BD17 /* EmissionCardView.swift in Sources */,
 				E3009DC027B15F0F0092F255 /* Profile.swift in Sources */,
 				E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */,
 				E374835827D76E9000BC871C /* AirportPicker.swift in Sources */,

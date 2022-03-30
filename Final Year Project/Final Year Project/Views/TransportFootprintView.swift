@@ -10,7 +10,7 @@ import TabularData
 
 struct TransportFootprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var numberOfQuestions = 2
+    var numberOfQuestions = 3
     @State var questionNr = 0
     @Binding var data: CarbonFootprint.Data
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
@@ -23,6 +23,7 @@ struct TransportFootprintView: View {
     @State var flight = Flight(fromAirport: Flight.Airport(), toAirport: Flight.Airport(), isReturn: true, numberOfTrips: 1)
     @State private var isPresentingFlightView = false
     @State private var selection = "Diesel"
+    @Binding var currentSurvey: String
     let airportsData = NSDataAsset(name: "airports-data", bundle: Bundle.main)
     
     var body: some View {
@@ -31,6 +32,14 @@ struct TransportFootprintView: View {
                 Spacer()
                 switch (questionNr)  {
                 case 0:
+                    VStack{
+                        Image(systemName: "car.fill")
+                            .font(.system(size: 100))
+                        Text("Travel Footprint Survey")
+                            .font(.headline)
+                        Text("2 Questions")
+                    }
+                case 1:
                     VStack{
                         Text("How many litres of **fuel** did you burn last week?")
                             .font(.largeTitle)
@@ -55,7 +64,7 @@ struct TransportFootprintView: View {
                     .onAppear(){
                         popUpMessage = "If you don't own a car or your car is fully electric leave 0 in the field. If you carpool divide the litres by number of people carpooling."
                     }
-                case 1:
+                case 2:
                     VStack{
                         Text("How many **flights** did you take in the past year?" )
                             .font(.largeTitle)
@@ -128,6 +137,7 @@ struct TransportFootprintView: View {
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                            currentSurvey = "Diet"
                         }) {
                             Text("Done")
                         }
@@ -135,7 +145,12 @@ struct TransportFootprintView: View {
                         Button(action: {
                             questionNr += 1
                         }) {
-                            Text("Next")
+                            if questionNr == 0 {
+                                Text("Start")
+                            }
+                            else {
+                                Text("Next")
+                            }
                         }.disabled(questionNr >= numberOfQuestions-1)
                     }
                 }
@@ -171,7 +186,7 @@ struct TransportFootprintView: View {
 
 struct TransportFootprintView_Previews: PreviewProvider {
     static var previews: some View {
-        TransportFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
+        TransportFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Transport"))
     }
 }
 
