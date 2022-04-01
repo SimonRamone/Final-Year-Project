@@ -20,7 +20,7 @@ struct StoryView: View {
             ZStack{
                 VStack{
                     HStack{
-                        ForEach(0..<story.slides.count) { i in
+                        ForEach(0..<story.slides.count, id: \.self) { i in
                             ProgressView(value: min( max( (CGFloat(lessonTimer.progress) - CGFloat(i)), 0.0) , 1.0) )
                                 .progressViewStyle(LinearProgressViewStyle(tint: Color.white))
                         }

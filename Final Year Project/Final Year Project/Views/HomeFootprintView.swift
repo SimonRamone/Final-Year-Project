@@ -11,8 +11,8 @@ struct HomeFootprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var numberOfQuestions = 5
     @State var questionNr = 0
-    
-    @Binding var data: CarbonFootprint.Data
+    @State var data = CarbonFootprint.Data()
+    @Binding var user: User
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
@@ -171,7 +171,13 @@ struct HomeFootprintView: View {
             )
         }
         .navigationTitle("Home Energy Footprint")
+        .onAppear(){
+            data = user.carbonFootprint.data
+            print("Home user data")
+            print(data)
+        }
         .onDisappear(){
+            user.carbonFootprint.update(from: data)
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.calculateHomeCarbonFootprint()
             carbonFootprintCalculator.calculateCarbonFootprint()
@@ -179,8 +185,8 @@ struct HomeFootprintView: View {
     }
 }
 
-struct HomeFootprintView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Home"))
-    }
-}
+//struct HomeFootprintView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Home"))
+//    }
+//}

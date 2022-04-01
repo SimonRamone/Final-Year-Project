@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constants {
+struct Constants: Codable {
     //Average carbon footprint
     static let AVERAGE_FOOTPRINT = 13200.0;
     
@@ -47,8 +47,8 @@ struct Constants {
     //High meat-eaters (≥ 100 g/day)
     //Medium meat-eaters (50–99 g/day)
     //Low meat-eaters (< 50 g/day)
-    enum DietEmissions: Double {
-        case Vegan = 1058.5, Vegetarian = 1390.65, Pescatarian = 1427.15, HighMeat = 2624.35, MediumMeat = 2054.95, LowMeat = 1704.55
+    enum DietEmissions: Double, Codable {
+        case Vegan = 1058.5, Vegetarian = 1390.65, Pescatarian = 1427.15, HighMeat = 2624.35, MediumMeat = 2054.95, LowMeat = 1704.55, none = 0.0
     }
     
     static let BEEF_FOOTPRINT = 11.44 //kgCO₂eq per 115 grams raw beef
@@ -68,7 +68,7 @@ struct Constants {
     
 }
 
-struct Electricity_Supplier: Identifiable {
+struct Electricity_Supplier: Identifiable, Codable {
     let id: UUID
     var name: String
     var factor: Double

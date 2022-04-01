@@ -13,7 +13,8 @@ struct DietFootprintView: View {
     var numberOfQuestions = 4
     @State var questionNr = 0
     
-    @Binding var data: CarbonFootprint.Data
+    @State var data = CarbonFootprint.Data()
+    @Binding var user: User
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
@@ -139,7 +140,11 @@ struct DietFootprintView: View {
         .onChange(of: data.dietEmissions){ _ in
             data.highEmissionFoods = CarbonFootprint.HighEmissionFoods(beefServings: 0, porkServings: 0, poultryServings: 0, riceServings: 0, fishServings: 0, coffeeServings: 0, cheeseServings: 0, milkServings: 0)
         }
+        .onAppear(){
+            data = user.carbonFootprint.data
+        }
         .onDisappear(){
+            user.carbonFootprint.update(from: data)
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.calculateDietCarbonFootprint()
             carbonFootprintCalculator.calculateCarbonFootprint()
@@ -155,8 +160,8 @@ struct DietFootprintView: View {
     }
 }
 
-struct DietFootprintView_Previews: PreviewProvider {
-    static var previews: some View {
-        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Diet"))
-    }
-}
+//struct DietFootprintView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Diet"))
+//    }
+//}

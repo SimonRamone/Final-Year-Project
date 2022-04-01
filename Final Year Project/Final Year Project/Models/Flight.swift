@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Flight: Identifiable {
+struct Flight: Identifiable, Codable, Equatable {
     internal init(id: UUID = UUID(), fromAirport: Flight.Airport, toAirport: Flight.Airport, isReturn: Bool, numberOfTrips: Int) {
         self.id = id
         self.fromAirport = fromAirport
@@ -53,7 +53,7 @@ extension Flight {
 }
 
 extension Flight {
-    struct Airport: Codable, Identifiable, Hashable {
+    struct Airport: Codable, Identifiable, Hashable, Equatable {
         internal init(id: Int = 0, name: String = "", code: String = "", latitude: Double = 0.0, longitude: Double = 0.0) {
             self.id = id
             self.name = name

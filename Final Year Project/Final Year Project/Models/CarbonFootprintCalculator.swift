@@ -36,6 +36,13 @@ class CarbonFootprintCalculator: ObservableObject {
     
     func updateCarbonFootprintData(carbonFootprintData: CarbonFootprint.Data) {
         self.carbonFootprintData = carbonFootprintData
+    }
+    
+    func recalculateCarbonFootprint() {
+        calculateHomeCarbonFootprint()
+        calculateTransportCarbonFootprint()
+        calculateDietCarbonFootprint()
+        calculateGoodsCarbonFootprint()
         calculateCarbonFootprint()
     }
     

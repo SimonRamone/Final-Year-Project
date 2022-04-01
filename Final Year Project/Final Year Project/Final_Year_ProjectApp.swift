@@ -9,10 +9,10 @@ import SwiftUI
 
 @main
 struct Final_Year_ProjectApp: App {
+    @StateObject private var dataStore = DataStore()
+    
     @State private var lessons = Lesson.lessons
     @State private var badges = Badge.sampleData
-    @State private var profile = Profile.sampleData
-    @State private var carbonFootprint = CarbonFootprint.defaultCarbonFootprint
     
     init() {
         parseLessons()
@@ -20,7 +20,26 @@ struct Final_Year_ProjectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MenuTabView(lessons: $lessons, badges: $badges, profile: $profile, carbonFootprint: $carbonFootprint)
+            MenuTabView(lessons: $lessons, badges: $badges, user: $dataStore.user)
+            {
+                DataStore.save(user: dataStore.user) { result in
+                    if case .failure(let error) = result {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+            .onAppear {
+                DataStore.load { result in
+                    switch result {
+                    case .failure(let error):
+                        fatalError(error.localizedDescription)
+                    case .success(let user):
+                        dataStore.user = user
+                    }
+                }
+                
+                print(dataStore.user)
+            }
         }
     }
     
@@ -30,5 +49,5 @@ struct Final_Year_ProjectApp: App {
             print(lessons)
         } catch { print(error) }
     }
-
+    
 }

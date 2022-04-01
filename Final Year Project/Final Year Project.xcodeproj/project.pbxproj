@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBB27B13AAA0092F255 /* BadgeView.swift */; };
-		E3009DBE27B15CEF0092F255 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBD27B15CEF0092F255 /* ProfileView.swift */; };
-		E3009DC027B15F0F0092F255 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3009DBF27B15F0F0092F255 /* Profile.swift */; };
 		E323B7C827C3A3310033484F /* CarbonFootprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323B7C727C3A3310033484F /* CarbonFootprint.swift */; };
 		E32EA97E27CC227400B209E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EA97D27CC227400B209E5 /* Constants.swift */; };
 		E32EA98227CC3C9F00B209E5 /* HomeFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32EA98127CC3C9F00B209E5 /* HomeFootprintView.swift */; };
@@ -46,13 +44,13 @@
 		E3971F7827BE83D100DA5AE0 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3971F7727BE83D100DA5AE0 /* PopUpView.swift */; };
 		E3A2F29D27F1EBEC0017D8DF /* QuizScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */; };
 		E3A2F29F27F1EE3E0017D8DF /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */; };
+		E3A8120327F6205100DB8FB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A8120227F6205100DB8FB5 /* User.swift */; };
+		E3A8120527F63EFB00DB8FB5 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A8120427F63EFB00DB8FB5 /* DataStore.swift */; };
 		E3D79C8527E541F200962424 /* LessonTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D79C8427E541F200962424 /* LessonTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E3009DBB27B13AAA0092F255 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
-		E3009DBD27B15CEF0092F255 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		E3009DBF27B15F0F0092F255 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E3009DCB27BBC6B50092F255 /* Final-Year-Project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Final-Year-Project-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E323B7C727C3A3310033484F /* CarbonFootprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprint.swift; sourceTree = "<group>"; };
 		E32EA97D27CC227400B209E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -91,6 +89,8 @@
 		E3971F7727BE83D100DA5AE0 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScorer.swift; sourceTree = "<group>"; };
 		E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		E3A8120227F6205100DB8FB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E3A8120427F63EFB00DB8FB5 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		E3D79C8427E541F200962424 /* LessonTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,7 +162,6 @@
 				E3827B3D27A95A8400D4E336 /* LearnView.swift */,
 				E3827B4127A95AC000D4E336 /* AwardsView.swift */,
 				E3009DBB27B13AAA0092F255 /* BadgeView.swift */,
-				E3009DBD27B15CEF0092F255 /* ProfileView.swift */,
 				E3971F7327BD358700DA5AE0 /* DietFootprintView.swift */,
 				E32EA98127CC3C9F00B209E5 /* HomeFootprintView.swift */,
 				E3971F7727BE83D100DA5AE0 /* PopUpView.swift */,
@@ -187,7 +186,6 @@
 			children = (
 				E3827B4727A976DD00D4E336 /* Story.swift */,
 				E3827B5027B1271500D4E336 /* Badge.swift */,
-				E3009DBF27B15F0F0092F255 /* Profile.swift */,
 				E323B7C727C3A3310033484F /* CarbonFootprint.swift */,
 				E32EA97D27CC227400B209E5 /* Constants.swift */,
 				E32EA98327CCE48F00B209E5 /* CarbonFootprintCalculator.swift */,
@@ -198,6 +196,8 @@
 				E3A2F29C27F1EBEC0017D8DF /* QuizScorer.swift */,
 				E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */,
 				E3717CC127F4C11B00555E61 /* Leaderboard.swift */,
+				E3A8120227F6205100DB8FB5 /* User.swift */,
+				E3A8120427F63EFB00DB8FB5 /* DataStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,7 +278,6 @@
 				E39668B427E7A594007CB555 /* Quiz.swift in Sources */,
 				E39668B227E7A471007CB555 /* QuizView.swift in Sources */,
 				E3827B5127B1271500D4E336 /* Badge.swift in Sources */,
-				E3009DBE27B15CEF0092F255 /* ProfileView.swift in Sources */,
 				E374835227D3E6D400BC871C /* CheckboxStyle.swift in Sources */,
 				E374835627D65C3E00BC871C /* Flight.swift in Sources */,
 				E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */,
@@ -299,13 +298,14 @@
 				E3D79C8527E541F200962424 /* LessonTimer.swift in Sources */,
 				E3754C1727DE7BAA007B82AB /* GoodsFootprintView.swift in Sources */,
 				E3009DBC27B13AAA0092F255 /* BadgeView.swift in Sources */,
+				E3A8120527F63EFB00DB8FB5 /* DataStore.swift in Sources */,
 				E3754C1927DEA04E007B82AB /* StoryView.swift in Sources */,
 				E32FEBD227F0FA510042BD17 /* BarChartView.swift in Sources */,
 				E374835C27D78F9900BC871C /* SearchBar.swift in Sources */,
 				E32FEBD627F129C90042BD17 /* EmissionCardView.swift in Sources */,
-				E3009DC027B15F0F0092F255 /* Profile.swift in Sources */,
 				E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */,
 				E374835827D76E9000BC871C /* AirportPicker.swift in Sources */,
+				E3A8120327F6205100DB8FB5 /* User.swift in Sources */,
 				E374835427D5366000BC871C /* TransportFootprintView.swift in Sources */,
 				E374835A27D7727C00BC871C /* FlightView.swift in Sources */,
 				E338CE5427A82BC4002137EC /* Final_Year_ProjectApp.swift in Sources */,

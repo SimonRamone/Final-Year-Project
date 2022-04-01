@@ -11,8 +11,9 @@ import GameKit
 struct MenuTabView: View {
     @Binding var lessons: [Lesson]
     @Binding var badges: [Badge]
-    @Binding var profile: Profile
-    @Binding var carbonFootprint: CarbonFootprint
+    @Binding var user: User
+    
+    @Environment(\.scenePhase) private var scenePhase
     
     @State private var isPresentingInfoPopUp: Bool = false
     @State private var popUpMessage: String = ""
@@ -23,6 +24,8 @@ struct MenuTabView: View {
     @State private var isPresentingQuiz: Bool = false
     
     @State private var isPresentingLoadingView: Bool = false
+    
+    let saveAction: ()->Void
     
     let localPlayer = GKLocalPlayer.local
         func authenticateUser() {
@@ -40,7 +43,7 @@ struct MenuTabView: View {
             ZStack{
              
                     TabView {
-                        HomeView(isPresentingInfoPopUp: $isPresentingInfoPopUp, isPresentingLoadingView: $isPresentingLoadingView, popUpMessage: $popUpMessage, profile: $profile, carbonFootprint: $carbonFootprint)
+                        HomeView(isPresentingInfoPopUp: $isPresentingInfoPopUp, isPresentingLoadingView: $isPresentingLoadingView, popUpMessage: $popUpMessage, user: $user)
                                 .tabItem {
                                     Image(systemName: "house.fill")
                                     Text("Home")
@@ -86,6 +89,9 @@ struct MenuTabView: View {
                 .onAppear(){
                     authenticateUser()
                 }
+                .onChange(of: scenePhase) { phase in
+                    if phase == .inactive { saveAction() }
+                        }
 
     }
 }
@@ -125,12 +131,11 @@ struct MenuTabView: View {
 //    }
 //}
     
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            MenuTabView(lessons: .constant(Lesson.lessons), badges: .constant(Badge.sampleData),
-                    profile: .constant(Profile.sampleData), carbonFootprint: .constant(CarbonFootprint.defaultCarbonFootprint))
-        }
-    }
+//    struct ContentView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            MenuTabView(lessons: .constant(Lesson.lessons), badges: .constant(Badge.sampleData), carbonFootprint: .constant(CarbonFootprint.defaultCarbonFootprint), saveAction: {})
+//        }
+//    }
 
 struct VisualEffectView: UIViewRepresentable {
     var effect: UIVisualEffect?

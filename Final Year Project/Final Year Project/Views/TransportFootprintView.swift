@@ -12,7 +12,8 @@ struct TransportFootprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var numberOfQuestions = 3
     @State var questionNr = 0
-    @Binding var data: CarbonFootprint.Data
+    @State var data = CarbonFootprint.Data()
+    @Binding var user: User
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
@@ -168,6 +169,7 @@ struct TransportFootprintView: View {
         }
         .navigationTitle("Travel Footprint")
         .onAppear(){
+            data = user.carbonFootprint.data
             if airports.isEmpty {
                 do {
                     airports = try JSONDecoder().decode([Flight.Airport].self, from: airportsData!.data)
@@ -177,16 +179,20 @@ struct TransportFootprintView: View {
             }
         }
         .onDisappear(){
+            user.carbonFootprint.update(from: data)
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.calculateTransportCarbonFootprint()
             carbonFootprintCalculator.calculateCarbonFootprint()
         }
+        .onAppear(){
+            data = user.carbonFootprint.data
+        }
     }
 }
 
-struct TransportFootprintView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransportFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Transport"))
-    }
-}
+//struct TransportFootprintView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TransportFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Transport"))
+//    }
+//}
 

@@ -12,7 +12,8 @@ struct GoodsFootprintView: View {
     var numberOfQuestions = 5
     @State var questionNr = 0
     
-    @Binding var data: CarbonFootprint.Data
+    @State var data = CarbonFootprint.Data()
+    @Binding var user: User
     @ObservedObject var carbonFootprintCalculator: CarbonFootprintCalculator
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
@@ -156,7 +157,11 @@ struct GoodsFootprintView: View {
             )
         }
         .navigationTitle("Goods & Services Footprint")
+        .onAppear(){
+            data = user.carbonFootprint.data
+        }
         .onDisappear(){
+            user.carbonFootprint.update(from: data)
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.calculateGoodsCarbonFootprint()
             carbonFootprintCalculator.calculateCarbonFootprint()
@@ -164,8 +169,8 @@ struct GoodsFootprintView: View {
     }
 }
 
-struct GoodsFootprintView_Previews: PreviewProvider {
-    static var previews: some View {
-        GoodsFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Goods"), isPresentingSheet: .constant(false))
-    }
-}
+//struct GoodsFootprintView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GoodsFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Goods"), isPresentingSheet: .constant(false))
+//    }
+//}

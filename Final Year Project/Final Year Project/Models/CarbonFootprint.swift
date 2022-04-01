@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct CarbonFootprint {
-    var totalCarbonFootprint: Double
-    var householdSize: Int
-    var electricitySupplier: String
-    var electricityFactor: Double
-    var electricityUsed: Int
-    var isElectricityUnitKWH: Bool
-    var isUsingAverageElectricity: Bool
-    var heatingFuelType: String
-    var dieselBurned: Int
-    var petrolBurned: Int
-    var flights: [Flight]
-    var dietEmissions: Constants.DietEmissions
-    var foodWaste: Double
-    var highEmissionFoods: HighEmissionFoods
-    var goodsEmissions: GoodsEmissions
+struct CarbonFootprint: Codable {
+    var totalCarbonFootprint: Double = 0.0
+    var householdSize: Int = 1
+    var electricitySupplier: String = "SSE Airtricity"
+    var electricityFactor: Double = 0.0
+    var electricityUsed: Int = 0
+    var isElectricityUnitKWH: Bool = false
+    var isUsingAverageElectricity: Bool = false
+    var heatingFuelType: String = "Kerosene"
+    var dieselBurned: Int = 0
+    var petrolBurned: Int = 0
+    var flights: [Flight] = []
+    var dietEmissions: Constants.DietEmissions = Constants.DietEmissions.MediumMeat
+    var foodWaste: Double = 0.0
+    var highEmissionFoods: HighEmissionFoods = HighEmissionFoods()
+    var goodsEmissions: GoodsEmissions = GoodsEmissions()
     
     internal init(totalCarbonFootprint: Double, householdSize: Int, electricitySupplier: String, electricityFactor: Double, electricityUsed: Int, isElectricityUnitKWH: Bool, isUsingAverageElectricity: Bool, heatingFuelType: String, dieselBurned: Int, petrolBurned: Int, flights: [Flight], dietEmissions: Constants.DietEmissions, foodWaste: Double, highEmissionFoods: HighEmissionFoods, goodsEmissions: GoodsEmissions) {
         self.totalCarbonFootprint = totalCarbonFootprint
@@ -44,19 +44,19 @@ struct CarbonFootprint {
 }
 
 extension CarbonFootprint {
-    struct Data {
+    struct Data: Codable, Equatable {
         var totalCarbonFootprint: Double = 0
         var householdSize: Int = 1
-        var electricitySupplier: String = "SSE Airtricity"
+        var electricitySupplier: String = ""
         var electricityFactor: Double = 0.0
         var electricityUsed: Int = 0
         var isElectricityUnitKWH: Bool = false
         var isUsingAverageElectricity: Bool = false
-        var heatingFuelType: String = "Kerosene"
+        var heatingFuelType: String = ""
         var dieselBurned: Int = 0
         var petrolBurned: Int = 0
         var flights: [Flight] = []
-        var dietEmissions: Constants.DietEmissions = .MediumMeat
+        var dietEmissions: Constants.DietEmissions = .none
         var foodWaste: Double = 0.0
         var highEmissionFoods: HighEmissionFoods = HighEmissionFoods(beefServings: 0, porkServings: 0, poultryServings: 0, riceServings: 0, fishServings: 0, coffeeServings: 0, cheeseServings: 0, milkServings: 0)
         var goodsEmissions: GoodsEmissions = GoodsEmissions(expensesClothing: 0, expensesElectronics: 0, expensesPaper: 0, expensesStreaming: 0, mobileDataUsage: 0)
@@ -105,7 +105,7 @@ extension CarbonFootprint {
 }
 
 extension CarbonFootprint {
-    struct HighEmissionFoods {
+    struct HighEmissionFoods: Codable, Equatable {
         var beefServings = 0.0;
         var porkServings = 0.0;
         var poultryServings = 0.0;
@@ -116,7 +116,7 @@ extension CarbonFootprint {
         var milkServings = 0.0;
     }
     
-    struct GoodsEmissions {
+    struct GoodsEmissions: Codable, Equatable {
         var expensesClothing = 0.0;
         var expensesElectronics = 0.0;
         var expensesPaper = 0.0;
