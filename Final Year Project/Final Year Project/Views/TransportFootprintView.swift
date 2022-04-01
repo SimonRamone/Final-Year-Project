@@ -25,6 +25,7 @@ struct TransportFootprintView: View {
     @State private var isPresentingFlightView = false
     @State private var selection = "Diesel"
     @Binding var currentSurvey: String
+    @Binding var isPresentingSheet: Bool
     let airportsData = NSDataAsset(name: "airports-data", bundle: Bundle.main)
     
     var body: some View {
@@ -137,6 +138,8 @@ struct TransportFootprintView: View {
                     Spacer()
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
+                            user.carbonFootprint.update(from: data)
+                            carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
                             self.presentationMode.wrappedValue.dismiss()
                             currentSurvey = "Diet"
                         }) {
@@ -176,6 +179,12 @@ struct TransportFootprintView: View {
                 } catch {
                     print(error.localizedDescription)
                 }
+            }
+        }
+        .onChange(of: isPresentingSheet){ item in
+            if !isPresentingSheet {
+                user.carbonFootprint.update(from: data)
+                carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             }
         }
         .onDisappear(){

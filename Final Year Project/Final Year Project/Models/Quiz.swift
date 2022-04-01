@@ -44,6 +44,8 @@ extension Quiz {
         let id = UUID()
         let text: String
         let isCorrect: Bool
+        
+        private enum CodingKeys : String, CodingKey { case text, isCorrect}
     }
 }
 

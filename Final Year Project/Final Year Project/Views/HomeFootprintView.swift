@@ -17,6 +17,7 @@ struct HomeFootprintView: View {
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
     @Binding var currentSurvey: String
+    @Binding var isPresentingSheet: Bool
     var body: some View {
         ZStack {
             VStack{
@@ -140,6 +141,8 @@ struct HomeFootprintView: View {
                     Spacer()
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
+                            user.carbonFootprint.update(from: data)
+                            carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
                             self.presentationMode.wrappedValue.dismiss()
                             currentSurvey = "Transport"
                         }) {
@@ -171,10 +174,14 @@ struct HomeFootprintView: View {
             )
         }
         .navigationTitle("Home Energy Footprint")
+        .onChange(of: isPresentingSheet){ item in
+            if !isPresentingSheet {
+                user.carbonFootprint.update(from: data)
+                carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            }
+        }
         .onAppear(){
             data = user.carbonFootprint.data
-            print("Home user data")
-            print(data)
         }
         .onDisappear(){
             user.carbonFootprint.update(from: data)

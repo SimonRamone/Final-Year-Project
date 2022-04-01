@@ -19,6 +19,7 @@ struct DietFootprintView: View {
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
     @Binding var currentSurvey: String
+    @Binding var isPresentingSheet: Bool
     var body: some View {
         ZStack {
             VStack{
@@ -106,6 +107,8 @@ struct DietFootprintView: View {
                     Spacer()
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
+                            user.carbonFootprint.update(from: data)
+                            carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
                             self.presentationMode.wrappedValue.dismiss()
                             currentSurvey = "Goods"
                         }) {
@@ -139,6 +142,12 @@ struct DietFootprintView: View {
         .navigationTitle("Diet Footprint")
         .onChange(of: data.dietEmissions){ _ in
             data.highEmissionFoods = CarbonFootprint.HighEmissionFoods(beefServings: 0, porkServings: 0, poultryServings: 0, riceServings: 0, fishServings: 0, coffeeServings: 0, cheeseServings: 0, milkServings: 0)
+        }
+        .onChange(of: isPresentingSheet){ item in
+            if !isPresentingSheet {
+                user.carbonFootprint.update(from: data)
+                carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            }
         }
         .onAppear(){
             data = user.carbonFootprint.data

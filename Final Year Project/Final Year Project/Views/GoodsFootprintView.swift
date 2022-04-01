@@ -125,6 +125,8 @@ struct GoodsFootprintView: View {
                     Spacer()
                     if questionNr == numberOfQuestions-1 {
                         Button(action: {
+                            user.carbonFootprint.update(from: data)
+                            carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
                             isPresentingSheet = false
                             self.presentationMode.wrappedValue.dismiss()
                             currentSurvey = "Home"
@@ -159,6 +161,12 @@ struct GoodsFootprintView: View {
         .navigationTitle("Goods & Services Footprint")
         .onAppear(){
             data = user.carbonFootprint.data
+        }
+        .onChange(of: isPresentingSheet){ item in
+            if !isPresentingSheet {
+                user.carbonFootprint.update(from: data)
+                carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            }
         }
         .onDisappear(){
             user.carbonFootprint.update(from: data)
