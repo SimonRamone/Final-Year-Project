@@ -31,15 +31,15 @@
             "questions":[
                {
                   "image":"lesson 1-1",
-                  "prompt":"This is the first question. This is the first question. This is the first question. This is the first question. This is the first question.",
+                  "prompt":"This is the first question updated. This is the first question. This is the first question. This is the first question. This is the first question.",
                   "answers":[
                      {
                         "text":"Answer 1",
-                        "isCorrect":true
+                        "isCorrect":false
                      },
                      {
                         "text":"Answer 2",
-                        "isCorrect":false
+                        "isCorrect":true
                      },
                      {
                         "text":"Answer 3",
@@ -113,7 +113,7 @@
             "subtitle":"Methane Emissions",
             "questions":[
                {
-                  "image":"lesson 1-1",
+                  "image":"lesson 1-2",
                   "prompt":"This is the first question. This is the first question. This is the first question. This is the first question. This is the first question.",
                   "answers":[
                      {
@@ -131,7 +131,7 @@
                   ]
                },
                {
-                  "image":"lesson 1-2",
+                  "image":"lesson 1-3",
                   "prompt":"This is the second question. This is the first question. This is the first question.",
                   "answers":[
                      {
@@ -145,7 +145,7 @@
                   ]
                },
                {
-                  "image":"lesson 1-3",
+                  "image":"lesson 1-2",
                   "prompt":"This is the third question.",
                   "answers":[
                      {
@@ -214,7 +214,7 @@
                   ]
                },
                {
-                  "image":"lesson 1-2",
+                  "image":"lesson 1-4",
                   "prompt":"This is the second question. This is the first question. This is the first question.",
                   "answers":[
                      {
@@ -228,7 +228,7 @@
                   ]
                },
                {
-                  "image":"lesson 1-3",
+                  "image":"lesson 1-2",
                   "prompt":"This is the third question.",
                   "answers":[
                      {

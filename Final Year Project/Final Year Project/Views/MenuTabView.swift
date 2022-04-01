@@ -22,6 +22,7 @@ struct MenuTabView: View {
     @State private var story: Story = Story()
     
     @State private var isPresentingQuiz: Bool = false
+    @State private var quiz: Quiz = Quiz()
     
     @State private var isPresentingLoadingView: Bool = false
     
@@ -53,7 +54,7 @@ struct MenuTabView: View {
                                     Image(systemName: "leaf.fill")
                                     Text("Track")
                                 }
-                        LearnView(lessons: $lessons, isPresentingLesson: $isPresentingStory, isPresentingQuiz: $isPresentingQuiz, story: $story)
+                        LearnView(lessons: $lessons, isPresentingLesson: $isPresentingStory, isPresentingQuiz: $isPresentingQuiz, story: $story, quiz: $quiz, user: $user)
                                 .tabItem {
                                     Image(systemName: "book")
                                     Text("Learn")
@@ -64,7 +65,7 @@ struct MenuTabView: View {
                                     Text("Awards")
                                 }
                     }
-               .disabled(isPresentingInfoPopUp || isPresentingStory)
+               .disabled(isPresentingStory)
                // .blur(radius: isPresentingInfoPopUp ? 10 : .nan)
                 //if isPresentingInfoPopUp { VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial)).ignoresSafeArea(.all)}
                 PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
@@ -72,7 +73,7 @@ struct MenuTabView: View {
                 
                 StoryView(isPresentingStory: $isPresentingStory, story: $story)
                 
-                QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: .constant(Quiz.sampleQuiz))
+                QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: $quiz, user: $user)
                 
                 if isPresentingLoadingView {
                     ZStack{

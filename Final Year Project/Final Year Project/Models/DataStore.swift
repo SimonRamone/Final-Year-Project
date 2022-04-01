@@ -36,8 +36,6 @@ class DataStore: ObservableObject {
                     DispatchQueue.main.async {
                         completion(.success(user))
                     }
-                    print("loaded User")
-                    print(user)
                 } catch {
                     DispatchQueue.main.async {
                         completion(.failure(error))
@@ -49,8 +47,6 @@ class DataStore: ObservableObject {
     static func save(user: User, completion: @escaping (Result<Int, Error>)->Void) {
             DispatchQueue.global(qos: .background).async {
                 do {
-                    print("SAVING")
-                    print(user)
                     let data = try JSONEncoder().encode(user)
                     let outfile = try fileURL()
                     try data.write(to: outfile)
@@ -59,7 +55,6 @@ class DataStore: ObservableObject {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        print("ERROR")
                         completion(.failure(error))
                     }
                 }

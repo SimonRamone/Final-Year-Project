@@ -12,6 +12,8 @@ struct LearnView: View {
     @Binding var isPresentingLesson: Bool
     @Binding var isPresentingQuiz: Bool
     @Binding var story: Story
+    @Binding var quiz: Quiz
+    @Binding var user: User
     var body: some View {
         NavigationView{
             ScrollView {
@@ -51,12 +53,13 @@ struct LearnView: View {
                                 VStack(alignment: .leading) {
                                     Text(lesson.quiz.title)
                                         .font(.headline)
-                                    Text(!lesson.quiz.isComplete ? "Not Complete" : "\(lesson.quiz.score)")
+                                    Text(!(user.hasCompleted[lesson.quiz.title] ?? false) ? "Not Complete" : "Score: \(user.quizScores[lesson.quiz.title] ?? 0)")
                                         .font(.subheadline)
                                 }
                                 Spacer()
                                 Button(action: {
-                                    isPresentingQuiz = true
+                                    quiz = lesson.quiz
+                                    isPresentingQuiz.toggle()
                                 }, label: {
                                     ZStack {
                                         Image(systemName: "circle.fill")

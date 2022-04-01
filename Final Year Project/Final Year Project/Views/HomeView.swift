@@ -270,6 +270,7 @@ struct HomeView: View {
         .sheet(isPresented: $isPresentingSheet) {
             NavigationView {
                 Group{
+                    ZStack{
                     switch (currentSurvey)  {
                     case "Home":
                         HomeFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
@@ -281,13 +282,19 @@ struct HomeView: View {
                         GoodsFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
                     default:
                         HomeFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
-                    }}
+                    }
+                        PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
+                            .shadow(color: .gray, radius: 10, x: 0, y: 0)
+                    }
+                    
+                }
                 .navigationBarTitleDisplayMode(.inline).navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading:
                                         Button("Dismiss") {
                     isPresentingSheet = false
-                })
+                }.disabled(isPresentingInfoPopUp))
             }
+            .interactiveDismissDisabled(isPresentingInfoPopUp)
         }
         .onChange(of: carbonFootprintCalculator.carbonFootprint) { carbonFootprint in
             GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
