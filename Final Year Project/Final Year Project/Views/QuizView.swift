@@ -131,7 +131,7 @@ struct QuizView: View {
             }
             .onDisappear {
                 isPresentingQuiz = false
-                quiz.isComplete = true
+                quiz.isCompleted = true
                 lessonTimer.reset()
                 quizScorer.finaliseScore(maxScore: 1000)
                 user.hasCompleted[quiz.title] = true

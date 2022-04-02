@@ -32,6 +32,7 @@
 		E374836227D905B400BC871C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E374836127D905B400BC871C /* Launch Screen.storyboard */; };
 		E3754C1727DE7BAA007B82AB /* GoodsFootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */; };
 		E3754C1927DEA04E007B82AB /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3754C1827DEA04D007B82AB /* StoryView.swift */; };
+		E38006E027F8FBC300CE6E92 /* AchievementReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38006DF27F8FBC300CE6E92 /* AchievementReporter.swift */; };
 		E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3927A958FF00D4E336 /* HomeView.swift */; };
 		E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3B27A95A7800D4E336 /* TrackView.swift */; };
 		E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3827B3D27A95A8400D4E336 /* LearnView.swift */; };
@@ -77,6 +78,7 @@
 		E374836127D905B400BC871C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E3754C1627DE7BA9007B82AB /* GoodsFootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsFootprintView.swift; sourceTree = "<group>"; };
 		E3754C1827DEA04D007B82AB /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		E38006DF27F8FBC300CE6E92 /* AchievementReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementReporter.swift; sourceTree = "<group>"; };
 		E3827B3927A958FF00D4E336 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E3827B3B27A95A7800D4E336 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		E3827B3D27A95A8400D4E336 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				E3717CC127F4C11B00555E61 /* Leaderboard.swift */,
 				E3A8120227F6205100DB8FB5 /* User.swift */,
 				E3A8120427F63EFB00DB8FB5 /* DataStore.swift */,
+				E38006DF27F8FBC300CE6E92 /* AchievementReporter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				E32FEBD627F129C90042BD17 /* EmissionCardView.swift in Sources */,
 				E3827B3C27A95A7800D4E336 /* TrackView.swift in Sources */,
 				E374835827D76E9000BC871C /* AirportPicker.swift in Sources */,
+				E38006E027F8FBC300CE6E92 /* AchievementReporter.swift in Sources */,
 				E3A8120327F6205100DB8FB5 /* User.swift in Sources */,
 				E374835427D5366000BC871C /* TransportFootprintView.swift in Sources */,
 				E374835A27D7727C00BC871C /* FlightView.swift in Sources */,

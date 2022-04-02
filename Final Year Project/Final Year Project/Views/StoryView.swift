@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoryView: View {
+    private let achievementReporter: AchievementReporter = AchievementReporter()
     @StateObject var lessonTimer: LessonTimer = LessonTimer()
     
     @State var i = 0
@@ -15,6 +16,10 @@ struct StoryView: View {
     @State var text: String?
     @Binding var isPresentingStory: Bool
     @Binding var story: Story
+    @Binding var user: User
+    
+    @Binding var isPresentingInfoPopUp: Bool
+    @Binding var popUpMessage: String
     var body: some View {
         if isPresentingStory && !lessonTimer.isFinished {
             ZStack{
@@ -103,6 +108,17 @@ struct StoryView: View {
             .onDisappear {
                 isPresentingStory = false
                 lessonTimer.reset()
+                
+                if !(user.hasCompleted[story.title] ?? false) {
+                    story.isCompleted = true
+                    user.hasCompleted[story.title] = true
+                    achievementReporter.reportAchievement(identifier: "badge_1")
+                    for item in story.unlocks {
+                        user.hasUnlocked[item] = true
+                    }
+                    popUpMessage = "You just unlocked a badge!"
+                    isPresentingInfoPopUp = true
+                }
             }
         }
     }

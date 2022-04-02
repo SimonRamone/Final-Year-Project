@@ -59,7 +59,7 @@ struct MenuTabView: View {
                                     Image(systemName: "book")
                                     Text("Learn")
                                 }
-                        AwardsView(badges: $badges, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage)
+                        AwardsView(badges: $badges, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, user: $user)
                                 .tabItem {
                                 Image(systemName: "crown.fill")
                                     Text("Awards")
@@ -71,7 +71,7 @@ struct MenuTabView: View {
                 PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
                     .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 
-                StoryView(isPresentingStory: $isPresentingStory, story: $story)
+                StoryView(isPresentingStory: $isPresentingStory, story: $story, user: $user, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage)
                 
                 QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: $quiz, user: $user)
                 

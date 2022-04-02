@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct AwardsView: View {
-    @Binding var badges: [Badge]
-    
     @State private var data = Badge.Data()
     @State private var isPresentingBadgeView = false
+    
+    @Binding var badges: [Badge]
     @Binding var isPresentingInfoPopUp: Bool
     @Binding var popUpMessage: String
-
+    @Binding var user: User
     var body: some View {
         NavigationView {
                 ScrollView{
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]){
                         ForEach(badges) { badge in
-                            if badge.earned {
+                            if user.hasUnlocked[badge.title] ?? false {
                                 Button(action: {
                                     isPresentingBadgeView.toggle()
                                     data = badge.data
@@ -63,6 +63,6 @@ struct AwardsView: View {
 
 struct AwardsView_Previews: PreviewProvider {
     static var previews: some View {
-        AwardsView(badges: .constant(Badge.sampleData), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""))
+        AwardsView(badges: .constant(Badge.sampleData), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), user: .constant(User()))
     }
 }

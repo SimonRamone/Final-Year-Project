@@ -15,7 +15,7 @@ struct Quiz: Identifiable, Codable {
     let title: String
     let subtitle: String
     let questions: [Question]
-    var isComplete: Bool = false
+    var isCompleted: Bool = false
     var score: Int = 0
     
     init(title: String, subtitle: String, questions: [Question]) {

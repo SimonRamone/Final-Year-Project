@@ -6,12 +6,15 @@ struct Story: Identifiable, Codable {
     let title: String
     let subtitle: String
     let coverImage: String
+    let unlocks: [String]
     let slides: [Slide]
+    var isCompleted: Bool = false
     
-    init(title: String, subtitle: String, coverImage: String, slides: [Slide]) {
+    init(title: String, subtitle: String, coverImage: String, unlocks: [String], slides: [Slide]) {
         self.title = title
         self.subtitle = subtitle
         self.coverImage = coverImage
+        self.unlocks = unlocks
         self.slides = slides
     }
     
@@ -19,10 +22,11 @@ struct Story: Identifiable, Codable {
         self.title = ""
         self.subtitle = ""
         self.coverImage = ""
+        self.unlocks = []
         self.slides = []
     }
     
-    private enum CodingKeys : String, CodingKey { case title, subtitle, coverImage, slides}
+    private enum CodingKeys : String, CodingKey { case title, subtitle, coverImage, unlocks, slides}
 }
 
 extension Story {
@@ -33,7 +37,7 @@ extension Story {
 }
 
 extension Story {
-    static let sampleData: Story = Story(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", slides: [Slide(image: "lesson 1-1", caption: "THis is the first slide"), Slide(image: "lesson 1-2", caption: "THis is the second slide")])
+    static let sampleData: Story = Story(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", unlocks: ["Badge 1"], slides: [Slide(image: "lesson 1-1", caption: "THis is the first slide"), Slide(image: "lesson 1-2", caption: "THis is the second slide")])
     static let stories: [Story] = []
 //    [
 //        Lesson(title: "Lesson 1", subtitle: "Methane Emissions", coverImage: "cows", slides: [Slide(image: "lessons 1-1", caption: "THis is the first slide"), Slide(image: "secondImage", caption: "THis is the second slide")]),

@@ -39,7 +39,7 @@ struct TrackView: View {
                         .foregroundColor(.white)
                         .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
                     
-                        BarChartView(data: .constant(DataPoint.sampleData), caption: "This Week", unit: "kg")
+                        BarChartView(data: .constant(DataPoint.sampleData), caption: "Last Week", unit: "kg")
                         .padding()
                 }
                 .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
