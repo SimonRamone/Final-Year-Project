@@ -36,6 +36,7 @@ struct TrackView: View {
                 .cornerRadius(20)
                 .padding(.top)
                 .padding(.horizontal)
+                if !user.actions.isEmpty {
                 ZStack{
                     Rectangle()
                         .foregroundColor(.white)
@@ -48,9 +49,6 @@ struct TrackView: View {
                 .cornerRadius(20)
                 .padding(.top)
                 .padding(.horizontal)
-                .onTapGesture {
-//                    isPresentingLesson = true
-//                    lessonView = lesson
             }
                 if !user.actions.isEmpty{
                     HStack {
@@ -64,14 +62,7 @@ struct TrackView: View {
                 }
                 ForEach($user.actions.reversed()){ action in
                     EmissionCardView(name: action.name, value: action.value, entryType: action.type)
-                }
-//                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
-//                    EmissionCardView(name: .constant("Cycle to Work"), value: .constant(5.3), entryType: .constant("Travel"))
-//                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
-//                    EmissionCardView(name: .constant("Reduce Heating"), value: .constant(13.3), entryType: .constant("Home"))
-//                    EmissionCardView(name: .constant("Miscellaneous"), value: .constant(1.2), entryType: .constant("Misc"))
-//                    EmissionCardView(name: .constant("Recycle Electronics"), value: .constant(10), entryType: .constant("Goods"))
-                
+                }             
             }
             .onAppear(){
                 emissionTracker.updateActions(actions: user.actions)

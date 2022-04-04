@@ -53,7 +53,6 @@ class EmissionTracker: ObservableObject {
             if Calendar.current.dateComponents([.day], from: action.date, to: monday).day == 0 {
                 mondayTotal += action.value
             }
-            print(mondayTotal)
             if Calendar.current.dateComponents([.day], from: action.date, to: tuesday).day == 0 {
                 tuesdayTotal += action.value
             }
@@ -83,8 +82,6 @@ class EmissionTracker: ObservableObject {
             DataPoint(name: "Sat", value: saturdayTotal),
             DataPoint(name: "Sun", value: sundayTotal)
         ]
-        
-        print(thisWeeksData)
     }
     
     func getMonday(myDate: Date) -> Date {

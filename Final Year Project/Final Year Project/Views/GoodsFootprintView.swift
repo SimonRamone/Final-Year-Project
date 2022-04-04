@@ -32,6 +32,9 @@ struct GoodsFootprintView: View {
                             .font(.headline)
                         Text("4 Questions")
                     }
+                    .onAppear(){
+                        popUpMessage = "This part will calculate emissions related to your shopping habits."
+                    }
                 case 1:
                     VStack{
                         Text("How much do you spend on **new electronics** per year?")
@@ -50,7 +53,7 @@ struct GoodsFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
+                        popUpMessage = "\(Constants.ELECTRONICS_FOOTPRINT) kgCO₂ per EUR."
                     }
                 case 2:
                     VStack{
@@ -70,7 +73,7 @@ struct GoodsFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
+                        popUpMessage = "\(Constants.CLOTHING_FOOTPRINT) kgCO₂ per EUR."
                     }
                 case 3:
                     VStack{
@@ -90,7 +93,7 @@ struct GoodsFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
+                        popUpMessage = "\(Constants.STREAMING_FOOTPRINT) kgCO₂ per EUR."
                     }
                 case 4:
                     VStack{
@@ -110,7 +113,7 @@ struct GoodsFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "The average amount of food wasted per person is \(Constants.AVERAGE_WEEKLY_FOOD_WASTE) kg every week."
+                        popUpMessage = "\(Constants.MOBILE_DATA_FOOTPRINT) kgCO₂ per GB."
                     }
                 default:
                     onAppear(){questionNr = 0}

@@ -44,9 +44,9 @@ extension Action {
     ]
     static let travelActions: [Action] =
     [
-        Action(name: "Cycled 1km", type: "Travel", value: 0.2),
-        Action(name: "Cycled 5km", type: "Travel", value: 1.0),
-        Action(name: "Cycled 10km", type: "Travel", value: 2.0)
+        Action(name: "Cycled 1km instead of car", type: "Travel", value: 0.2),
+        Action(name: "Cycled 5km instead of car", type: "Travel", value: 1.0),
+        Action(name: "Cycled 10km instead of car", type: "Travel", value: 2.0)
     ]
     static let goodsActions: [Action] =
     [

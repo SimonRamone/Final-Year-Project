@@ -31,6 +31,9 @@ struct HomeFootprintView: View {
                             .font(.headline)
                         Text("4 Questions")
                     }
+                    .onAppear(){
+                        popUpMessage = "This part will calculate your home energy emissions."
+                    }
                 case 1:
                     VStack{
                         Text("How many **people** live in your household?" )
@@ -39,13 +42,15 @@ struct HomeFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw beef."
+                        popUpMessage = "Your home energy emissions will be divided by the number of people in your household."
                     }
                 case 2:
                     VStack{
                         Text("Select your **energy** supplier." )
                             .font(.largeTitle)
                         Picker("Supplier", selection: $data.electricitySupplier) {
+                            Text("")
+                                .tag("")
                             ForEach(Constants.ELECTRICITY_SUPPLIERS) { Electricity_Supplier in
                                 Text(Electricity_Supplier.name)
                                     .tag(Electricity_Supplier.name)
@@ -55,7 +60,7 @@ struct HomeFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw beef."
+                        popUpMessage = "Selecting the correct supplier is important as producers use different fuel mixes which result in different emission factors."
                     }
                 case 3:
                     VStack{
@@ -100,13 +105,15 @@ struct HomeFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw beef."
+                        popUpMessage = "The national average is 4200 kWh. Entering billed amount is not as accurate as kWh usage."
                     }
                 case 4:
                     VStack{
                         Text("What fuel is used to **heat** your home?" )
                             .font(.largeTitle)
                         Picker("Fuel", selection: $data.heatingFuelType) {
+                            Text("")
+                                .tag("")
                             Text("Coal")
                                 .tag("Coal")
                             Text("Natural Gas")
@@ -126,7 +133,7 @@ struct HomeFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "One serving is 115 grams of raw beef."
+                        popUpMessage = "Different fuels release varying amounts of greenhouse gases."
                     }
                 default:
                     onAppear(){questionNr = 0}

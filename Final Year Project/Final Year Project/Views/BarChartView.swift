@@ -29,7 +29,7 @@ struct BarChartView: View {
                     VStack(alignment: .leading){
                         Text(caption)
                             .font(.headline)
-                        Text("\(data.reduce(0){$0 + $1.value})" + " " + unit)
+                        Text(String(format: "%.1f", data.reduce(0){$0 + $1.value}) + " " + unit)
                             .font(.largeTitle)
                     }
                     .foregroundColor(Color.black)
@@ -38,7 +38,7 @@ struct BarChartView: View {
                         VStack(alignment: .trailing){
                             Text(selected.name)
                                 .font(.headline)
-                            Text("\(selected.value)" + " " + unit)
+                            Text(String(format: "%.1f", selected.value) + " " + unit)
                                 .font(.largeTitle)
                         }
                         .foregroundColor(Color.blue)

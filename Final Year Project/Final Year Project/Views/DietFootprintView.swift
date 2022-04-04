@@ -33,11 +33,16 @@ struct DietFootprintView: View {
                             .font(.headline)
                         Text("3 Questions")
                     }
+                    .onAppear(){
+                        popUpMessage = "This part will calculate emissions related to your diet."
+                    }
                 case 1:
                     VStack{
                         Text("Select the **diet** that is closest to yours." )
                             .font(.largeTitle)
                         Picker("Diet", selection: $data.dietEmissions) {
+                            Text("")
+                                .tag(Constants.DietEmissions.none)
                             Text("Meat Daily 🥩")
                                 .tag(Constants.DietEmissions.HighMeat)
                             Text("Meat Every Other Day")
@@ -78,7 +83,7 @@ struct DietFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "A pescatarian is someone who does not eat meat with the exception of fish."
+                        popUpMessage = "115 grams of raw meat is 1 serving."
                     }
                 case 3:
                     VStack{

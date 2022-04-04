@@ -259,7 +259,7 @@ struct HomeView: View {
                     HStack{
                         NavigationLink(destination: LeaderboardView(leaderBoardID: "lowestCarbonEmitters"), label: {Image(systemName: "chart.bar.fill").foregroundColor(.gray.opacity(0.7))})
                         Button(action: {
-                            popUpMessage = ""
+                            popUpMessage = "This is an estimate of your total carbon emissions. Click 'calculate' to start the survey."
                             isPresentingInfoPopUp.toggle()
                         }, label: {
                             Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))

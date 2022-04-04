@@ -61,20 +61,21 @@ struct QuizView: View {
                     }
                         Text("Question \(Int(lessonTimer.progress + 1))")
                             .bold()
-                            .font(.largeTitle)
+                            .font(.title)
                         Image(quiz.questions[Int(lessonTimer.progress)].image)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
+                            .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, maxHeight: UIScreen.main.bounds.height/4)
                             .cornerRadius(20)
-                        Text(quiz.questions[Int(lessonTimer.progress)].prompt)
-                            .font(.body)
+                        Text(.init(quiz.questions[Int(lessonTimer.progress)].prompt))
+                            .font(.system(size: 500))
+                            .minimumScaleFactor(0.01)
                             .padding()
-                            .frame(width: UIScreen.main.bounds.width - 30)
+                            .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, maxHeight: 150)
                             .foregroundColor(.black)
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(15)
-                            .padding(.bottom)
+                            //.padding(.bottom)
                     }
                     .padding(.horizontal)
                     ForEach (quiz.questions[Int(lessonTimer.progress)].answers) { answer in
@@ -85,7 +86,7 @@ struct QuizView: View {
                             isClicked = true
                             lessonTimer.stop()
                             if answer.isCorrect {
-                                quizScorer.addPoints(points: Int(1000/quiz.questions.count), factor: (1.1-lessonTimer.progress.truncatingRemainder(dividingBy: 1)))
+                                quizScorer.addPoints(points: Int(1500/quiz.questions.count), factor: (1.1-lessonTimer.progress.truncatingRemainder(dividingBy: 1)))
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 isCorrect = false
@@ -111,22 +112,32 @@ struct QuizView: View {
                             .disabled(isClicked)
                     }
                     Spacer()
-                    VStack{
-                        if isClicked {
-                            if isCorrect {
-                                Text("Correct!")
-                            } else {
-                                Text("Incorrect!")
-                            }
-                            Text("\(quizScorer.questionScore) points")
+                }
+                VStack{
+                    Spacer()
+                    if isClicked {
+                        VStack{
+                        if isCorrect {
+                            Text("Correct!")
+                                .bold()
+                        } else {
+                            Text("Incorrect!")
+                                .bold()
                         }
+                        Text("\(quizScorer.questionScore) points")
+                                .bold()
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 50, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(15)
+                        .shadow(color: .gray, radius: 10, x: 0, y: 0)
+                        .padding(.bottom)
                     }
-                    
                 }
             }
             .background(Color.white)
             .onAppear {
-                lessonTimer.set(numberOfSlides: quiz.questions.count, slideDuration: 6.0)
+                lessonTimer.set(numberOfSlides: quiz.questions.count, slideDuration: 10.0)
                 lessonTimer.start()
             }
             .onDisappear {

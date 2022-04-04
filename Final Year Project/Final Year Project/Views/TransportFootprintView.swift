@@ -41,6 +41,9 @@ struct TransportFootprintView: View {
                             .font(.headline)
                         Text("2 Questions")
                     }
+                    .onAppear(){
+                        popUpMessage = "This part will calculate emissions related to your travel habits."
+                    }
                 case 1:
                     VStack{
                         Text("How many litres of **fuel** did you burn last week?")
@@ -64,7 +67,7 @@ struct TransportFootprintView: View {
                     }
                     .padding(.horizontal)
                     .onAppear(){
-                        popUpMessage = "If you don't own a car or your car is fully electric leave 0 in the field. If you carpool divide the litres by number of people carpooling."
+                        popUpMessage = "If you don't own a car or your car is fully electric skip this question. If you carpool divide the litres by the number of people carpooling."
                     }
                 case 2:
                     VStack{
@@ -125,6 +128,9 @@ struct TransportFootprintView: View {
                     }
                     .padding(.bottom)
                     .padding(.horizontal)
+                    .onAppear(){
+                        popUpMessage = "Average flight emissions are \(Constants.FLIGHT_FACTOR) kgCO₂ per passenger per km."
+                    }
                 default:
                     onAppear(){questionNr = 0}
                 }

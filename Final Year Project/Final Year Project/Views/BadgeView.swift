@@ -16,7 +16,6 @@ struct BadgeView: View {
                 .scaledToFill()
                 .padding(50)
                 .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
-            
             Text(data.title)
                 .font(.largeTitle)
                 .padding()
