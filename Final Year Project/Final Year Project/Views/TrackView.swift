@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TrackView: View {
+    @StateObject private var emissionTracker = EmissionTracker()
+    @Binding var user : User
     @State private var isPresentingNewEmissionView = false
     var body: some View {
     NavigationView {
@@ -22,7 +24,7 @@ struct TrackView: View {
                             VStack(alignment: .leading){
                                 Text("Total Emissions Avoided")
                                     .font(.headline)
-                                Text("41.7 kg")
+                                Text(String(format: "%.2f", emissionTracker.totalEmissionsAvoided) + " kg")
                                     .font(.largeTitle)
                             }
                             .padding()
@@ -39,7 +41,7 @@ struct TrackView: View {
                         .foregroundColor(.white)
                         .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
                     
-                        BarChartView(data: .constant(DataPoint.sampleData), caption: "Last Week", unit: "kg")
+                    BarChartView(mondayTotal: $emissionTracker.mondayTotal, tuesdayTotal: $emissionTracker.tuesdayTotal, wednesdayTotal: $emissionTracker.wednesdayTotal, thursdayTotal: $emissionTracker.thursdayTotal, fridayTotal: $emissionTracker.fridayTotal, saturdayTotal: $emissionTracker.saturdayTotal, sundayTotal: $emissionTracker.sundayTotal, caption: "This Week", unit: "kg")
                         .padding()
                 }
                 .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
@@ -50,21 +52,36 @@ struct TrackView: View {
 //                    isPresentingLesson = true
 //                    lessonView = lesson
             }
-                HStack {
-                    Text("History")
-                        .font(.title2)
-                        .bold()
-                    Spacer()
+                if !user.actions.isEmpty{
+                    HStack {
+                        Text("History")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+                    }
+                    .padding(.top)
+                    .padding(.horizontal)
                 }
-                .padding(.top)
-                .padding(.horizontal)
-                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
-                    EmissionCardView(name: .constant("Cycle to Work"), value: .constant(5.3), entryType: .constant("Travel"))
-                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
-                    EmissionCardView(name: .constant("Reduce Heating"), value: .constant(13.3), entryType: .constant("Home"))
-                    EmissionCardView(name: .constant("Miscellaneous"), value: .constant(1.2), entryType: .constant("Misc"))
-                    EmissionCardView(name: .constant("Recycle Electronics"), value: .constant(10), entryType: .constant("Goods"))
+                ForEach($user.actions.reversed()){ action in
+                    EmissionCardView(name: action.name, value: action.value, entryType: action.type)
+                }
+//                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
+//                    EmissionCardView(name: .constant("Cycle to Work"), value: .constant(5.3), entryType: .constant("Travel"))
+//                    EmissionCardView(name: .constant("Vegan Meal"), value: .constant(2.7), entryType: .constant("Diet"))
+//                    EmissionCardView(name: .constant("Reduce Heating"), value: .constant(13.3), entryType: .constant("Home"))
+//                    EmissionCardView(name: .constant("Miscellaneous"), value: .constant(1.2), entryType: .constant("Misc"))
+//                    EmissionCardView(name: .constant("Recycle Electronics"), value: .constant(10), entryType: .constant("Goods"))
                 
+            }
+            .onAppear(){
+                emissionTracker.updateActions(actions: user.actions)
+                emissionTracker.calculateTotal()
+                emissionTracker.getThisWeeksData()
+            }
+            .onChange(of: user.actions) { item in
+                emissionTracker.updateActions(actions: user.actions)
+                emissionTracker.calculateTotal()
+                emissionTracker.getThisWeeksData()
             }
             .background(Color.gray.opacity(0.1))
             .navigationTitle("Track Emissions")
@@ -78,16 +95,12 @@ struct TrackView: View {
             }
             .sheet(isPresented: $isPresentingNewEmissionView) {
                 NavigationView {
-                    TrackEmissionView()
+                    TrackEmissionView(user: $user)
                         .navigationTitle("Add Action")
                         .toolbar {
                             ToolbarItem(placement: .cancellationAction) {
                                 Button("Dismiss") {
                                     isPresentingNewEmissionView = false
-                                }
-                            }
-                            ToolbarItem(placement: .confirmationAction) {
-                                Button("Add") {
                                 }
                             }
                         }
@@ -97,8 +110,8 @@ struct TrackView: View {
     }
 }
 
-struct TrackView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackView()
-    }
-}
+//struct TrackView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackView()
+//    }
+//}

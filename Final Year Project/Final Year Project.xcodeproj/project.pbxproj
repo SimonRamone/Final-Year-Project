@@ -47,6 +47,8 @@
 		E3A2F29F27F1EE3E0017D8DF /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */; };
 		E3A8120327F6205100DB8FB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A8120227F6205100DB8FB5 /* User.swift */; };
 		E3A8120527F63EFB00DB8FB5 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A8120427F63EFB00DB8FB5 /* DataStore.swift */; };
+		E3BB33E927FA23C40045111C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB33E827FA23C40045111C /* Action.swift */; };
+		E3BB33ED27FA5A880045111C /* EmissionsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB33EC27FA5A880045111C /* EmissionsTracker.swift */; };
 		E3D79C8527E541F200962424 /* LessonTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D79C8427E541F200962424 /* LessonTimer.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,8 @@
 		E3A2F29E27F1EE3E0017D8DF /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		E3A8120227F6205100DB8FB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3A8120427F63EFB00DB8FB5 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		E3BB33E827FA23C40045111C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		E3BB33EC27FA5A880045111C /* EmissionsTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionsTracker.swift; sourceTree = "<group>"; };
 		E3D79C8427E541F200962424 /* LessonTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +205,8 @@
 				E3A8120227F6205100DB8FB5 /* User.swift */,
 				E3A8120427F63EFB00DB8FB5 /* DataStore.swift */,
 				E38006DF27F8FBC300CE6E92 /* AchievementReporter.swift */,
+				E3BB33E827FA23C40045111C /* Action.swift */,
+				E3BB33EC27FA5A880045111C /* EmissionsTracker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3971F7427BD358700DA5AE0 /* DietFootprintView.swift in Sources */,
+				E3BB33E927FA23C40045111C /* Action.swift in Sources */,
 				E3827B3E27A95A8400D4E336 /* LearnView.swift in Sources */,
 				E39668B427E7A594007CB555 /* Quiz.swift in Sources */,
 				E39668B227E7A471007CB555 /* QuizView.swift in Sources */,
@@ -286,6 +293,7 @@
 				E3827B3A27A958FF00D4E336 /* HomeView.swift in Sources */,
 				E32FEBD827F134720042BD17 /* TrackEmissionView.swift in Sources */,
 				E3717CC027F4BFC700555E61 /* LeaderboardView.swift in Sources */,
+				E3BB33ED27FA5A880045111C /* EmissionsTracker.swift in Sources */,
 				E32EA97E27CC227400B209E5 /* Constants.swift in Sources */,
 				E3827B4827A976DD00D4E336 /* Story.swift in Sources */,
 				E3A2F29D27F1EBEC0017D8DF /* QuizScorer.swift in Sources */,

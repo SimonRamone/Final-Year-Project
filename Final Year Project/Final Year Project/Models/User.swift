@@ -13,5 +13,5 @@ struct User: Codable {
     var hasCompleted = [String : Bool]()
     var hasUnlocked = [String : Bool]()
     var carbonFootprint: CarbonFootprint = CarbonFootprint(data: CarbonFootprint.Data())
-    
+    var actions : [Action] = []
 }

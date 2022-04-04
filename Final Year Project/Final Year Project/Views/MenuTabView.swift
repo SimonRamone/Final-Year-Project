@@ -49,7 +49,7 @@ struct MenuTabView: View {
                                     Image(systemName: "house.fill")
                                     Text("Home")
                                 }
-                            TrackView()
+                        TrackView(user: $user)
                                 .tabItem {
                                     Image(systemName: "leaf.fill")
                                     Text("Track")

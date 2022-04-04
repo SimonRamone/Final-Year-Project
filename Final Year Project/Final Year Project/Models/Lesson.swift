@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 struct Lesson: Identifiable, Codable {
     let id = UUID()
