@@ -48,27 +48,27 @@ class EmissionTracker: ObservableObject {
         fridayTotal  = 0.0
         saturdayTotal = 0.0
         sundayTotal = 0.0
-        
+
         for action in actions {
-            if Calendar.current.dateComponents([.day], from: action.date, to: monday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:monday) {
                 mondayTotal += action.value
             }
-            if Calendar.current.dateComponents([.day], from: action.date, to: tuesday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:tuesday) {
                 tuesdayTotal += action.value
             }
-            if Calendar.current.dateComponents([.day], from: action.date, to: wednesday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:wednesday) {
                 wednesdayTotal += action.value
             }
-            if Calendar.current.dateComponents([.day], from: action.date, to: thursday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:thursday) {
                 thursdayTotal += action.value
             }
-            if Calendar.current.dateComponents([.day], from: action.date, to: friday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:friday) {
                 fridayTotal += action.value
             }
-            if Calendar.current.dateComponents([.day], from: action.date, to: saturday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:saturday) {
                 saturdayTotal += action.value
             }
-            if Calendar.current.dateComponents([.day], from: action.date, to: sunday).day == 0 {
+            if Calendar.current.isDate(action.date, inSameDayAs:sunday) {
                 sundayTotal += action.value
             }
         }
@@ -87,8 +87,8 @@ class EmissionTracker: ObservableObject {
     func getMonday(myDate: Date) -> Date {
         let cal = Calendar.current
         var comps = cal.dateComponents([.weekOfYear, .yearForWeekOfYear], from: myDate)
-        comps.weekday = 3 // Monday
+        comps.weekday = 2 // Monday
         let mondayInWeek = cal.date(from: comps)!
-        return mondayInWeek
+        return mondayInWeek.advanced(by: 3600)
     }
 }

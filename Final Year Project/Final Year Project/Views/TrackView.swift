@@ -11,6 +11,7 @@ struct TrackView: View {
     @StateObject private var emissionTracker = EmissionTracker()
     @Binding var user : User
     @State private var isPresentingNewEmissionView = false
+    @State private var data : [DataPoint] = []
     var body: some View {
     NavigationView {
             ScrollView{
@@ -42,7 +43,7 @@ struct TrackView: View {
                         .foregroundColor(.white)
                         .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
                     
-                    BarChartView(mondayTotal: $emissionTracker.mondayTotal, tuesdayTotal: $emissionTracker.tuesdayTotal, wednesdayTotal: $emissionTracker.wednesdayTotal, thursdayTotal: $emissionTracker.thursdayTotal, fridayTotal: $emissionTracker.fridayTotal, saturdayTotal: $emissionTracker.saturdayTotal, sundayTotal: $emissionTracker.sundayTotal, caption: "This Week", unit: "kg")
+                    BarChartView(data: $data, caption: "This Week", unit: "kg")
                         .padding()
                 }
                 .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
@@ -68,11 +69,13 @@ struct TrackView: View {
                 emissionTracker.updateActions(actions: user.actions)
                 emissionTracker.calculateTotal()
                 emissionTracker.getThisWeeksData()
+                data = emissionTracker.thisWeeksData
             }
             .onChange(of: user.actions) { item in
                 emissionTracker.updateActions(actions: user.actions)
                 emissionTracker.calculateTotal()
                 emissionTracker.getThisWeeksData()
+                data = emissionTracker.thisWeeksData
             }
             .background(Color.gray.opacity(0.1))
             .navigationTitle("Track Emissions")

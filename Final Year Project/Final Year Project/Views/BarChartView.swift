@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct BarChartView: View {
-    @State var data: [DataPoint] = []
-    @Binding var mondayTotal: Double
-    @Binding var tuesdayTotal: Double
-    @Binding var wednesdayTotal: Double
-    @Binding var thursdayTotal: Double
-    @Binding var fridayTotal: Double
-    @Binding var saturdayTotal: Double
-    @Binding var sundayTotal: Double
+    @Binding var data: [DataPoint]
+    @State var barChartData: [DataPoint] = []
     var caption: String
     var unit: String
     @State var maxValue = 0.0
@@ -23,13 +17,13 @@ struct BarChartView: View {
     @State var isSelected = false
     @State var selected: DataPoint = DataPoint(name: "", value: 0.0)
     var body: some View {
-            VStack {
-                if maxValue > 0 {
+        VStack {
+            if maxValue > 0 {
                 HStack{
                     VStack(alignment: .leading){
                         Text(caption)
                             .font(.headline)
-                        Text(String(format: "%.1f", data.reduce(0){$0 + $1.value}) + " " + unit)
+                        Text(String(format: "%.1f", barChartData.reduce(0){$0 + $1.value}) + " " + unit)
                             .font(.largeTitle)
                     }
                     .foregroundColor(Color.black)
@@ -45,17 +39,20 @@ struct BarChartView: View {
                     }
                 }
                 GeometryReader { geo in
-                HStack {
-                ForEach(data) { dataPoint in
-                    let barHeight = geo.size.height * dataPoint.value * 0.9 / maxValue
-                        VStack {
-                            Spacer()
-                            //ZStack(alignment: .bottom){
+                    HStack {
+                        ForEach(barChartData) { dataPoint in
+                            let barHeight = geo.size.height * dataPoint.value * 0.9 / maxValue
+                            VStack {
+                                Spacer()
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill(!isSelected && !(isFocused[dataPoint] ?? false) ? .blue : isFocused[dataPoint] ?? false ? .blue : .gray.opacity(0.2))
                                     .frame(height: min(UIScreen.main.bounds.height, max(barHeight, 0.0)))
-                                    .padding(.top, -15.5)
-                               // }
+                                    .padding(.top, dataPoint.value == maxValue ? -15.5 : 0)
+                                Text(dataPoint.name)
+                                    .font(.caption)
+                                    .truncationMode(.tail)
+                                    .lineLimit(1)
+                            }
                             .onTapGesture {
                                 if(!isSelected){
                                     isFocused[dataPoint]?.toggle()
@@ -73,51 +70,30 @@ struct BarChartView: View {
                                     selected = dataPoint
                                 }
                             }
-                            Text(dataPoint.name)
-                                .font(.caption)
-                                .truncationMode(.tail)
-                                .lineLimit(1)
+                        }
                     }
                 }
-                }
+            }
+            else {
+                Text("No Data")
             }
         }
-                else {
-                    Text("No Data")
-                }
-    }
         .edgesIgnoringSafeArea(.all)
-        .onChange(of: mondayTotal) { item in
-            data = [
-                DataPoint(name: "Mon", value: mondayTotal),
-                DataPoint(name: "Tue", value: tuesdayTotal),
-                DataPoint(name: "Wed", value: wednesdayTotal),
-                DataPoint(name: "Thu", value: thursdayTotal),
-                DataPoint(name: "Fri", value: fridayTotal),
-                DataPoint(name: "Sat", value: saturdayTotal),
-                DataPoint(name: "Sun", value: sundayTotal)
-            ]
+        .onChange(of: data) { data in
             for dataPoint in data {
                 isFocused[dataPoint] = false
             }
+            barChartData = data
             isSelected = false
-            maxValue = data.map { $0.value }.max()!
+            maxValue = barChartData.map { $0.value }.max()!
         }
         .onAppear(){
-            data = [
-                DataPoint(name: "Mon", value: mondayTotal),
-                DataPoint(name: "Tue", value: tuesdayTotal),
-                DataPoint(name: "Wed", value: wednesdayTotal),
-                DataPoint(name: "Thu", value: thursdayTotal),
-                DataPoint(name: "Fri", value: fridayTotal),
-                DataPoint(name: "Sat", value: saturdayTotal),
-                DataPoint(name: "Sun", value: sundayTotal)
-            ]
             for dataPoint in data {
                 isFocused[dataPoint] = false
             }
+            barChartData = data
             isSelected = false
-            maxValue = data.map { $0.value }.max()!
+            maxValue = barChartData.map { $0.value }.max()!
         }
     }
 }
