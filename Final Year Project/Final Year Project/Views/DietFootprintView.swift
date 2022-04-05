@@ -162,14 +162,6 @@ struct DietFootprintView: View {
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.calculateDietCarbonFootprint()
             carbonFootprintCalculator.calculateCarbonFootprint()
-            GKLeaderboard.submitScore(
-                Int(carbonFootprintCalculator.carbonFootprint),
-                context: 0,
-                player: GKLocalPlayer.local,
-                leaderboardIDs: ["grp.lowestCarbonPolluters"]
-            ) { error in
-                //print(error)
-            }
         }
     }
 }

@@ -257,7 +257,7 @@ struct HomeView: View {
                     }).padding(.bottom),
                 trailing:
                     HStack{
-                        NavigationLink(destination: LeaderboardView(leaderBoardID: "lowestCarbonEmitters"), label: {Image(systemName: "chart.bar.fill").foregroundColor(.gray.opacity(0.7))})
+                        NavigationLink(destination: LeaderboardView(leaderBoardID: "lowestCarbonEmitters", user: $user, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage), label: {Image(systemName: "chart.bar.fill").foregroundColor(.gray.opacity(0.7))})
                         Button(action: {
                             popUpMessage = "This is an estimate of your total carbon emissions. Click 'calculate' to start the survey."
                             isPresentingInfoPopUp.toggle()
@@ -297,7 +297,10 @@ struct HomeView: View {
             .interactiveDismissDisabled(isPresentingInfoPopUp)
         }
         .onChange(of: carbonFootprintCalculator.carbonFootprint) { carbonFootprint in
-            GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
+            user.carbonFootprint.totalCarbonFootprint = carbonFootprint
+            if user.hasAcceptedTerms {
+                GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
+            }
         }
         .onAppear(){
             GKAccessPoint.shared.isActive = false

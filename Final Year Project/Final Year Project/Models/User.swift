@@ -14,4 +14,14 @@ struct User: Codable {
     var hasUnlocked = [String : Bool]()
     var carbonFootprint: CarbonFootprint = CarbonFootprint(data: CarbonFootprint.Data())
     var actions : [Action] = []
+    
+    private var _hasAcceptedTerms: Bool?
+    var hasAcceptedTerms: Bool {
+        get {
+            _hasAcceptedTerms ?? false
+        }
+        set {
+            _hasAcceptedTerms = newValue
+        }
+    }
 }
