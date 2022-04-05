@@ -299,24 +299,25 @@ struct HomeView: View {
         .onChange(of: carbonFootprintCalculator.carbonFootprint) { carbonFootprint in
             user.carbonFootprint.totalCarbonFootprint = carbonFootprint
             if user.hasAcceptedTerms {
-                GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
+                GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
             }
         }
         .onAppear(){
             GKAccessPoint.shared.isActive = false
-           // DispatchQueue.main.asyncAfter(deadline: .now() + ) {
                 data = user.carbonFootprint.data
                 carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
                 carbonFootprintCalculator.recalculateCarbonFootprint()
-           // }
+            user.carbonFootprint.totalCarbonFootprint = carbonFootprintCalculator.carbonFootprint
         }
         .onChange(of: user.carbonFootprint.data){ data in
             carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
             carbonFootprintCalculator.recalculateCarbonFootprint()
+            user.carbonFootprint.totalCarbonFootprint = carbonFootprintCalculator.carbonFootprint
         }
         .onChange(of: isPresentingSheet){ item in
             if !isPresentingSheet {
                 carbonFootprintCalculator.recalculateCarbonFootprint()
+                user.carbonFootprint.totalCarbonFootprint = carbonFootprintCalculator.carbonFootprint
             }
         }
     }

@@ -67,6 +67,12 @@ struct LeaderboardView: View {
                 }
         }
             }
+        .refreshable {
+            if user.hasAcceptedTerms {
+                GKLeaderboard.submitScore(Int(user.carbonFootprint.totalCarbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
+            }
+            leaderboard.load(leaderBoardID: leaderBoardID)
+        }
         .navigationBarItems(
             trailing:
                     Button(action: {
@@ -76,13 +82,10 @@ struct LeaderboardView: View {
                         Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
                     })
         )
-                .onChange(of: user.carbonFootprint.totalCarbonFootprint) {carbonFootprint in
-                    if user.hasAcceptedTerms {
-                        GKLeaderboard.submitScore(Int(carbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonPolluters"], completionHandler: {error in})
-                    }
-                    leaderboard.load(leaderBoardID: leaderBoardID)
-                }
                 .onAppear {
+                    if user.hasAcceptedTerms {
+                        GKLeaderboard.submitScore(Int(user.carbonFootprint.totalCarbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
+                    }
                     leaderboard.load(leaderBoardID: leaderBoardID)
                 }
                 .navigationTitle("Leaderboard")

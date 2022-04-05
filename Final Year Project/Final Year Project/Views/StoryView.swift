@@ -95,11 +95,14 @@ struct StoryView: View {
                 .padding(.top, 60)
             }
             .background(
+                ZStack{
+                Color.black.edgesIgnoringSafeArea(.all)
                 Image(story.slides[Int(lessonTimer.progress)].image)
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                     .frame(alignment: .center)
+                }
             )
             .onAppear {
                 lessonTimer.set(numberOfSlides: story.slides.count, slideDuration: 6.0)
