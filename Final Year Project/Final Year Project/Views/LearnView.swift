@@ -14,6 +14,8 @@ struct LearnView: View {
     @Binding var story: Story
     @Binding var quiz: Quiz
     @Binding var user: User
+    @Binding var isPresentingInfoPopUp: Bool
+    @Binding var popUpMessage: String
     var body: some View {
         NavigationView{
             ScrollView {
@@ -78,6 +80,15 @@ struct LearnView: View {
                     .padding(.trailing)
                     .padding(.bottom)
                 }
+                .navigationBarItems(
+                    trailing:
+                        Button(action: {
+                            popUpMessage = "In a Story, tap the right to go forward, left to go back."
+                            isPresentingInfoPopUp.toggle()
+                        }, label: {
+                            Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
+                        })
+                )
             }
             .onAppear(){
                 do {

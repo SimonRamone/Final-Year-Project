@@ -12,6 +12,8 @@ struct TrackView: View {
     @Binding var user : User
     @State private var isPresentingNewEmissionView = false
     @State private var data : [DataPoint] = []
+    @Binding var isPresentingInfoPopUp: Bool
+    @Binding var popUpMessage: String
     var body: some View {
         NavigationView {
             ScrollView{
@@ -80,12 +82,22 @@ struct TrackView: View {
             .background(Color.gray.opacity(0.1))
             .navigationTitle("Track Emissions")
             .toolbar {
-                Button(action: {
-                    isPresentingNewEmissionView = true
-                }) {
-                    Image(systemName: "plus")
-                }
-                .accessibilityLabel("New Scrum")
+                HStack{
+                    Button(action: {
+                        isPresentingNewEmissionView = true
+                    }, label: {
+                        HStack{
+                            Text("Add Action")
+                            Image(systemName: "plus")
+                        }
+                        .font(.headline)
+                    })
+                    Button(action: {
+                        popUpMessage = "✅ Only track an action when it replaces a high emissions action. ❌ Don't track actions you already do on a daily basis."
+                        isPresentingInfoPopUp.toggle()
+                    }, label: {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
+                    })}
             }
             .sheet(isPresented: $isPresentingNewEmissionView) {
                 NavigationView {

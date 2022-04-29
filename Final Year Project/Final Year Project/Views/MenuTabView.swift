@@ -49,12 +49,12 @@ struct MenuTabView: View {
                         Image(systemName: "house.fill")
                         Text("Home")
                     }
-                TrackView(user: $user)
+                TrackView(user: $user, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage)
                     .tabItem {
                         Image(systemName: "leaf.fill")
                         Text("Track")
                     }
-                LearnView(lessons: $lessons, isPresentingLesson: $isPresentingStory, isPresentingQuiz: $isPresentingQuiz, story: $story, quiz: $quiz, user: $user)
+                LearnView(lessons: $lessons, isPresentingLesson: $isPresentingStory, isPresentingQuiz: $isPresentingQuiz, story: $story, quiz: $quiz, user: $user, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage)
                     .tabItem {
                         Image(systemName: "book")
                         Text("Learn")

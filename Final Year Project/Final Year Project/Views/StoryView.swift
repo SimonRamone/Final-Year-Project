@@ -105,7 +105,7 @@ struct StoryView: View {
                 }
             )
             .onAppear {
-                lessonTimer.set(numberOfSlides: story.slides.count, slideDuration: 6.0)
+                lessonTimer.set(numberOfSlides: story.slides.count, slideDuration: 8.0)
                 lessonTimer.start()
             }
             .onDisappear {

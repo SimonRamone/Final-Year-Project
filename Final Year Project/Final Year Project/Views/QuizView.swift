@@ -123,7 +123,7 @@ struct QuizView: View {
             }
             .background(Color.white)
             .onAppear {
-                lessonTimer.set(numberOfSlides: quiz.questions.count, slideDuration: 10.0)
+                lessonTimer.set(numberOfSlides: quiz.questions.count, slideDuration: 15.0)
                 lessonTimer.start()
             }
             .onDisappear {
