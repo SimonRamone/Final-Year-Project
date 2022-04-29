@@ -17,12 +17,12 @@ struct DataPoint: Identifiable, Hashable {
 
 extension DataPoint {
     static var sampleData: [DataPoint] = [
-        DataPoint(name: "Mon", value: 1.1),
-        DataPoint(name: "Tue", value: 2.0),
-        DataPoint(name: "Wed", value: 4.0),
-        DataPoint(name: "Thu", value: 1.0),
+        DataPoint(name: "Mon", value: 11.4),
+        DataPoint(name: "Tue", value: 14.0),
+        DataPoint(name: "Wed", value: 8.0),
+        DataPoint(name: "Thu", value: 17.5),
         DataPoint(name: "Fri", value: 0.0),
-        DataPoint(name: "Sat", value: 2.0),
-        DataPoint(name: "Sun", value: 0.5)
+        DataPoint(name: "Sat", value: 6.0),
+        DataPoint(name: "Sun", value: 8.0)
     ]
 }

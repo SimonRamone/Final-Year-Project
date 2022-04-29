@@ -8,8 +8,8 @@
 import Foundation
 
 struct Constants: Codable {
-    //Average carbon footprint
-    static let AVERAGE_FOOTPRINT = 13200.0;
+    //Average carbon footprint Ireland 2018
+    static let AVERAGE_FOOTPRINT = 12600.0;
     
     //Carbon footprint goal -45%
     static let GOAL_FOOTPRINT = 7300.0;
@@ -26,7 +26,7 @@ struct Constants: Codable {
     //Heating fuel kgCO2/kWh
     static let COAL_FACTOR = 0.354
     static let NATURAL_GAS_FACTOR = 0.201
-    static let ELECTRICITY_FACTOR = 0.0
+    static let ELECTRICITY_FACTOR = 0.0 // zero because determined based on electricity supplier
     static let KEROSENE_FACTOR = 0.257
     static let LPG_FACTOR = 0.227
     static let PEAT_FACTOR = 0.382

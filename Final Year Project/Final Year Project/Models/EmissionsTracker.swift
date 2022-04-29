@@ -11,13 +11,13 @@ class EmissionTracker: ObservableObject {
     
     @Published var totalEmissionsAvoided: Double = 0.0
     @Published var thisWeeksData: [DataPoint] = []
-    @Published var mondayTotal = 0.0
-    @Published var tuesdayTotal = 0.0
-    @Published var wednesdayTotal = 0.0
-    @Published var thursdayTotal = 0.0
-    @Published var fridayTotal = 0.0
-    @Published var saturdayTotal = 0.0
-    @Published var sundayTotal = 0.0
+    var mondayTotal = 0.0
+    var tuesdayTotal = 0.0
+    var wednesdayTotal = 0.0
+    var thursdayTotal = 0.0
+    var fridayTotal = 0.0
+    var saturdayTotal = 0.0
+    var sundayTotal = 0.0
     
     private var actions : [Action] = []
     

@@ -10,8 +10,8 @@ import Foundation
 struct Action: Identifiable, Codable, Hashable {
     let id = UUID()
     var name: String
-    var type: String
-    var value: Double
+    var type: String        // category: home, diet, travel, misc, goods
+    var value: Double       // kg of avoided CO2 emissions
     var date: Date = Date()
     
     
