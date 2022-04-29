@@ -31,7 +31,6 @@ struct EmissionCardView: View {
                             Image(systemName: "house.fill")
                         default:
                             Image(systemName: "puzzlepiece.extension.fill")
-                            
                         }
                         Text(entryType)
                         Spacer()

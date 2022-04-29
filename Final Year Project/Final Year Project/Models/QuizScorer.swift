@@ -10,11 +10,11 @@ import Foundation
 class QuizScorer: ObservableObject {
     
     @Published var totalScore: Int = 0
-    @Published var questionScore: Int = 0
+    @Published var questionScore: Double = 0.0
     
-    func addPoints(points: Int, factor: Double) {
-        questionScore = Int(Double(points) * factor)
-        totalScore += questionScore
+    func addPoints(points: Double, factor: Double, maxPerQuestion: Double) {
+        questionScore = min((points * factor), maxPerQuestion)
+        totalScore += Int(questionScore.rounded(.up))
     }
     
     func finaliseScore(maxScore: Int){

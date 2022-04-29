@@ -72,7 +72,7 @@ struct QuizView: View {
                             isClicked = true
                             lessonTimer.stop()
                             if answer.isCorrect {
-                                quizScorer.addPoints(points: Int(1500/quiz.questions.count), factor: (1.1-lessonTimer.progress.truncatingRemainder(dividingBy: 1)))
+                                quizScorer.addPoints(points: 1500.0/Double(quiz.questions.count), factor: (1.1-lessonTimer.progress.truncatingRemainder(dividingBy: 1)), maxPerQuestion: 1000.0/Double(quiz.questions.count))
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 isCorrect = false
@@ -110,7 +110,7 @@ struct QuizView: View {
                                 Text("Incorrect!")
                                     .bold()
                             }
-                            Text("\(quizScorer.questionScore) points")
+                            Text(String(format: "%.0f points", quizScorer.questionScore))
                                 .bold()
                         }
                         .frame(width: UIScreen.main.bounds.width - 30, height: 50, alignment: .center)
