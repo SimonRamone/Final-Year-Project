@@ -64,8 +64,8 @@ struct DietFootprintView: View {
                     }
                 case 2:
                     VStack{
-                            Text("How many **high emission** foods do you eat in a week?")
-                                .font(.largeTitle)
+                        Text("How many **high emission** foods do you eat in a week?")
+                            .font(.largeTitle)
                         if data.dietEmissions != Constants.DietEmissions.Vegan && data.dietEmissions != Constants.DietEmissions.Vegetarian && data.dietEmissions != Constants.DietEmissions.Pescatarian {
                             Stepper("🥩 Beef Servings: \(data.highEmissionFoods.beefServings.formatted())", value: $data.highEmissionFoods.beefServings, in: 0...100)
                             Stepper("🥓 Pork Servings: \(data.highEmissionFoods.porkServings.formatted())", value: $data.highEmissionFoods.porkServings, in: 0...100)
@@ -78,8 +78,8 @@ struct DietFootprintView: View {
                             Stepper("🧀 Cheese Slices: \(data.highEmissionFoods.cheeseServings.formatted())", value: $data.highEmissionFoods.cheeseServings, in: 0...100)
                             Stepper("🥛 Milk Glasses: \(data.highEmissionFoods.milkServings.formatted())", value: $data.highEmissionFoods.milkServings, in: 0...100)
                         }
-                            Stepper("🍚 Rice Bowls: \(data.highEmissionFoods.riceServings.formatted())", value: $data.highEmissionFoods.riceServings, in: 0...100)
-                            Stepper("☕️ Coffee Cups: \(data.highEmissionFoods.coffeeServings.formatted())", value: $data.highEmissionFoods.coffeeServings, in: 0...100)
+                        Stepper("🍚 Rice Bowls: \(data.highEmissionFoods.riceServings.formatted())", value: $data.highEmissionFoods.riceServings, in: 0...100)
+                        Stepper("☕️ Coffee Cups: \(data.highEmissionFoods.coffeeServings.formatted())", value: $data.highEmissionFoods.coffeeServings, in: 0...100)
                     }
                     .padding(.horizontal)
                     .onAppear(){
@@ -165,9 +165,3 @@ struct DietFootprintView: View {
         }
     }
 }
-
-//struct DietFootprintView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DietFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Diet"))
-//    }
-//}

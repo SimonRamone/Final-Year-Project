@@ -14,10 +14,6 @@ struct Final_Year_ProjectApp: App {
     @State private var lessons = Lesson.lessons
     @State private var badges = Badge.sampleData
     
-    init() {
-        parseLessons()
-    }
-    
     var body: some Scene {
         WindowGroup {
             MenuTabView(lessons: $lessons, badges: $badges, user: $dataStore.user)
@@ -37,17 +33,7 @@ struct Final_Year_ProjectApp: App {
                         dataStore.user = user
                     }
                 }
-                
-                print(dataStore.user)
             }
         }
     }
-    
-    func parseLessons() {
-        do {
-            lessons = try JSONDecoder().decode([Lesson].self, from: NSDataAsset(name: "lessons-data", bundle: Bundle.main)!.data)
-            print(lessons)
-        } catch { print(error) }
-    }
-    
 }

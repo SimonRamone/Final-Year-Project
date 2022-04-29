@@ -65,8 +65,8 @@ struct LeaderboardView: View {
                         }
                     }
                 }
-        }
             }
+        }
         .refreshable {
             if user.hasAcceptedTerms {
                 GKLeaderboard.submitScore(Int(user.carbonFootprint.totalCarbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
@@ -75,25 +75,19 @@ struct LeaderboardView: View {
         }
         .navigationBarItems(
             trailing:
-                    Button(action: {
-                        popUpMessage = "Your score may take some time to update."
-                        isPresentingInfoPopUp.toggle()
-                    }, label: {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
-                    })
+                Button(action: {
+                    popUpMessage = "Your score may take some time to update."
+                    isPresentingInfoPopUp.toggle()
+                }, label: {
+                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray.opacity(0.7))
+                })
         )
-                .onAppear {
-                    if user.hasAcceptedTerms {
-                        GKLeaderboard.submitScore(Int(user.carbonFootprint.totalCarbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
-                    }
-                    leaderboard.load(leaderBoardID: leaderBoardID)
-                }
-                .navigationTitle("Leaderboard")
+        .onAppear {
+            if user.hasAcceptedTerms {
+                GKLeaderboard.submitScore(Int(user.carbonFootprint.totalCarbonFootprint), context:0, player: GKLocalPlayer.local, leaderboardIDs: ["lowestCarbonEmitters"], completionHandler: {error in})
+            }
+            leaderboard.load(leaderBoardID: leaderBoardID)
         }
+        .navigationTitle("Leaderboard")
     }
-
-//struct LeaderboardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LeaderboardView(leaderBoardID: "lowestCarbonEmitters", user: .constant(User()))
-//    }
-//}
+}

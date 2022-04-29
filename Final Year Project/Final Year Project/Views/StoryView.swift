@@ -78,7 +78,7 @@ struct StoryView: View {
                         Rectangle()
                             .foregroundColor(.clear)
                     })
-                        .padding(.trailing)
+                    .padding(.trailing)
                     Spacer()
                     Button(action: {
                         if Int(lessonTimer.progress) + 1 >= story.slides.count {
@@ -90,18 +90,18 @@ struct StoryView: View {
                         Rectangle()
                             .foregroundColor(.clear)
                     })
-                        .padding(.leading)
+                    .padding(.leading)
                 }
                 .padding(.top, 60)
             }
             .background(
                 ZStack{
-                Color.black.edgesIgnoringSafeArea(.all)
-                Image(story.slides[Int(lessonTimer.progress)].image)
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
-                    .frame(alignment: .center)
+                    Color.black.edgesIgnoringSafeArea(.all)
+                    Image(story.slides[Int(lessonTimer.progress)].image)
+                        .resizable()
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .frame(alignment: .center)
                 }
             )
             .onAppear {
@@ -132,10 +132,4 @@ extension UIScreen {
     static let screenHeight = UIScreen.main.bounds.size.height
     static let screenSize = UIScreen.main.bounds.size
 }
-
-//struct LessonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LessonView(isPresentingLesson: .constant(true), lesson: .constant(Lesson.sampleData))
-//    }
-//}
 

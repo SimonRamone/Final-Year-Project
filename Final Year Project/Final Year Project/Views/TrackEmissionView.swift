@@ -13,7 +13,7 @@ struct TrackEmissionView: View {
     @State var newAction : Action = Action()
     @State var selection: String = ""
     var body: some View {
-
+        
         Form{
             Section(header: Label("Home", systemImage: "house.fill")) {
                 ForEach(Action.homeActions) { action in

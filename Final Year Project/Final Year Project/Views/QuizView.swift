@@ -21,44 +21,31 @@ struct QuizView: View {
             ZStack{
                 VStack {
                     VStack {
-                    HStack {
-                        ForEach(0..<quiz.questions.count, id: \.self) { i in
-                            ProgressView(value: min( max( (CGFloat(lessonTimer.progress) - CGFloat(i)), 0.0) , 1.0) )
-                                .progressViewStyle(.linear)
+                        HStack {
+                            ForEach(0..<quiz.questions.count, id: \.self) { i in
+                                ProgressView(value: min( max( (CGFloat(lessonTimer.progress) - CGFloat(i)), 0.0) , 1.0) )
+                                    .progressViewStyle(.linear)
+                            }
                         }
-                    }
-                    HStack{
-                        ZStack{
-                            Image(systemName: "circle.fill")
-                                .foregroundColor(.white)
-                            Image(systemName: "leaf.circle.fill")
-                                .foregroundColor(.green)
+                        HStack{
+                            ZStack{
+                                Image(systemName: "circle.fill")
+                                    .foregroundColor(.white)
+                                Image(systemName: "leaf.circle.fill")
+                                    .foregroundColor(.green)
+                            }
+                            .font(.largeTitle)
+                            
+                            VStack(alignment: .leading) {
+                                Text(quiz.title)
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                Text(quiz.subtitle)
+                                    .font(.caption)
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
                         }
-                        .font(.largeTitle)
-                
-                        VStack(alignment: .leading) {
-                            Text(quiz.title)
-                                .font(.title2)
-                                .foregroundColor(.black)
-                            Text(quiz.subtitle)
-                                .font(.caption)
-                                .foregroundColor(.black)
-                        }
-                        Spacer()
-//                        Button(action: {
-//                            print("clicker")
-//                            isPresentingQuiz = false
-//                        }, label: {
-//                            ZStack {
-//                                Image(systemName: "circle.fill")
-//                                    .font(.largeTitle)
-//                                    .foregroundColor(.white)
-//                                Image(systemName: "xmark.circle.fill")
-//                                    .font(.largeTitle)
-//                                    .foregroundColor(.gray.opacity(0.7))
-//                            }
-//                        })
-                    }
                         Text("Question \(Int(lessonTimer.progress + 1))")
                             .bold()
                             .font(.title)
@@ -75,7 +62,6 @@ struct QuizView: View {
                             .foregroundColor(.black)
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(15)
-                            //.padding(.bottom)
                     }
                     .padding(.horizontal)
                     ForEach (quiz.questions[Int(lessonTimer.progress)].answers) { answer in
@@ -109,7 +95,7 @@ struct QuizView: View {
                                     .cornerRadius(25)
                             }
                         })
-                            .disabled(isClicked)
+                        .disabled(isClicked)
                     }
                     Spacer()
                 }
@@ -117,14 +103,14 @@ struct QuizView: View {
                     Spacer()
                     if isClicked {
                         VStack{
-                        if isCorrect {
-                            Text("Correct!")
-                                .bold()
-                        } else {
-                            Text("Incorrect!")
-                                .bold()
-                        }
-                        Text("\(quizScorer.questionScore) points")
+                            if isCorrect {
+                                Text("Correct!")
+                                    .bold()
+                            } else {
+                                Text("Incorrect!")
+                                    .bold()
+                            }
+                            Text("\(quizScorer.questionScore) points")
                                 .bold()
                         }
                         .frame(width: UIScreen.main.bounds.width - 30, height: 50, alignment: .center)
@@ -150,11 +136,5 @@ struct QuizView: View {
                 quizScorer.reset()
             }
         }
-    }
-}
-
-struct QuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizView(isPresentingQuiz: .constant(true), quiz: .constant(Quiz.sampleQuiz), user: .constant(User()))
     }
 }

@@ -13,7 +13,7 @@ struct TrackView: View {
     @State private var isPresentingNewEmissionView = false
     @State private var data : [DataPoint] = []
     var body: some View {
-    NavigationView {
+        NavigationView {
             ScrollView{
                 ZStack{
                     Rectangle()
@@ -38,19 +38,19 @@ struct TrackView: View {
                 .padding(.top)
                 .padding(.horizontal)
                 if !user.actions.isEmpty {
-                ZStack{
-                    Rectangle()
-                        .foregroundColor(.white)
-                        .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
-                    
-                    BarChartView(data: $data, caption: "This Week", unit: "kg")
-                        .padding()
+                    ZStack{
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
+                        
+                        BarChartView(data: $data, caption: "This Week", unit: "kg")
+                            .padding()
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
+                    .cornerRadius(20)
+                    .padding(.top)
+                    .padding(.horizontal)
                 }
-                .frame(width: UIScreen.main.bounds.width - 30 , height: 250)
-                .cornerRadius(20)
-                .padding(.top)
-                .padding(.horizontal)
-            }
                 if !user.actions.isEmpty{
                     HStack {
                         Text("History")
@@ -81,7 +81,7 @@ struct TrackView: View {
             .navigationTitle("Track Emissions")
             .toolbar {
                 Button(action: {
-                   isPresentingNewEmissionView = true
+                    isPresentingNewEmissionView = true
                 }) {
                     Image(systemName: "plus")
                 }
@@ -100,12 +100,6 @@ struct TrackView: View {
                         }
                 }
             }
-       }
+        }
     }
 }
-
-//struct TrackView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrackView()
-//    }
-//}

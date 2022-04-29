@@ -24,11 +24,11 @@ struct MenuTabView: View {
     @State private var isPresentingQuiz: Bool = false
     @State private var quiz: Quiz = Quiz()
     
-    @State private var isPresentingLoadingView: Bool = false
-    
     let saveAction: ()->Void
     
-    let localPlayer = GKLocalPlayer.local
+    let localPlayer = GKLocalPlayer.local       //users Game Center account
+    
+    //authenticate user's Game Center account
     func authenticateUser() {
         localPlayer.authenticateHandler = { vc, error in
             guard error == nil else {
@@ -44,7 +44,7 @@ struct MenuTabView: View {
         ZStack{
             
             TabView {
-                HomeView(isPresentingInfoPopUp: $isPresentingInfoPopUp, isPresentingLoadingView: $isPresentingLoadingView, popUpMessage: $popUpMessage, user: $user)
+                HomeView(isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, user: $user)
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Home")
@@ -66,26 +66,13 @@ struct MenuTabView: View {
                     }
             }
             .disabled(isPresentingStory)
-            // .blur(radius: isPresentingInfoPopUp ? 10 : .nan)
-            //if isPresentingInfoPopUp { VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial)).ignoresSafeArea(.all)}
+            
             PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
                 .shadow(color: .gray, radius: 10, x: 0, y: 0)
             
             StoryView(isPresentingStory: $isPresentingStory, story: $story, user: $user, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage)
             
             QuizView(isPresentingQuiz: $isPresentingQuiz, quiz: $quiz, user: $user)
-            
-            if isPresentingLoadingView {
-                ZStack{
-                    Rectangle()
-                        .fill(.white)
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                }
-                .background(Color.white)
-                .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.all)
-            }
         }
         .onAppear(){
             authenticateUser()

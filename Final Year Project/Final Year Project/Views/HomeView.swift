@@ -14,7 +14,6 @@ struct HomeView: View {
     @State var isPresentingSheet = false
     @State var currentSurvey = "Home"
     @Binding var isPresentingInfoPopUp: Bool
-    @Binding var isPresentingLoadingView: Bool
     @Binding var popUpMessage: String
     @State var data = CarbonFootprint.Data()
     @Binding var user: User
@@ -162,18 +161,18 @@ struct HomeView: View {
             NavigationView {
                 Group{
                     ZStack{
-                    switch (currentSurvey)  {
-                    case "Home":
-                        HomeFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
-                    case "Transport":
-                    TransportFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
-                    case "Diet":
-                    DietFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
-                    case "Goods":
-                        GoodsFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
-                    default:
-                        HomeFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
-                    }
+                        switch (currentSurvey)  {
+                        case "Home":
+                            HomeFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
+                        case "Transport":
+                            TransportFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
+                        case "Diet":
+                            DietFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
+                        case "Goods":
+                            GoodsFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
+                        default:
+                            HomeFootprintView(user: $user, carbonFootprintCalculator: carbonFootprintCalculator, isPresentingInfoPopUp: $isPresentingInfoPopUp, popUpMessage: $popUpMessage, currentSurvey: $currentSurvey, isPresentingSheet: $isPresentingSheet)
+                        }
                         PopUpView(isPresented: $isPresentingInfoPopUp, title: "", message: popUpMessage, buttonText: "Got it!")
                             .shadow(color: .gray, radius: 10, x: 0, y: 0)
                     }
@@ -195,9 +194,9 @@ struct HomeView: View {
         }
         .onAppear(){
             GKAccessPoint.shared.isActive = false
-                data = user.carbonFootprint.data
-                carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
-                carbonFootprintCalculator.recalculateCarbonFootprint()
+            data = user.carbonFootprint.data
+            carbonFootprintCalculator.updateCarbonFootprintData(carbonFootprintData: data)
+            carbonFootprintCalculator.recalculateCarbonFootprint()
             user.carbonFootprint.totalCarbonFootprint = carbonFootprintCalculator.carbonFootprint
         }
         .onChange(of: user.carbonFootprint.data){ data in

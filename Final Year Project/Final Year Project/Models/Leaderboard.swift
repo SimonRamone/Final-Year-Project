@@ -29,7 +29,7 @@ class Leaderboard: ObservableObject {
     
     func loadScores() {
         leaderboard?.loadEntries(for: .global, timeScope: .allTime, range: NSRange(location: 1, length: 100),
-            completionHandler: { [weak self] (localPlayer, scores, count, error) in
+                                 completionHandler: { [weak self] (localPlayer, scores, count, error) in
             DispatchQueue.main.async {
                 self?.localPlayerScore = localPlayer
                 self?.topScores = scores

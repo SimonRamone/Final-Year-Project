@@ -17,7 +17,7 @@ struct FlightView: View {
                 HStack{
                     Label("From", systemImage: "airplane.departure")
                     AirportPicker(selection: $flight.fromAirport, airports: $airports)
-                
+                    
                 }
                 HStack{
                     Label("To", systemImage: "airplane.arrival")

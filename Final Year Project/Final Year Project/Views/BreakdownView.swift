@@ -16,16 +16,16 @@ struct BreakdownView: View {
         VStack{
             ZStack {
                 Group {
-                Circle()
-                    .stroke(lineWidth: 10.0)
-                    .opacity(0.5)
-                Circle()
-                    .trim(from: 0.0, to: CGFloat(min(percentage, 1.0)))
-                    .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
-                    .rotationEffect(Angle(degrees: 270.0))
-                Image(systemName: icon)
-                    .font(.title)
-                    .padding()
+                    Circle()
+                        .stroke(lineWidth: 10.0)
+                        .opacity(0.5)
+                    Circle()
+                        .trim(from: 0.0, to: CGFloat(min(percentage, 1.0)))
+                        .stroke(style: StrokeStyle(lineWidth: 10.0, lineCap: .round, lineJoin: .round))
+                        .rotationEffect(Angle(degrees: 270.0))
+                    Image(systemName: icon)
+                        .font(.title)
+                        .padding()
                 }
                 .foregroundColor(color)
             }

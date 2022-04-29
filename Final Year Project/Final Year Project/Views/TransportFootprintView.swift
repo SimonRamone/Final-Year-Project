@@ -204,10 +204,3 @@ struct TransportFootprintView: View {
         }
     }
 }
-
-//struct TransportFootprintView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TransportFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Transport"))
-//    }
-//}
-

@@ -23,7 +23,7 @@ struct BadgeView: View {
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .padding()
-
+            
         }
     }
 }

@@ -42,6 +42,4 @@ extension Badge {
         Badge(title: "Badge 4", description: "Well done! You completed the second lesson.", achieveBy: "Complete second lesson.", image: "badge3", earned: false),
         Badge(title: "Badge 5", description: "Well done! You completed the third lesson.", achieveBy: "Complete third lesson.", image: "badge4", earned: false)
     ]
-//    ,
-//    Badge(title: "Badge 4", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere risus massa, eu pharetra ipsum pretium non. Nunc id mi sed ante maximus iaculis. Phasellus at ante a magna luctus tempor id ac eros. Nullam venenatis id sapien fermentum scelerisque. Mauris a leo turpis. Ut eget imperdiet augue. Vivamus vulputate quis felis ac cursus.", achieveBy: "Earn 5000 points to unlock.", image: "badge3", earned: false)
 }

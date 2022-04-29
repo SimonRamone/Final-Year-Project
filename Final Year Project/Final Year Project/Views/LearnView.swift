@@ -44,7 +44,7 @@ struct LearnView: View {
                         .onTapGesture {
                             isPresentingLesson = true
                             story = lesson.story
-                    }
+                        }
                         ZStack{
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .fill(Color.teal.opacity(0.3))
@@ -80,21 +80,13 @@ struct LearnView: View {
                 }
             }
             .onAppear(){
-                //if lessons.isEmpty {
-                    do {
-                        lessons = try JSONDecoder().decode([Lesson].self, from: NSDataAsset(name: "lessons-data", bundle: Bundle.main)!.data)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                //}
+                do {
+                    lessons = try JSONDecoder().decode([Lesson].self, from: NSDataAsset(name: "lessons-data", bundle: Bundle.main)!.data)
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
             .navigationTitle("Learn")
         }
     }
 }
-
-//struct LearnView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LearnView(lessons: .constant([Lesson.sampleData]), isPresentingLesson: .constant(false), isPresentingQuiz: .constant(false), lessonView: .constant(Lesson.sampleData))
-//    }
-//}

@@ -10,12 +10,12 @@ import Foundation
 struct User: Codable {
     
     var quizScores = [String : Int]()
-    var hasCompleted = [String : Bool]()
-    var hasUnlocked = [String : Bool]()
-    var carbonFootprint: CarbonFootprint = CarbonFootprint(data: CarbonFootprint.Data())
-    var actions : [Action] = []
+    var hasCompleted = [String : Bool]()    // completed lessons
+    var hasUnlocked = [String : Bool]()     // unlocked badges
+    var carbonFootprint: CarbonFootprint = CarbonFootprint(data: CarbonFootprint.Data())        // carbon footprint calculator answers
+    var actions : [Action] = []             // tracked actions
     
-    private var _hasAcceptedTerms: Bool?
+    private var _hasAcceptedTerms: Bool?            // has accepted leaderboard terms
     var hasAcceptedTerms: Bool {
         get {
             _hasAcceptedTerms ?? false

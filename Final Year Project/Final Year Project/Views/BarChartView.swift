@@ -97,9 +97,3 @@ struct BarChartView: View {
         }
     }
 }
-
-//struct BarChartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BarChartView(data: .constant(DataPoint.sampleData), caption: "This Week", unit: "kg")
-//    }
-//}

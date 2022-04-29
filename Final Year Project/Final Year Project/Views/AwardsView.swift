@@ -17,46 +17,46 @@ struct AwardsView: View {
     @Binding var user: User
     var body: some View {
         NavigationView {
-                ScrollView{
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]){
-                        ForEach(badges) { badge in
-                            if user.hasUnlocked[badge.title] ?? false {
-                                Button(action: {
-                                    isPresentingBadgeView.toggle()
-                                    data = badge.data
-                                }) {
-                                    Image(badge.image)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .padding()
-                                }
-                                .sheet(isPresented: $isPresentingBadgeView) {
-                                    NavigationView {
-                                        BadgeView(data: $data)
-                                            .navigationBarItems(trailing:
-                                                                    Button("Done") {
-                                                isPresentingBadgeView = false
-                                            }
-                                            )
-                                    }
+            ScrollView{
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]){
+                    ForEach(badges) { badge in
+                        if user.hasUnlocked[badge.title] ?? false {
+                            Button(action: {
+                                isPresentingBadgeView.toggle()
+                                data = badge.data
+                            }) {
+                                Image(badge.image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .padding()
+                            }
+                            .sheet(isPresented: $isPresentingBadgeView) {
+                                NavigationView {
+                                    BadgeView(data: $data)
+                                        .navigationBarItems(trailing:
+                                                                Button("Done") {
+                                            isPresentingBadgeView = false
+                                        }
+                                        )
                                 }
                             }
-                            else {
-                                Button(action: {
-                                    popUpMessage = badge.achieveBy
-                                    isPresentingInfoPopUp.toggle()
-                                }) {
-                                    Image(badge.image)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .padding()
-                                        .grayscale(1)
-                                }
+                        }
+                        else {
+                            Button(action: {
+                                popUpMessage = badge.achieveBy
+                                isPresentingInfoPopUp.toggle()
+                            }) {
+                                Image(badge.image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .padding()
+                                    .grayscale(1)
                             }
                         }
                     }
                 }
-                .navigationTitle("Awards")
+            }
+            .navigationTitle("Awards")
         }
     }
 }

@@ -179,9 +179,3 @@ struct GoodsFootprintView: View {
         }
     }
 }
-
-//struct GoodsFootprintView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GoodsFootprintView(data: .constant(CarbonFootprint.defaultCarbonFootprint.data), carbonFootprintCalculator: CarbonFootprintCalculator(), isPresentingInfoPopUp: .constant(false), popUpMessage: .constant(""), currentSurvey: .constant("Goods"), isPresentingSheet: .constant(false))
-//    }
-//}
