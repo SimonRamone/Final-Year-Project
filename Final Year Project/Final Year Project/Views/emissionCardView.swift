@@ -17,35 +17,36 @@ struct EmissionCardView: View {
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width - 30 , height: 70)
             
-            HStack{
-                VStack(alignment: .leading){
+                HStack{
+                    VStack(alignment: .leading){
                     HStack{
-                        switch (entryType)  {
-                        case "Diet":
-                            Image(systemName: "fork.knife")
-                        case "Travel":
-                            Image(systemName: "car.fill")
-                        case "Goods":
-                            Image(systemName: "cart.fill")
-                        case "Home":
-                            Image(systemName: "house.fill")
-                        default:
-                            Image(systemName: "puzzlepiece.extension.fill")
-                        }
+                    switch (entryType)  {
+                    case "Diet":
+                        Image(systemName: "fork.knife")
+                    case "Travel":
+                        Image(systemName: "car.fill")
+                    case "Goods":
+                        Image(systemName: "cart.fill")
+                    case "Home":
+                        Image(systemName: "house.fill")
+                    default:
+                        Image(systemName: "puzzlepiece.extension.fill")
+                            
+                    }
                         Text(entryType)
                         Spacer()
                     }
                     .font(.headline)
-                    .foregroundColor(.black)
+                        .foregroundColor(.black)
                     Text(name)
-                        .font(.body)
+                            .font(.body)
+                    }
+                    Spacer()
+                    Text(String(format: "%.1f", value) + " kg")
+                            .font(.title)
+                            .bold()
                 }
-                Spacer()
-                Text(String(format: "%.1f", value) + " kg")
-                    .font(.title)
-                    .bold()
-            }
-            .padding(.horizontal)
+                .padding(.horizontal)
         }
         .cornerRadius(20)
         .padding(.bottom)
