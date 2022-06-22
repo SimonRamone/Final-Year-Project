@@ -16,7 +16,7 @@ Download Link: https://showandtell.lt/carbonmate-app
 This is an iOS app that aims to reduce the user’s personal carbon emissions through gamification. Using the app, the user can calculate their carbon footprint and view which areas of their day-to-day life contribute to their carbon footprint the most. Furthermore, the user can view a leaderboard of the lowest carbon emitters to understand how their own carbon footprint compares to the carbon footprint of other users of the app. Another feature of the app is the avoided emissions tracker, where the user can track actions that result in fewer carbon emissions. Lessons and quizzes provide an interactive and engaging way of learning how an individual can reduce their carbon footprint. While awards acknowledge the user’s progress.
 
 ### Carbon Footprint Calculator
-![Carbon Footprint Calculator](Screenshots/home.jpg | width=30)
+<img src="Screenshots/home.jpg" width="100">
 ### Avoided Emissions Tracker
 ![Avoided Emissions Tracker](Screenshots/tracker.jpg | width=30)
 ### Stories
